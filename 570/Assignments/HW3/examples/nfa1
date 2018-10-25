@@ -1,0 +1,10 @@
+F
+(START (A "I_don't_care"))
+(START (B "you_don't_care"))
+(A (B "who_you_are"))
+(A (B *e*))
+(B (C "where_you're_from"))
+(B (C *e*))
+(C (D "what_you_did"))
+(C (D *e*))
+(D (F "as_long_as_you_love_me"))

@@ -1,0 +1,9 @@
+S4
+(S0 (S1 "they" "PRO" 1.0))
+(S1 (S2 "can" "AUX" 1.0))
+(S1 (S2 "will" "AUX" 1.0))
+(S2 (S3 "buy" "VERB" 1.0))
+(S2 (S3 "take" "VERB" 1.0))
+(S3 (S4 "table" "NOUN" 1.0))
+(S3 (S4 "can"  "NOUN" 1.0))
+

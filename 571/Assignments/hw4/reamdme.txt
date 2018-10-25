@@ -1,0 +1,37 @@
+Daniel Campos
+Ling 571 HW4
+10/19/2018
+PCKY Parser
+1. Results
+    Base
+    -- All --
+    Number of sentence        =     55
+    Number of Error sentence  =      1
+    Number of Skip  sentence  =      4
+    Number of Valid sentence  =     50
+    Bracketing Recall         =  88.27
+    Bracketing Precision      =  88.27
+    Bracketing FMeasure       =  88.27
+    Complete match            =  66.00
+    Average crossing          =   0.52
+    No crossing               =  80.00
+    2 or less crossing        =  92.00
+    Tagging accuracy          =  99.06
+    Improved
+    -- All --
+    Number of sentence        =     55
+    Number of Error sentence  =      0
+    Number of Skip  sentence  =      4
+    Number of Valid sentence  =     51
+    Bracketing Recall         =  88.38
+    Bracketing Precision      =  88.38
+    Bracketing FMeasure       =  88.38
+    Complete match            =  66.67
+    Average crossing          =   0.51
+    No crossing               =  80.39
+    2 or less crossing        =  92.16
+    Tagging accuracy          =  99.07
+2. Approach
+My approach was simple. To make the PCFG I would load the cfg and then keep track of each occourence of LHS and RHS to get a probability. For the parser I would take my approach from HW3, add in probability and tune it based on my results. I was able to implement this quite quicky with very few changes and pretty much immediatley had 99.06% accuracy. To see how I could improve I looked at the 5 out of the 55 sentences I got wrong and noticed there was some issues around case(rule only being for lower case). My improvement is if my system doesnt generate a parse then it tries to parse with the sentence as lower case. This was able to fix one of the 5 I had originally gotten wrong!
+3. Problems 
+Still get 4 out 55 wrong. 
