@@ -7,7 +7,7 @@ def main(fsm_filename, word_list_filename, output_filename):
             for l in f:
                 formated_word = ''
                 for letter in l.strip():
-                    formated_word = formated_word + ' ' + letter + ' '
+                    formated_word = formated_word + ' ' + letter + ' ' #Split word into leters
                 result = os.popen("echo '{}'|carmel -sli {}".format(formated_word,fsm_filename)).read().strip()
                 if result != '':
                     w.write("{} => yes\n".format(l.strip()))

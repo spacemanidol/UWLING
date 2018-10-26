@@ -1,6 +1,11 @@
 import sys
 import os
 def load_lexicon(lexicon_filename):
+    '''
+    load lexicon file
+    Args: lexicon_filename(str): a filename for a lexicon
+    Returns: lexicon (dict): key is word type value is a list of words/letter combos that align
+    '''
     lexicon = {}
     with open(lexicon_filename, 'r') as f:
         for l in f:
@@ -14,8 +19,12 @@ def load_lexicon(lexicon_filename):
     return lexicon
 
 def load_morph(morph_rules_filename):
+    '''
+    load morph file
+    Args: morph_rules_filename(str): a filename for morphology rules
+    Returns: rules(list): list of tuples of each step of the FSA, end_state(str) the end state for the FSA to accept
+    '''
     rules = []
-    start_state = ''
     end_state = ''
     header = 0
     with open(morph_rules_filename, 'r') as f:
@@ -28,15 +37,17 @@ def load_morph(morph_rules_filename):
                 if l != ['']:
                     start = l[1].strip()
                     l = l[2].split(' ')
-                    if header == 1:
-                        start_state = start
-                        header += 1
                     transition = l[1]
                     end = l[0]
                     rules.append((start,end,transition))
-    return rules, start_state, end_state
+    return rules, end_state
 
 def split_letters_in_word(rules):
+    '''
+    split word level fsa to level letter fsa
+    Args: rules(list): list of tuples of each step of the FSA
+    Returns: new_rules(list): list of tuples of each step of the FSA now at the letter level
+    '''
     new_rules = []
     for rule in rules:
         if rule[2] == '*e*':
@@ -53,6 +64,10 @@ def split_letters_in_word(rules):
     return new_rules
 
 def print_fsm(filename, rules, end):
+    '''
+    print fsa in desired format
+    Args: filename(str) desired output file, rules(list): list of tuples of each step of the FSA, end(str) the accepting state
+    '''
     with open(filename,'w') as w:
         w.write('{}\n'.format(end))
         for rule in rules:
@@ -60,7 +75,7 @@ def print_fsm(filename, rules, end):
     
 def main(lexicon_filename, morphology_rules_filename, output_fsm_filename):
     lexicon = load_lexicon(lexicon_filename)
-    morph, start, end = load_morph(morphology_rules_filename)
+    morph, end = load_morph(morphology_rules_filename)
     new_rules = []
     for rule in morph:
         if rule[2] == '*e*':
