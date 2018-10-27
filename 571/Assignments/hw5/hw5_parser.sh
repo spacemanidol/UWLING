@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 hw5_parser.py $@
+/usr/bin/python3 hw5_parser.py $@

@@ -43,7 +43,7 @@ IV[TENSE=pres,  NUM=sg] -> 'disappears' | 'walks'
 TV[TENSE=pres, NUM=sg] -> 'sees' | 'likes'
 
 IV[TENSE=pres,  NUM=pl] -> 'disappear' | 'walk'
-TV[TENSE=pres, NUM=pl] -> 'see' | 'like'
+TV[TENSE=pres, NUM=pl] -> 'see' | 'like' | 'bark'
 
 IV[TENSE=past] -> 'disappeared' | 'walked'
 TV[TENSE=past] -> 'saw' | 'liked'
