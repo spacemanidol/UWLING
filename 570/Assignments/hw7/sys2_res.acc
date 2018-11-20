@@ -1,0 +1,4 @@
+sent_num: counted_sent=100 untagged=0 (0%), leng_mismatch=0 wrong_format=0
+
+word_num: gold=2449, counted=2449, matched=2134
+accuracy: overall=87.1376071866068%, among_counted=87.1376071866068% untagged=0%

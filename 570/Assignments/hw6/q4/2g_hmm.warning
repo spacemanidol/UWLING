@@ -1,0 +1,59 @@
+state_num=47
+sym_num=7905
+init_line_num=1
+trans_line_num=886
+emiss_line_num=8738
+warning: the trans_prob_sum for state CD is 1.0000000003
+warning: the emiss_prob_sum for state CD is 1.0000000080000016
+warning: the emiss_prob_sum for state $ is 1.0000000001
+warning: the emiss_prob_sum for state JJ is 0.9999999895999857
+warning: the trans_prob_sum for state '' is 1.0000000002000002
+warning: the trans_prob_sum for state -LRB- is 0.9999999999
+warning: the trans_prob_sum for state : is 1.0000000001
+warning: the emiss_prob_sum for state : is 1.0000000001
+warning: the emiss_prob_sum for state CC is 0.9999999999
+warning: the trans_prob_sum for state DT is 1.0000000001999998
+warning: the emiss_prob_sum for state DT is 1.0000000002000002
+warning: the trans_prob_sum for state EOS is 0
+warning: the trans_prob_sum for state IN is 1.0000000002
+warning: the emiss_prob_sum for state IN is 1.0000000010000003
+warning: the emiss_prob_sum for state MD is 0.9999999998
+warning: the emiss_prob_sum for state NN is 0.999999982099984
+warning: the trans_prob_sum for state NNP is 1.0000000002
+warning: the emiss_prob_sum for state NNP is 1.0000000266999975
+warning: the trans_prob_sum for state NNS is 1.0000000003999998
+warning: the emiss_prob_sum for state NNS is 0.9999999918000066
+warning: the trans_prob_sum for state RB is 1.0000000002
+warning: the emiss_prob_sum for state RB is 1.0000000008999983
+warning: the trans_prob_sum for state TO is 0.9999999998
+warning: the trans_prob_sum for state VB is 0.9999999998
+warning: the emiss_prob_sum for state VB is 0.999999991899998
+warning: the trans_prob_sum for state VBD is 0.9999999996999998
+warning: the emiss_prob_sum for state VBD is 0.9999999969999981
+warning: the trans_prob_sum for state VBG is 1.0000000003
+warning: the emiss_prob_sum for state VBG is 1.0000000134999958
+warning: the trans_prob_sum for state VBN is 0.9999999998999998
+warning: the emiss_prob_sum for state VBN is 1.0000000046999966
+warning: the trans_prob_sum for state VBP is 0.9999999996999998
+warning: the emiss_prob_sum for state VBP is 0.9999999957999967
+warning: the emiss_prob_sum for state VBZ is 0.9999999979999995
+warning: the trans_prob_sum for state WDT is 0.9999999999
+warning: the emiss_prob_sum for state WDT is 0.9999999999
+warning: the trans_prob_sum for state WRB is 1.0000000001000002
+warning: the emiss_prob_sum for state WRB is 1.0000000001
+warning: the trans_prob_sum for state , is 1.0000000001
+warning: the trans_prob_sum for state JJS is 0.9999999998999997
+warning: the emiss_prob_sum for state JJS is 0.9999999997999997
+warning: the emiss_prob_sum for state NNPS is 1.0000000003000005
+warning: the emiss_prob_sum for state PRP$ is 0.9999999998
+warning: the trans_prob_sum for state RBR is 1.0000000002
+warning: the emiss_prob_sum for state RBR is 1.0000000003
+warning: the trans_prob_sum for state WP is 0.9999999999
+warning: the trans_prob_sum for state `` is 0.9999999998999999
+warning: the trans_prob_sum for state JJR is 0.9999999998
+warning: the emiss_prob_sum for state JJR is 0.9999999996999998
+warning: the trans_prob_sum for state . is 0.9999999999
+warning: the emiss_prob_sum for state PDT is 0.9999999999
+warning: the trans_prob_sum for state POS is 0.9999999996000002
+warning: the trans_prob_sum for state RP is 1.0000000001
+warning: the emiss_prob_sum for state RP is 1.0000000001
