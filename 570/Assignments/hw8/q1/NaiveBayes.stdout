@@ -1,0 +1,18 @@
+
+-------------------- Trial 0  --------------------
+
+Trial 0 Training NaiveBayesTrainer with 2700 instances
+Trial 0 Training NaiveBayesTrainer finished
+Trial 0 Trainer NaiveBayesTrainer training data accuracy= 0.9477777777777778
+Trial 0 Trainer NaiveBayesTrainer Test Data Confusion Matrix
+Confusion Matrix, row=true, column=predicted  accuracy=0.88
+      label   0   1   2  |total
+  0    guns  87   1   5  |93
+  1 mideast   3  92   6  |101
+  2    misc  15   6  85  |106
+
+Trial 0 Trainer NaiveBayesTrainer test data accuracy= 0.88
+
+NaiveBayesTrainer
+Summary. train accuracy mean = 0.9477777777777778 stddev = 0.0 stderr = 0.0
+Summary. test accuracy mean = 0.88 stddev = 0.0 stderr = 0.0
