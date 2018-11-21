@@ -1,0 +1,9 @@
+Training vectors loaded from train.vectors
+Testing vectors loaded from test.vectors
+Value (labelProb=12539.855427680925 prior=0.0) loglikelihood = -12539.855427680925Value (labelProb=2570.6819461591813 prior=0.5000000000160583) loglikelihood = -2571.181946159197Value (labelProb=1869.3791419862337 prior=0.8409617941303104) loglikelihood = -1870.220103780364Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at cc.mallet.optimize.BackTrackLineSearch.optimize(BackTrackLineSearch.java:79)
+	at cc.mallet.optimize.LimitedMemoryBFGS.optimize(LimitedMemoryBFGS.java:225)
+	at cc.mallet.classify.MaxEntTrainer.train(MaxEntTrainer.java:252)
+	at cc.mallet.classify.MaxEntTrainer.train(MaxEntTrainer.java:242)
+	at cc.mallet.classify.MaxEntTrainer.train(MaxEntTrainer.java:52)
+	at cc.mallet.classify.tui.Vectors2Classify.main(Vectors2Classify.java:411)
