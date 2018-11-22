@@ -36,16 +36,9 @@ def write_result(input_filename, target_label, output_filename, features):
     out_f.write("\n")
     out_f.close()
 def main():
-    local = 1
-    if local == 1:
-        dir1 = "examples/20_newsgroups/talk.politics.guns"
-        dir2 = "examples/20_newsgroups/talk.politics.mideast"
-        dir3 = "examples/20_newsgroups/talk.politics.misc"
-        dirs = [dir1, dir2, dir3]
-    else:
-        dirs = []
-        for i in range(4, len(sys.argv)):
-            dirs.append(sys.argv[i])
+    dirs = []
+    for i in range(4, len(sys.argv)):
+        dirs.append(sys.argv[i])
     ratio = sys.argv[3]
     for directory in dirs:
         train_filenames, test_filenames = train_test_split(directory, ratio)
