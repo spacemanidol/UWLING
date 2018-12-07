@@ -87,16 +87,17 @@ def create_features_sentences(sentence, words, rare_threshold):
         to_add = add(to_add, 'prevTwoTags='+sent_tags[i-2]+'+'+sent_tags[i-1])
         if words[sent_words[i]] >= rare_threshold:
             to_add.insert(0, 'curW={}'.format(sent_words[i]))
+            for j in length:
+                if len(sent_words[i]) >= j:
+                    if len(sent_words[i][0:j-1]) > 1:
+                        to_add = add(to_add, 'pref={}'.format(sent_words[i][0:j-1]))
+                    to_add = add(to_add, 'suf={}'.format(sent_words[i][-(j):]))
         if isnumber(sent_words[i]):
             to_add.append('containNum 1')
         if isupper(sent_words[i]):
             to_add.append('containUC 1')
         if ishyphen(sent_words[i]):
             to_add.append('containHyp 1')
-        for j in length:
-            if len(sent_words[i]) >= j:
-                to_add = add(to_add, 'pref={}'.format(sent_words[i][0:j-1]))
-                to_add = add(to_add, 'suf={}'.format(sent_words[i][-(j):]))
         features.append(to_add)
     return sent_words, sent_tags, features
 def create_features(filename, words, rare_threshold, path):
