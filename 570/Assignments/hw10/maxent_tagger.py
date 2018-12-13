@@ -8,11 +8,15 @@ def isupper(string):
     return any(i.isupper() for i in string)
 def sort_list(dict):
    return [v[0] for v in sorted(dict.items(), key=lambda kv: (-kv[1], kv[0].upper()))]
+def add(a_list, target):
+    if target not in a_list:
+        a_list.append(target)
+    return a_list  
 def output_file(path, words, filename):
     words_list = sort_list(words)
     with open(os.path.join(path, filename),'w') as w:
         for word in words_list:
-            w.write('{}\t{}\n'.format(word,words[word]))
+            w.write('{} {}\n'.format(word,words[word]))
 def remove_under_threshold(features, threshold, path):
     kept = {}
     dropped = []
@@ -57,11 +61,7 @@ def process_file(input_filename, features, rare_threshold, dropped, output_filen
             j=1
             for l in f:
                 w.write(process_line(l.strip().split(' '),j,features,rare_threshold,dropped))
-                j += 1
-def add(a_list, target):
-    if target not in a_list:
-        a_list.append(target)
-    return a_list    
+                j += 1  
 def create_features_sentences(sentence, words, rare_threshold):
     sent_words, sent_tags, features =  ['BOS','BOS'], ['BOS','BOS'], []
     for item in sentence:
