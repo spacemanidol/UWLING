@@ -18,16 +18,15 @@ def load_vectors(vector_file,flag):
             word_vectors.append(values)
             i += 1
     return word_vectors, word2idx, idx2word
-def load_specific_vector(word2idx,word_vectors, word, zeros):
+def load_specific_vector(word2idx,word_vectors, word):
     try:
         return word_vectors[word2idx[word]]
     except:
-        return zeros
+        return word_vectors[0]
 def test_file(filename, input_directory, output_directory, word_vectors, word2idx, idx2word, flag2):
     input_file = os.path.join(input_directory, filename)
     output_file = os.path.join(output_directory, filename)
     correct = 0
-    zeros = np.zeros(len(word_vectors[0]))
     with open(os.path.join(input_directory, filename), 'r') as f:
         with open(os.path.join(output_directory, filename), 'w') as w:
             references,candidates, Y_vects = [],[],[]
@@ -36,13 +35,13 @@ def test_file(filename, input_directory, output_directory, word_vectors, word2id
                 if len(l) > 1:
                     word_a, word_b, word_c, word_d = l
                     references.append((word_a, word_b, word_c, word_d))
-                    Y_vects.append(load_specific_vector(word2idx,word_vectors,word_b,zeros) - load_specific_vector(word2idx,word_vectors,word_a,zeros) + load_specific_vector(word2idx,word_vectors,word_c,zeros))
-            if flag2 != 0:
-                for row in spatial.distance.cdist(Y_vects, word_vectors[:-1], 'cosine'):
-                    candidates.append(np.argmin(row))
+                    Y_vects.append(load_specific_vector(word2idx,word_vectors,word_b) - load_specific_vector(word2idx,word_vectors,word_a) + load_specific_vector(word2idx,word_vectors,word_c))        
+            if flag2 == 0:
+                sampling = 'euclidean'
             else:
-                for row in spatial.distance.cdist(Y_vects, word_vectors[:-1], 'euclidean'):
-                    candidates.append(np.argmin(row))
+                sampling =  'cosine'
+            for row in spatial.distance.cdist(Y_vects, word_vectors, sampling):
+                candidates.append(np.argmin(row))
             for i in range(0,len(references)):
                 candidate = idx2word[candidates[i]]
                 if candidate == references[i][3]:
