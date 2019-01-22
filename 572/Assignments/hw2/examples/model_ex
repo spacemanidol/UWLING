@@ -1,0 +1,8 @@
+!gun&!com&!how&!israel 5 talk.politics.guns 0.2 talk.politics.misc 0 talk.politics.mideast 0.8
+!gun&!com&!how&israel 5 talk.politics.guns 0 talk.politics.misc 0 talk.politics.mideast 1
+!gun&!com&how&!waste 4 talk.politics.guns 0 talk.politics.misc 1 talk.politics.mideast 0
+!gun&!com&how&waste 1 talk.politics.guns 0 talk.politics.misc 0 talk.politics.mideast 1
+!gun&com&!your 4 talk.politics.guns 0 talk.politics.misc 1 talk.politics.mideast 0
+!gun&com&your&!cheaper 2 talk.politics.guns 0.5 talk.politics.misc 0.5 talk.politics.mideast 0
+!gun&com&your&cheaper 1 talk.politics.guns 0 talk.politics.misc 1 talk.politics.mideast 0
+gun 8 talk.politics.guns 1 talk.politics.misc 0 talk.politics.mideast 0
