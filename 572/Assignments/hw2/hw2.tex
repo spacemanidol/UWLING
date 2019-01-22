@@ -1,155 +1,47 @@
 \documentclass[11pt]{article}
-
+\usepackage{url}
 \setlength\topmargin{-0.6cm}   
 \setlength\textheight{23.4cm}
 \setlength\textwidth{17.0cm}
 \setlength\oddsidemargin{0cm} 
- 
-
 \begin{document}
-
-\begin{center}
-\LARGE
-LING 572 Hw2\\
-Due: 11pm on Jan 23, 2019\\
-\vspace{0.3in}
-\end{center}
-
-
-The example files are under ~/dropbox/18-19/572/hw2/examples/.
-
+\title{Ling 572 HW2 }
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{01/23/2019}
+\maketitle 
 \vspace{0.3 in}
 \hspace{-0.3in}
-{\bf Q1 (4 points):} Run the Mallet DT learner (i.e., the trainer's name
-is DecisionTree) with 
-{\bf train.vectors.txt} as the training data 
-and {\bf test.vectors.txt} as the test data.
-%
-In your note file, write down the following:
+\section{  Q1 Mallet DT Learner}
 \begin{description}
-\item [(a)] The command lines you use for preparing data, training, testing, 
-            and getting the training and test accuracy.
-            You can use vectors2classify commands
-            to do training, testing and evaluation in one step.
-
-\item [(b)] What are the training accuracy and the test accuracy?
+\item [(a)] The command lines:\\ 
+mallet import-file --input train.vectors.txt --output train.vectors\\
+mallet import-file --input test.vectors.txt --output test.vectors --use-pipe-from train.vectors \\
+vectors2classify --training-file train.vectors --testing-file test.vectors --trainer DecisionTree --output-classifier me-model --report train:accuracy --report test:accuracy \textgreater  me.stdout \\
+cat me.stdout
+\item [(b)] What are the training accuracy and the test accuracy? \\
+Train:0.17814814814814814 \\
+Test: 0.1
 \end{description}
 
-
-
-%%%%%%%%
-\vspace{0.7 in}
-
-\hspace{-0.3in}
-{\bf Q2 (6 points):} Run the Mallet DT trainer with different depths; that is,
-when running vectors2classify, replace 
-{\bf --trainer DecisionTree}
-with
-\begin{verbatim}
-  --trainer "new DecisionTreeTrainer(nn)"
-\end{verbatim}
-where nn is the depth of the decision tree. Note that you have to 
-use vectors2classify, instead of ``mallet train-classifier'' and
-``mallet classify-svmlight'' because ``mallet train-classifier''
-does not process "new DecisionTreeTrainer(nn)" properly.
-
-
-\begin{description}
-\item [(a)] Fill out Table 1
-\item [(b)] What conclusion can you draw from Table 1?
-\end{description}
-
+\section{ Q2 Mallet Different depth}
 \begin{table}[h]
 \centering
-\caption{Run Mallet's DT learner with different depths}
+\caption{Mallet's DT learner with different depths}
 \label{table1}
 \begin{tabular}{|l|l|l|} \hline
 Depth   & Training accuracy & Test accuracy \\ \hline
-1       &    &  \\ \hline
-2       &    &  \\ \hline
-4       &    &  \\ \hline
+1       & 0.1393 & 0.1033  \\ \hline
+2       & 0.1419 & 0.12 \\ \hline
+4       &  0.1781 & 0.10 \\ \hline
 10      &    &  \\ \hline
 20      &    &  \\ \hline
 50      &    &  \\ \hline
 \end{tabular}
-
 \end{table}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.7 in}
-
-\hspace{-0.3in}
-{\bf Q3 (55 points):} Write a program, {\bf build\_dt.sh}, 
-that builds a DT tree from
-the training data, classifies the training and test data, and calculates
-the accuracy.
-\begin{itemize} 
-   \item This DT learner should treat all features as binary; that is,
-        the feature is considered present if its value is nonzero, and
-        absent if its value is zero.
-
-   \item Use information gain to select features when building the DT.
-
-  \item The format of the command line would be:
-        build\_dt.sh training\_data test\_data max\_depth min\_gain model\_file sys\_output $>$ acc\_file 
-
-  \item training\_data and test\_data are the vector files in the text format
-        (cf. {\bf train.vectors.txt}).
-
-  \item max\_depth is the maximum depth of the DT,\footnote{The depth of 
-        the root is 0, the depth of its children is 1, and so on.}
-        and min\_gain is the minimal gain. Those parameters are used
-        to determine when to stop building the DT; that is, 
-        split the current training data set at the node x
-        if and only if (the depth of x $<$ max\_depth)
-        AND (the infoGain of the split $\ge$ min\_gain).
-
-      \item model\_file is the DT tree (cf. {\bf model\_ex}) produced by
-        the DT trainer.
-        Each line corresponds to a leaf node in the DT and it has the format: 
-        path training\_instance\_num c1 p1 c2 p2 ...\\
-        Where path is the path from the root to the leaf node, 
-        training\_instance\_num is the number of the training examples
-        that ``reach'' the leaf node, $c_i$ is the class label, and
-        $p_i$ is the probability of $c_i$ (i.e., the percentage of 
-        the training examples at the leaf node with the label $c_i$).
-
-  \item sys\_output is the classification result on the training and
-        test data (cf. {\bf sys\_ex}).
-        Each line has the following format: \\
-        instanceName c1 p1 c2 p2 ...,
-        where instanceName is just something
-        like ``array:0'', ``array:1''.
-        
-  \item acc\_file shows the confusion matrix and the accuracy for
-       the training and the test data (cf. {\bf acc\_ex}).
-       In the confusion matrix, a[i][j] is the number of instances
-        where the truth is class i, and the system output is class j.
-
-   \item As always, model\_ex, sys\_ex, and acc\_ex in the examples/ directory
-         are NOT gold standard.
-        These files were created just to show you the format of the files.
-\end{itemize}
-
-\hspace{0.2in}
-
-Run {\bf build\_dt.sh} 
-with {\bf train.vectors.txt} as the 
-training data and {\bf test.vectors.txt} as the test data:
-\begin{itemize}
-  \item Fill out Table 2 (where min\_gain is set to 0) and Table 3 
-    (where min\_gain is set to 0.1).
-  \item submit model\_file, sys\_output, acc\_file produced by running \\
-    {\it build\_dt.sh train.vectors.txt test.vectors.txt 4 0.1 model\_file sys\_output $>$ acc\_file}
-\end{itemize}
-
-
+\section{ Q3 build\_dt} 
 \begin{table}[hbtp]
 \centering
-\caption{Your decision tree results when min\_gain=0}
+\caption{build\_dt.sh min\_gain=0}
 \label{table2}
 \begin{tabular}{|l|l|l|l|} \hline
 Depth   & Training accuracy & Test accuracy & CPU time (in minutes)\\ \hline
@@ -161,11 +53,9 @@ Depth   & Training accuracy & Test accuracy & CPU time (in minutes)\\ \hline
 50      &  &  &       \\ \hline
 \end{tabular}
 \end{table}
-
-
 \begin{table}[hbtp]
 \centering
-\caption{Your decision tree results when min\_gain=0.1}
+\caption{build\_dt.sh min\_gain=0.1}
 \label{table3}
 \begin{tabular}{|l|l|l|l|} \hline
 Depth   & Training accuracy & Test accuracy & CPU time (in minutes)\\ \hline
@@ -177,55 +67,9 @@ Depth   & Training accuracy & Test accuracy & CPU time (in minutes)\\ \hline
 50      &  &  &       \\ \hline
 \end{tabular}
 \end{table}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.7 in}
-
-\hspace{-0.3in}
-{\bf Q4 (5 points):} Slide \#12 of class2\_DT.pdf 
-shows a DT: f1 and f2 are two features; 
-f1 is in [-20, 30]; f2 is in [-10, 30].
-$L_i$ (i=1, ..., 7) represents a leaf node.
-Each leaf node corresponds to a rectangle in 
-a 2-dimensional space, where f1 is the x-axis and f2
-is the y-axis. Draw a graph that shows the boundary 
-of the seven rectangles in this 2-dimensional space.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.3 in}
-\hspace{-0.3in}
-{\bf Q5 (5 ``free'' points):} 
-    If you are not familiar with Patas or Condor submit, please 
-    go over the condor tutorial at
-    https://canvas.uw.edu/courses/1257221/pages/slides-from-prior-ling570
-    (the 4th link called class0-condor.pdf).
-    You can run condor submit for the code in Q3.
-    We will use condor submit for many assignments later.
-    
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{2in}
-\hspace{-0.3in}
-{\bf Submission:} Submit the following to Canvas:
-
-\begin{itemize}
-  \item Your note file {\it readme.(txt $\mid$ pdf)}
-      that includes your answers to Q1-Q4, 
-      and any notes that you want the TA to read.
-
-    \item hw.tar.gz that includes all the files specified in
-      dropbox/18-19/572/hw2/submit-file-list, plus any source code
-      (and binary code) used by the shell scripts.
-
-    \item Make sure that you run {\bf check\_hw2.sh} before
-      submitting your hw.tar.gz.
-
-    \item No need to submit anything for Q5.
-      
-\end{itemize}
-
+\section{ Q4}
+\section{Q5: Notes}
+Here is info
 \end{document}
 
 
