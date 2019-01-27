@@ -135,7 +135,7 @@ def build_tree(training_data, features, max_depth, min_gain):
         split_last_iteration = False
         new_tree = []
         for node in tree:
-            if node.path in a_path:
+            if node.path in a_path: #Already visited
                 new_tree.append(node)
             else:
                 best = ''
