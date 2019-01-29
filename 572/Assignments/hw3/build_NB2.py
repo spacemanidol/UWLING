@@ -46,7 +46,8 @@ def writeMatrix(result, truth):
             for k in range(d):
                 out += ' {}'.format(str(int(m[j][k])))
             out += '\n'
-        print("            {}\n {} accuracy={}\n".format(out, lookup[i], count/resultLength))
+        
+        print("            {}\n {} accuracy={}\n".format(out, str(lookup[i].capitalize()), count/resultLength))
 
 def countDocsInClassForAllTerms(trainingData):
     classes = set(trainingData[0])
