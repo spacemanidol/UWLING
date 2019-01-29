@@ -1,157 +1,53 @@
 \documentclass[11pt]{article}
-
+\usepackage{url}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
 \setlength\topmargin{-0.6cm}   
 \setlength\textheight{23.4cm}
 \setlength\textwidth{17.0cm}
 \setlength\oddsidemargin{0cm} 
- 
-
 \begin{document}
-
-\begin{center}
-\LARGE
-LING572 Hw3 (Naive Bayes)\\
-Due: 11pm on Jan 30, 2019\\
-\vspace{0.3in}
-\end{center}
-
-
-The example files are under dropbox/18-19/572/hw3/examples/.
-
-\vspace{0.3 in}
-\hspace{-0.3in}
-{\bf Q1 (5 points):} Run the Mallet NB learner (i.e., the trainer's name
-is NaiveBayes) with {\bf train.vectors.txt} as the training data 
-and {\bf test.vectors.txt} as the test data.
-In your note file, write down the training accuracy and the test accuracy.
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.4 in}
-
-\hspace{-0.3in}
-{\bf Q2 (35 points):} Write a script, {\bf build\_NB1.sh}, 
-that implements the Multi-variate Bernoulli NB model. It builds a
-NB model from the training data, classifies the training and test data, 
-and calculates the accuracy. 
-
-
-\begin{itemize} 
-  \item The learner should treat all features as binary; that is,
-        the feature is considered present iff its value is nonzero.
-
-  \item The format is: build\_NB1.sh training\_data test\_data  class\_prior\_delta cond\_prob\_delta model\_file sys\_output $>$ acc\_file 
-
-  \item training\_data and test\_data are the vector files in the text format
-        (cf. {\bf train.vectors.txt}).
-
-  \item class\_prior\_delta is the $\delta$ used in add-$\delta$ smoothing 
-         when calculating the class prior $P(c)$; 
-         cond\_prob\_delta is the $\delta$ used in add-$\delta$ smoothing 
-         when calculating the
-         conditional probability $P(f \mid c)$.
-
-  \item model\_file stores the values of 
-        P(c) and $P(f \mid c)$ (cf. {\bf model1}). \\
-        Comment lines start with ``\%''.
-        The line for P(c) has the format 
-        ``classname P(c) logprob'', where logprob is 10-based log of P(c). \\
-        The line for $P(f \mid c)$ has the format 
-        ``featname classname P(f$\mid$c) logprob'', 
-         where logprob is 10-based log of $P(f \mid c)$. 
-        
-  \item sys\_output is the classification result on the training and
-        test data (cf. {\bf sys1}). Each line has the following format:\\
-          instanceName true\_class\_label c1 p1 c2 p2 ...,
-        where $p_i=P(c_i \mid x)=\frac{P(c_i, x)}{P(x)}$.
-        The $(c_i, p_i)$ pairs should be sorted according to 
-        the value of $p_i$ in descending order. 
-
-  \item acc\_file shows the confusion matrix and the accuracy for
-       the training and the test data (cf. {\bf acc1}). 
-
-  \item As always, {\bf model1}, {\bf sys1}, and {\bf acc1}
-        are NOT gold standard.
-        These files were created with a much smaller training dataset.
-\end{itemize}
-
-
- Run build\_NB1.sh with {\bf train.vectors.txt} as the 
-training data, {\bf test.vectors.txt} as the test data,
-and class\_prior\_delta set to 0:
-\begin{itemize}
-\item Fill out Table 1 with different values of cond\_prob\_delta.
-\item Store the model\_file, sys\_output
-and acc\_file for the second row (when cond\_prob\_delta is 0.5) under
-q2/.
-\end{itemize}
-
-
+\title{Ling 572 HW3}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{01/30/2019}
+\maketitle 
+\section{ Q1 Mallet NB Learner}
+\begin{description}
+\item [(a)] The command lines: \\
+mallet import-file --input train.vectors.txt --output train.vectors\\
+mallet import-file --input test.vectors.txt --output test.vectors --use-pipe-from train.vectors \\
+vectors2classify --training-file train.vectors --testing-file test.vectors --trainer NaiveBayes --report test:raw test:accuracy test:confusion train:confusion train:accuracy \textgreater de1.stdout 2 \textgreater de1.stderr \\
+tail de1.stdout 
+\item [(b)] What are the training accuracy and the test accuracy? \\
+Train:0.6011 \\
+Test: 0.1167
+\end{description}
+\section{ Q2 build\_NB1.sh}
 \begin{table}[h]
 \centering
 \caption{Results of your {\bf Bernoulli} NB model}
 \label{table1}
 \begin{tabular}{|r|l|l|} \hline
 cond\_prob\_delta   & Training accuracy & Test accuracy \\ \hline
-0.1       &  &    \\ \hline
-0.5       &  &    \\ \hline
-1.0      &  &    \\ \hline
-%% 2.0     &  &    \\ \hline
+0.1       & 93.03  & 88   \\ \hline
+0.5       & 91.03 &   86.33 \\ \hline
+1.0      & 89.70 &  84  \\ \hline
 \end{tabular}
 \end{table}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.4 in}
-
-\hspace{-0.3in}
-{\bf Q3 (35 points):} Write a script, {\bf build\_NB2.sh}, 
-  that implements the multinomial NB model. Other than the modeling
-  (e.g., the features in the multinomial NB model are real-valued),
-  everything else (e.g., the input/output files) is the same as in Q2.
-  \begin{itemize}
-  \item  Fill out Table 2.
-  \item Store the model\_file, sys\_output
-and acc\_file for the second row (when cond\_prob\_delta is 0.5) under
-q3/.
-  \end{itemize}
-  
-
+\section{ Q3 build\_NB2.sh Multinomial NB model}
 \begin{table}[h]
 \centering
 \caption{Results of your {\bf multinomial} NB model}
-\label{table1}
+\label{table2}
 \begin{tabular}{|r|l|l|} \hline
 cond\_prob\_delta   & Training accuracy & Test accuracy \\ \hline
-0.1       &  &    \\ \hline
-0.5       &  &    \\ \hline
-1.0     &  &    \\ \hline
-%% 2.0     &  &    \\ \hline
+0.1       & 95.70 &  91.33  \\ \hline
+0.5       &95.037  & 90.666    \\ \hline
+1.0     & 94.48  &  90.00  \\ \hline
 \end{tabular}
 \end{table}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.5 in}
-\hspace{-0.3in}
-{\bf Submission:} Submit the following to Canvas:
-
-\begin{itemize}
-  \item Your note file {\it readme.(txt $\mid$ pdf)}
-      that includes Table 1 and 2, 
-      and any notes that you want the TA to read.
-      
-
-  \item  hw.tar.gz that includes all the files specified in
-      dropbox/18-19/572/hw3/submit-file-list, plus any source code
-      (and binary code) used by the shell scripts.
-
-  \item Make sure that you run {\bf check\_hw3.sh} before
-       submitting your hw.tar.gz.
-        
-    
-\end{itemize}
+\section{ Notes}
+My model trains very fast but the actual inference is much slower and I am not actually sure as to why. 
 
 \end{document}
 
