@@ -32,7 +32,7 @@ def writeExp(empExp, filename, labels, records):
                 w.write('{} {} {:.5f} {}\n'.format(label, feature, count/records, count))
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: calc_emp_exp.sh <training_data> <output_file>")
+        print("Usage: calc_emp_exp.py <training_data> <output_file>")
         exit(-1)
     else:
         data = readData(sys.argv[1])

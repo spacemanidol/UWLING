@@ -56,7 +56,7 @@ def writeMatrix(candidates, truth):
                 count += 1
         out = ''
         for j in range(d):
-            out += ' {}'.format(idx2label[i])
+            out += ' {}'.format(idx2label[j])
         out += '\n'
         for j in range(d):
             out += idx2label[j]

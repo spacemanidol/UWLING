@@ -40,24 +40,22 @@ def writeExp(data, filename, model):
     records = len(data[0])
     labels = set(data[0])
     c = len(labels)
-    empExp = {}
+    expectations = {label:{} for label in labels} #expectations
+    probs = {label:1/c for label in labels} #no model so score is 1/c
     for i in range(records):
+        label = data[0][i]
         for feature in data[1][i]:
             if model != None:
                 probs = getPYX(labels, feature, model)
-            else:
-                probs = {label:1/c for label in labels} #no model so score is 1/c
-            for label in labels:
-                py_x = probs[label]
-                if label not in empExp:
-                    empExp[label] = {}
-                if feature not in empExp[label]:
-                    empExp[label][feature] = {0:0,1:0}
-                empExp[label][feature][0] += 1/records * probs[label] #feature value
-                empExp[label][feature][1] += 1 #feature count
+            if feature not in expectations[label]:
+                expectations[label][feature] = {0:0,1:0}
+            expectations[label][feature][0] += probs[label] #feature value
+            expectations[label][feature][1] += 1 #feature count
     with open(filename,'w') as w:
-            for feature, count in sorted(empExp[label].items(), key = lambda x:(-x[1][1],-x[1][0],x[0])):
-                w.write('{} {} {:.5f} {}\n'.format(label, feature, count[0], count[1]))
+        for label in sorted(labels):
+            for feature, count in sorted(expectations[label].items(), key = lambda x:(-x[1][1],-x[1][0],x[0])):
+                expectation = count[0]/count[1]
+                w.write('{} {} {:.5f} {:.5f}\n'.format(label, feature, expectation, expectation*records))
 if __name__ == "__main__":
     if len(sys.argv) == 3:
         data = readData(sys.argv[1])
@@ -67,5 +65,5 @@ if __name__ == "__main__":
         model = readModel(sys.argv[3])
         writeExp(data, sys.argv[2], model)
     else:
-        print("Usage: calc_model_exp.sh <training_data> <output_file> <optional model_file>")
+        print("Usage: calc_model_exp.py <training_data> <output_file> <optional model_file>")
         exit(-1)
