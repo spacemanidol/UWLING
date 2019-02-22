@@ -56,6 +56,7 @@ def prune(beamSize, topK, sequences):
         new[path[0]] = path[1]
     return new
 def generateResults(sentence, sequences):
+    #given our final sequences and the words in the sentence produce the model predicted tags by following the tree backward
     sentenceLength = len(sequences) 
     candidate = max(sequences[sentenceLength-1])
     path = [candidate]
@@ -68,7 +69,7 @@ def generateResults(sentence, sequences):
         candidate = sequences[sentenceLength-i-1][candidate][1]
         path.append(candidate)
     toWrite = ''
-    for i in reversed(output):
+    for i in reversed(output[1:]): #Remove final
         toWrite += i
     return list(reversed(path))[1:], toWrite # we remove the BOS tag in path with [1:]
 def writeMatrix(candidate, truth, featureNum):
@@ -100,12 +101,12 @@ def writeMatrix(candidate, truth, featureNum):
     print("            {}\n Test accuracy={:.5f}\n".format(out, count/candidateLength))
 def beamSearch(data, model, systemOutputFilename, beamSize, topN, topK, numFeatures):
     sequences, candidates, truths, sentence = {}, [], [], []
-    boundaryIndex, index = 0, 1
+    boundaryIndex, index = 0, 0
     with open(systemOutputFilename, 'w') as w:
         w.write("\n\n%%%%% test data:\n")
         for word, gold, features in data:
             truths.append(gold)
-            if index == (model[3][boundaryIndex] + 1): #Start of a new sentence
+            if index == model[3][boundaryIndex]: #Start of a new sentence
                 if sentence != []: 
                     path, output = generateResults(sentence, sequences) #generate output and add all out candiate answers to candidates
                     candidates += path
@@ -129,10 +130,10 @@ def beamSearch(data, model, systemOutputFilename, beamSize, topN, topK, numFeatu
                         prevTT = sequences[index-1][sequence][1]
                     features["prevT={}".format(sequence)] = 1
                     features["prevTwoTags={}+{}".format(sequence, prevTT)] = 1
-                topNTags = sorted(getPYX(features,model).items(), key = lambda x:-x[1])[:topN]
+                topNTags = sorted(getPYX(features,model).items(), key = lambda x:-x[1])[:topN] # Only take the topN based on probability
                 for tag in topNTags:
                     sequences[index][tag[0]] =  (tag[1], sequence, 1) #tuple of prob, previous tag and previous prob
-                sequences[index] = prune(beamSize, topK, sequences[index])
+                sequences[index] = prune(beamSize, topK, sequences[index]) #prune to topK 
             sentence.append((word, gold))
             index += 1
         path, output = generateResults(sentence, sequences) #generate output and add all out candiate answers to candidates

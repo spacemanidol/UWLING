@@ -10,7 +10,8 @@ def readData(filename):
             labels.append(l[0])
             for feature in l[1:]:
                 featureCount.add(feature.split(':')[0])
-            featureCount.remove('')
+            if '' in featureCount:
+                featureCount.remove('')
             features.append(featureCount)
     return np.array([labels, features])
 def countExp(data, labels):
