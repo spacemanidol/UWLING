@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+
+\setlength\topmargin{-0.6cm}   
+\setlength\textheight{23.4cm}
+\setlength\textwidth{17.0cm}
+\setlength\oddsidemargin{0cm} 
+ 
+
+\begin{document}
+
+\begin{center}
+\LARGE
+LING572 Hw8: SVM\\
+Due: 11pm on March 6, 2019\\
+\vspace{0.3in}
+\end{center}
+
+The example files are under dropbox/18-19/572/hw8/examples/.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.4 in}
+
+\hspace{-0.3in}
+{\bf Q1 (15 points):} Run libSVM on a {\bf binary} classification task.
+\begin{description}
+ \item [(a):]  The data are under {\bf hw8/examples/}:
+    \begin{itemize}
+      \item {\bf train.txt} and {\bf test.txt} are the training and 
+             test data in the Mallet format.
+      \item {\bf train} and {\bf test} are the data in the libSVM format.
+      \item You only need to use {\bf train} and {\bf test} for this assignment.
+    \end{itemize}
+
+ \item [(b):] Run libSVM with {\bf train} as training data, {\bf test}
+              as test data, and the settings specified 
+              in the 2nd-5th columns of Table 1. Fill out the 
+              6th-8th columns of Table 1. Save the model under 
+              model.id, where id is the expt id, specified in the first
+              column.
+           
+ \item [(c):] You only need to submit {\bf model.1} and {\bf model.4}.
+              
+\end{description}
+
+
+\begin{table}[h]
+\centering
+\caption{Results on the binary task}
+\label{table1}
+\begin{tabular}{|c|r|l|l|l|r|l|l|l|} \hline
+
+Expt id & Kernel  & gamma  &  coef0  & degree & total\_sv & Training & Test & Test Acc\\ 
+        &         &        &         &        &           & Acc      & Acc  &  from Q2 \\ \hline
+1 & linear      & -   & -    & -  & &  &  & \\ \hline
+2 & polynomial  & 1   & 0    & 2  & &  &  & \\ \hline
+3 & polynomial  & 0.1 & 0.5  & 2  & &  &  & \\ \hline
+4 & RBF         & 0.5 & -    & -  & &  &  & \\ \hline
+5 & sigmoid     & 0.5 & -0.2 & -  & &  &  & \\ \hline
+
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%
+\vspace{0.5 in}
+\hspace{-0.3in}
+{\bf Q2 (60 points):} Write an SVM decoder, {\bf svm\_classify.sh}, that uses
+   an SVM model created by libSVM to classify test instances.
+
+\begin{itemize}
+  \item The command line is: svm\_classify.sh test\_data model\_file sys\_output
+
+  \item The classifier should be able to handle the four types of kernels specified in Table 1. That is, it should be able to read the kernel type and parameters from the model\_file and calculate the kernel function accordingly.
+
+  \item test\_data is in the libSVM data format (e.g., {\bf test}).
+
+  \item model\_file is in the libSVM model format (e.g., {\bf model\_ex}).
+        The model file stores 
+        $\alpha_i y_i$ for each support vector and $\rho$
+        (See slide \#12-14 in class15\_libSVM.pdf).
+
+  \item Each line in sys\_output (e.g., {\bf sys\_ex}) 
+        has the format ``trueLabel sysLabel fx'': 
+        trueLabel is the label in the gold standard, sysLabel is the label 
+        produced by the SVM classifier, fx is the value of 
+        $f(x)=wx-\rho=\sum_i \alpha_i y_i K(x_i, x)-\rho$.
+        
+        If $f(x)>=0$, then sysLabel should be {\bf 0}; 
+           else sysLabel should be {\bf 1}.
+        This is different from the convention used in SVM papers/chapters.
+        For other differences between the two conventions, see
+        slide \#14 in class15\_libSVM.pdf.
+
+  \item Use the model file created in Q1 and {\bf test} as the test data.
+        Fill out the last column of Table 1. Save the sys\_output file as
+        sys.id, where id is the expt id in the first column of Table 1.
+
+  \item You only need to submit {\bf sys.1} and {\bf sys.4}.
+
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%
+\vspace{0.5 in}
+\hspace{-0.3in}
+{\bf Submission:}  Submit the following to Canvas:
+
+\begin{itemize}
+
+    \item Your note file {\it readme.(txt $\mid$ pdf)}
+    that includes Table 1, and any notes that you want the TA to read.
+      
+
+  \item  hw.tar.gz that includes all the files specified in
+      dropbox/18-19/572/hw8/submit-file-list, plus any source code
+      (and binary code) used by the shell scripts.
+
+  \item Make sure that you run {\bf check\_hw8.sh} before
+    submitting your hw.tar.gz.
+    
+
+  
+  
+
+\end{itemize}
+
+\end{document}
+
+
+
