@@ -19,7 +19,7 @@ At test time a list of all possible parse tree with their plausability scores ar
 \section{ Q3:Conceptually, a parse tree is representedas a feature vector. What are the features?What are the feature values? How many features are there?}
 Each feature is a possible tree fragment. The feature values are the amount of times it appears in the full parse tree or the given example. The total features is all of possible tree fragments that occour in the entire training data.
 \section{Q4: In practice, is it necessary to represent a parse tree as a feature vector? Why or why not?}
-Yes it is necessary since there must be a vector represenation that can be multiplied by the learned weight matrix to produce a plasabulity score. If a feature vector did not exist it would not be possible to rank parses.
+No since we can use the kernel to approximate the vector. 
 \end{document}
 
 
