@@ -1,0 +1,17 @@
+import mnist_loader
+import network
+training_data, validation_data, test_data = mnist_loader.load_data_wrapper()
+net = network.Network([784, 30, 10])
+net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+print("next one")
+net = network.Network([784, 10, 10])
+net.SGD(training_data, 30, 10, 3.0, test_data=test_data)
+print("next one")
+net = network.Network([784, 30, 10])
+net.SGD(training_data, 30, 10, 0.5, test_data=test_data)
+print("next one")
+net = network.Network([784, 30, 10])
+net.SGD(training_data, 30, 10, 10, test_data=test_data)
+print("next one")
+net = network.Network([784, 30, 10])
+net.SGD(training_data, 30, 100, 3.0, test_data=test_data)

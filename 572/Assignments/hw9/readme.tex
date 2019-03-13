@@ -1,256 +1,102 @@
 \documentclass[11pt]{article}
-
+\usepackage{pgfplots}
+\usepackage{url}
+\pgfplotsset{compat=newest} 
 \setlength\topmargin{-0.6cm}   
 \setlength\textheight{23.4cm}
 \setlength\textwidth{17.0cm}
 \setlength\oddsidemargin{0cm} 
- 
-
 \begin{document}
+\title{Ling 572 HW9}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{03/13/2019}
+\maketitle 
+\section{Q1}
+\subsection{What does f'(x) intend to measure?}
+The derrivative of a function measures the rate of change of a function rleative to the change in the agrument(in this case X).
+\subsection{Let $h(x)=f(g(x))$ }
+$h'(x)$ = $f'(g(x)) \cdot g'(x)$
+\subsection{Let $h(x)=f(x)g(x)$ }
+$h'(x) = f'(x)g(x) + f(x)g'(x)$
+\subsection{Let $f(x)=a^x$ where $a>0$}
+$ f'(x)$ =$ a^x log(a)$
+\subsection{Let $f(x)= x^{10}-2x^8  \frac{4}{x^2} + 10$}
+$f'(x) =10x^{9}-16x^7 + \frac{8}{x^3}$
+\section{Q2}
+The logistic function is $f(x)=\frac{1}{1+e^{-x}}$. The tanh function is $g(x)=\frac{e^x - e^{-x}}{e^x +e^{-x}}$.
+\subsection{Prove that $f'(x)= f(x)(1-f(x))$}
+1. $f'(x) = \frac{e^{-x}}{(1+e^{-x})^2}$ \\
+2. $f'(x) =  \frac{1}{1+e^{-x}}-\frac{1}{(1+e^{-x})^2}$ \\
+3. $f'(x) = \frac{1}{1+e^{-x}} \cdot (1-\frac{1}{1+e^{-x}})$  which means  $f'(x)= f(x)(1-f(x))$\\
+\subsection{Prove that $g'(x)=1 - g^2(x)$}
+1. $tanh(x) = \frac {sinh(x))}{cosh(x)}$ \\
+2. $g'(x) = \frac{df}{dx} \frac{sinh(x)}{cosh(x)}$\\
+3. $g'(x) = \frac{cosh^2(x) - sinh^2(x)}{cosh^2(x)}$\\
+4. $g'(x) = \frac{cosh^2(x)}{cosh^2(x)} - {sinh^2(x)}{cosh^2(x)}$\\
+5. $g'(x) = 1- {sinh^2(x)}{cosh^2(x)} $\\
+6. $g'(x) = 1-tanh^2(x)$\\
+\subsection{Prove that $g(x) = 2f(2x)-1$}
+1. $f(2x) = \frac{1}{1+e^{-2x}}$ \\
+2. $2f(2x) =\frac{2}{1+e^{-2x}}$ \\
+3. $2f(2x) - 1 = \frac{2}{1+e^{-2x}}  -1$ \\
+3. $2f(2x) - 1 = \frac{2}{1+e^{-2x}}  - \frac{1+e^{-2x}}{1+e^{-2x}}$ \\
+4. $2f(2x) - 1 = \frac{2- e^{-2x}}{1+e^{-2x}}$ \\
+5. $2f(2x) - 1 = \frac{(e^{x}-1)(e^{x}+1)}{1+e^{2x}}$ \\
+6. $2f(2x) - 1 = \frac{e^{2x}-1)}{1+e^{2x}}$ \\
+7.  $2f(2x) - 1  = \frac{e^{2x}-1}{e^{2x}+1} = tanh(x) = g(x)$  \\
+\section{Q3}   
+\subsection{What is $f'_x$ trying to measure?}
+A partial derrivative is trying to measure the change in a fucntion based on a variable assuming all other varriables in the function remain constant. In other words, our derrivative is representing the effect of a variable on the equation when no other variables are effecting the equation.
+\subsection{$f(x,y)=x^3 + 3x^2y+y^3 + 2x$.}
+$f'_x = 3x^2 + 6xy+2 $  \\ $f'_y = 3(x^2+y^2)$
+\subsection{ $z = \sum_{i=1}^n w_i x_i$.}
+$\frac{dz}{dw_i}=$ \\
+\subsection{$f(z)=\frac{1}{1+e^{-z}}$ and $z = \sum_{i=1}^n w_i x_i$.}
+$\frac{df}{dz}= \frac{e^{-1}}{(1+e^{-1})^2}$ \\ 
+$\frac{df}{dw_i}=$ \\
+\subsection{$E(z)=\frac{1}{2}(t - f(z))^2$, $f(z)=\frac{1}{1+e^{-z}}$ and $z = \sum_{i=1}^n w_i x_i$.}
+$\frac{dE}{dw_i}$
+\section{Q4 Softmax Funciton}
+\subsection{Where in NNs is the softmax function used and why?}
+Softmax is used to normalize the outputs of NN to interval (0,1) and to make all components to add up to 1 so that they can be interpreted as regular probabilities. This tends to be implemented as the final step of a NN to get a probability distribution over all possible classes/predictions.  \\
+\subsection{x is [1, 2, 3, -1, -4, 0], what is the value of softmax(x)}
+[0.08607859048507978, 0.23398586833496002, 0.6360395340111326, 0.011649470423906664, 0.0005799929804444501, 0.03166654376447658]
+\section{Q5:  FNN}
+\subsection{How many connections (i.e., weights) are there in this network?}
+\subsection{Given the input $x$, what is the formula for calculating the output of the first hidden layer?}
 
-\begin{center}
-\LARGE
-LING572 Hw9: Neural Networks\\
-Due: 11pm on March 13, 2019\\
-\vspace{0.3in}
-\end{center}
+\subsection{Given the input $x$, what is the formula for calculating the output of the output layer?}
 
-A few notes about this assignment:
-\begin{itemize}
- \item The total raw score is 130 points. Your final grade for this assignment
-   will be the minimum of 100 and the raw score. In other words, you can get
-   100 points, even if some of your answers are wrong.
+\section{Q6 MNIST NNs}
+\subsection{What's the loss function used in the digit recognition task?}
 
- \item The answers to the questions should be pretty short. I've left some space for you to fill in the answers. I've also made the latex file available in case you want to add the answers to the latex file directly. In that case, you need to run pdf2latex (or something like that) to generate a pdf from the latex file.
+\subsection{Why do they choose to minimize this function instead of maximizing classification accuracy?}
 
- \item If you prefer to write formulas on paper (instead of typing them with latex or Word), it's ok. You just need to fill out the rest of the assignment, print out the file, insert formulas by hand, scan the paper, and then submit via Canvas.
+\subsection{In gradient descent, what's the formula for updating the weight matrix (or vector)? Why is that a good formula?}
 
- \item Since no programming is required, you only need to submit a single
-     file. Please call it {\bf readme.pdf}.
+\subsection{What are the main ideas and benefits of stochastic gradient descent?}
 
-  \item The assignment has two parts:
-    \begin{itemize}
-    \item Q1-Q3 on derivatives: Recall that college-level calculus is
-      a prerequisite of Ling572. If you've forgetten how (partial) derivatives work,
-      feel free to check any calculus textbook or review the Wikipedia pages
-      on those topics. (Just search for derivatives, gradient, partial derivatives,
-      etc.)
+\subsection{What is a training epoch?}
+A training epoch is one pass over the dataset batch size.
+\subsection{Let $T$ be the size of the training data, $m$ be the size of mini-batch, and your training process contains $E$ training epoches. How many times is each weight in the NN updated? }
+\subsection{How can one choose the learning rate?}
 
-    \item Q4-Q7: Q4-Q5 are covered in class, and for Q6-Q7 (and also Q5),
-      please read
-      Chapter 1 of Nielsen's NN online book at 
-      at http://neuralnetworksanddeeplearning.com/chap1.html
-    \end{itemize}
-    
-\end{itemize}
-
-
-
-
-%%%%%%%%%%%%%%%%%%%
-\vspace{0.4 in}
-\hspace{-0.3in}
-       {\bf Q1 (10 points):} Let $f'(x)$ denote the derivative of a
-         function $f(x)$ w.r.t. the variable $x$.
-\begin{description}
-   \item [(a) 2 pts:] What does f'(x) intend to measure? \\
-  
-   \item [(b) 2 pts:] Let $h(x)=f(g(x))$. What is $h'(x)$? \\
-
-   \item [(c) 2 pts:] Let $h(x)=f(x)g(x)$. What is $h'(x)$? \\
-
-   \item [(d) 2 pts:] Let $f(x)=a^x$, where $a>0$. What is $f'(x)$? \\
-
-   \item [(e) 2 pts:] Let $f(x)= x^{10}-2x^8 + \frac{4}{x^2} + 10$.
-            What is $f'(x)$? \\
-\end{description}
-
-
-%%%%%%%%%%%%%%%%%%%
-\vspace{0.4 in}
-\hspace{-0.3in}
-{\bf Q2 (15 points):} The logistic function is $f(x)=\frac{1}{1+e^{-x}}$.
-       The tanh function is $g(x)=\frac{e^x - e^{-x}}{e^x +e^{-x}}$.
-    \begin{description}
-     \item [(a) 5 pts:] Prove that $f'(x)=f(x)(1-f(x))$. \\ \\ \\ \\
-     \item [(b) 5 pts:] Prove that $g'(x)=1 - g^2(x)$. \\  \\ \\ \\  
-     \item [(c) 5 pts:] Prove that $g(x) = 2f(2x)-1$  \\  \\ \\ \\
-    \end{description}
-    
-
-
-%%%%%%%%%%%%%%%%%%%
-\vspace{0.4 in}
-\hspace{-0.3in}
-       {\bf Q3 (15 points):} Let us denote the partial derivative of a
-       multi-variate function $f$ w.r.t. one of its variables x by
-       $f'_x$ or $\frac{df}{dx}$.         
-\begin{description}
-\item [(a) 2 pts:] What is $f'_x$ trying to measure? \\
-\item [(b) 2 pts:] Let $f(x,y)=x^3 + 3x^2y+y^3 + 2x$. What is $f'_x$?
-  What is $f'_y$? \\ \\  \\
-\item [(c) 2 pts:] Let $z = \sum_{i=1}^n w_i x_i$.
-  What is $\frac{dz}{dw_i}$? \\ \\
-  
-\item [(d) 4 pts:] Let $f(z)=\frac{1}{1+e^{-z}}$ and $z = \sum_{i=1}^n w_i x_i$. \\
-       What is $\frac{df}{dz}$? \\ \\ \\ 
-       What is $\frac{df}{dw_i}$? \\ \\ \\
-       Hint: Use the answers that contain $f(z)$.
-
-\item [(e) 5 pts:] Let $E(z)=\frac{1}{2}(t - f(z))^2$,
-       $f(z)=\frac{1}{1+e^{-z}}$ and $z = \sum_{i=1}^n w_i x_i$.
-  What is $\frac{dE}{dw_i}$? Hint: the answer should contain $f(z)$. \\ \\
-\end{description}
-
-
-  
-%%%%%%%%%%%%%%%%%%%
-\vspace{0.4 in}
-\hspace{-0.3in}
-{\bf Q4 (10 points):} The softmax function:
-\begin{description}
-\item [(a) 5 pts:] In general where in NNs is the softmax function used and why? \\ \\ \\
-
-\item [(b) 5 pts:] If a vector x is [1, 2, 3, -1, -4, 0], what is the value of
-  softmax(x)? \\ \\ \\ 
-\end{description}
- 
-
-
-%%%%%%%%%%%%%%%%%%%%
-\vspace{0.4in}
-\hspace{-0.3in}
-{\bf Q5 (15 points):} Suppose a feedforward neural network has
-  $m$ layers: the input layer is the 1st layer, the output layer
-  is the last layer, and there are $m-2$ hidden layers in between. 
-  The number of neurons in the $i^{th}$ layer is $n_i$.
-  Each neuron in one layer is connected to
-  every neuron in the next layer and there is no other connection.
-\begin{description}
-\item [(a) 5 pts:] How many connections (i.e., weights) are there in
-                   this network? \\ \\
-
-\item [(b) 10 pts:] Let $x$ be a column vector that denotes the values of the
-  input layer. Let $M_k$ denote the weight matrix
-  between layer $k$ and $k+1$; that is, the cell $a_{i,j}$
-  in $M_k$ stores
-  the weight on the arc from the $j^{th}$ neuron in layer $k$
-  to the $i^{th}$ neuron in layer $k+1$. Let $g$ be the activation function used
-  in each layer.
-  \begin{itemize}
-    \item Given the input $x$, what is the formula for calculating
-      the output of the first hidden layer?  \\ \\
-
-    \item Given the input $x$, what is the formula for calculating
-      the output of the output layer? \\ \\ \\
-        
-    \item Hint: In class, we show the formula for calculating the $z$ and $y$
-          value for a neuron, where $z = b + \sum_j w_j x_j$ and $y=g(z)$.
-          Now there are $n_2$ neurons in the 2nd layer.
-          The output of this layer, $y$,
-          is going to be a column vector, not a real number. The weights between
-          the two layers are no longer a vector,
-          but a $n_2 \times n_1$ matrix denoted by $M_1$. So the answer
-          to the 1st question should be a simple formula
-          that uses matrix operations. For the sake of simplicity, let's assume
-          the bias $b$ is always zero.
-        \item Terminology: A row vector is a $1 \times n$ matrix
-          (e.g., $[a_1, a_2, ..., a_n]$); a column vector is
-          a $n \times 1$ matrix. If you transpose a row vector, you get a
-          column vector.
-   \end{itemize}
-
-\end{description}  
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.4in}
-\hspace{-0.3in}
-{\bf Q6 (40 points):} Read Chapter 1 of the NN book, and answer the following
-       based on that chapter:
-
-\begin{description}
-\item [(a) 5 pts:] What's the loss function used in the digit
-  recognition task? Why do they choose to minimize
-  this function instead of maximizing classification accuracy? \\
-
-\item [(b) 10 pts:] In gradient descent, what's the formula for updating
-   the weight matrix (or vector)? And why is that a good formula? \\ \\
-
-
-\item [(c) 15 pts:] What are the main idea and benefit
-  of stochastic gradient descent? \\ \\
-
-  What is a training epoch? \\ \\
-
-  Let $T$ be the size of the training data, $m$ be the size of mini-batch,
-  and your training process contains $E$ training epoches.
-  How many times is each weight in the NN updated? \\ \\ 
-
-
-\item [(d) 10 pts:] How can one choose the learning rate? What's the risk
-  if the rate is too big? What's the risk if the rate is too
-  small? \\ \\ 
-
-\end{description}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.5 in}
-\hspace{-0.3in}
-{\bf Q7 (25 points):} Go over the source code in Nielson's package
-stored under ~/dropbox/18-19/572/hw9/nielsen-nn/ on patas
-and understand the part explained in Chapter 1 of the NN book.
-\begin{itemize}
-\item Run the code (following the instructions in chapter 1) and
-  fill out Table 1. For this exercise, use only one hidden layer.
-
-\item It seems that the code works with python 2.*, not with python 3.*.
-  If you run the default python version on patas, which is 2.7.5,
-  the code should work.
-
-\item Note that as the package uses random functions a few times, your
-  results will not be the same when running it multiple times.
-
-\end{itemize}
-
+\subsection{What's the risk if the rate is too big?}
+If the learning rate is too big then the network may never learn the function properly since a high learning rate can effectively skip over maximums
+\subsection{What's the risk if the rate is too small?}
+If the learning rate is too small then the network will train extremely slowly and it may never leave a local minum.
+\section{Q7 MNSIT NN in practice}
 \begin{table}[h]
 \centering
 \caption{Results on digit recognition}
 \label{table1}
 \begin{tabular}{|c|r|l|l|l|r|} \hline
-
   Expt id & \# of hidden neurons & epoch \# & mini batch size & learning rate & accuracy \\ \hline
-  1  & 30   & 30 & 10 & 3.0 &  \\ \hline
-  2  & 10   & 30 & 10 & 3.0 &  \\ \hline
-  3  & 30   & 30 & 10 & 0.5 &  \\ \hline
-  4  & 30   & 30 & 10 & 10  &  \\ \hline       
-  5  & 30   & 30 & 100 & 3.0 &  \\ \hline       
-
+  1  & 30   & 30 & 10 & 3.0 & 0.9461 \\ \hline
+  2  & 10   & 30 & 10 & 3.0 & 0.9172 \\ \hline
+  3  & 30   & 30 & 10 & 0.5 & 0.9403 \\ \hline
+  4  & 30   & 30 & 10 & 10  & 0.9457 \\ \hline       
+  5  & 30   & 30 & 100 & 3.0 & 0.9302 \\ \hline       
 \end{tabular}
 \end{table}  
-           
-
-           
-
-           
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%
-\vspace{0.5 in}
-\hspace{-0.3in}
-{\bf Submission:}  Submit the following to Canvas:
-
-\begin{itemize}
-\item Since hw9 has no coding part, you only need to submit your {\bf readme.pdf}
-  which includes answers to all the questions, plus anything you want
-  TA to know. No need to submit anything else. 
-  
-\end{itemize}
-
-\end{document}
+ \end{document}
