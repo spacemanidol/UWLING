@@ -12,6 +12,7 @@ and omits many desirable features.
 #### Libraries
 # Standard library
 import random
+from math import e
 
 # Third-party libraries
 import numpy as np
@@ -158,10 +159,10 @@ def sigmoid_prime(z):
 
 def tanh(z):
     """The tanh function."""
-    ## TODO: Add your code here.
-    return z 
+    return (2*sigmoid(2*z) -1)# since tanh(z) = 2 sigmoid(2z) -1 simplification via hw9
+    #return (np.exp(z) - np.exp(-z))/(np.exp(z) + np.exp(-z)) #Longform 
 
 def tanh_prime(z):
     """Derivative of the tanh function."""
-    ## TODO: Add your code here.
-    return z
+    return (1-tanh(z)*tanh(z)) #simplification via hw9
+    #return (1-(((np.exp(z) - np.exp(-z))**2)/(np.exp(z) + np.exp(-z))**2)) #longform 
