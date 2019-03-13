@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage{pgfplots}
+\usepackage{amssymb}
+\usepackage{url}
+\pgfplotsset{compat=newest} 
+\setlength\topmargin{-0.6cm}   
+\setlength\textheight{23.4cm}
+\setlength\textwidth{17.0cm}
+\setlength\oddsidemargin{0cm} 
+\begin{document}
+\title{Ling 572 HW10}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{03/20/2019}
+\maketitle 
+\section{Q1}         
+\begin{table}[h]
+\centering
+\caption{Classification accuracy with {\bf sigmoid} activation function}
+\label{table1}
+  \begin{tabular}{|c|r|l|l|l|l|l|} \hline
+    Expt & \# of          & \# of neurons in & \# of    & mini-batch & test  & CPU time   \\  
+    id   &  hidden layer  & hidden layers    & epoches & size       & accuracy (\%) & minutes,seconds \\ \hline
+    1   &  1              &  30              &  30     &  10       &  73.24   & 38s \\ \hline
+    2   &  1              &  30              &  30     &  50       &  60.86   & 50s \\ \hline
+    3   &  1              &  30              &  100    &  10       &  78.76   & 2m 3s  \\ \hline
+    4   &  1              &  60              &  30     &  10       &  73.1429   & 53s \\ \hline
+    5   &  2              &  30, 30          &  30     &  10       &  73.81  & 46s \\ \hline
+    6   &  2              &  40, 20          &  30     &  10       &  72.29   & 50s\\ \hline
+    7   &  3              &  20, 20, 20      &  30     &  10       &  70.76  & 53s \\ \hline
+  \end{tabular}
+\end{table}
+\section{Q2}
+For Q2 I changed two functions:$tanh$ and $tanh\_prime$ on line $160$ and $165$ in network.py. First, I implemented the code with the unsimplified methods(full equations).\\ Next, using the identities learned in class and HW9($tanh(z) = 2*sigmoid(2*z) -1$ and $tanh' (z)= (1-tanh(z)*tanh(z))$), I modified the functions to use the sigmoid and sigmoid prime methods for ease of use. \\ In general, we see the sigmoid function as a better fit for this data and the addition of more training epochs proving the highest accuracy at the expense of training time.
+\begin{table}[h]
+\centering
+\caption{Classification accuracy with {\bf tanh} activation function}
+\label{table1}
+  \begin{tabular}{|c|r|l|l|l|l|l|} \hline
+    Expt & \# of          & \# of neurons in & \# of    & mini-batch & test  & CPU time   \\  
+    id   &  hidden layer  & hidden layers    & epoches & size       & accuracy (\%) & minutes,seconds \\ \hline
+    1   &  1              &  30              &  30     &  10       &  72.19   & 35s\\ \hline
+    2   &  1              &  30              &  30     &  50       &  59.90   & 48s\\ \hline
+    3   &  1              &  30              &  100    &  10       &  75.90   & 3m 16 s \\ \hline
+    4   &  1              &  60              &  30     &  10       &  63.14   & 56s \\ \hline
+    5   &  2              &  30, 30          &  30     &  10       &  73.52   & 38s\\ \hline
+    6   &  2              &  40, 20          &  30     &  10       &  62.67   & 41s \\ \hline 
+    7   &  3              &  20, 20, 20      &  30     &  10       &  62.57   & 44s\\ \hline
+  \end{tabular}
+\end{table}
+\end{document}
+
