@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 \usepackage{pgfplots}
+\usepackage{amssymb}
 \usepackage{url}
 \pgfplotsset{compat=newest} 
 \setlength\topmargin{-0.6cm}   
@@ -50,37 +51,40 @@ A partial derrivative is trying to measure the change in a fucntion based on a v
 \subsection{$f(x,y)=x^3 + 3x^2y+y^3 + 2x$.}
 $f'_x = 3x^2 + 6xy+2 $  \\ $f'_y = 3(x^2+y^2)$
 \subsection{ $z = \sum_{i=1}^n w_i x_i$.}
-$\frac{dz}{dw_i}=$ \\
+$\frac{dz}{dw_i}= \sum{i=1}^n x_i $
 \subsection{$f(z)=\frac{1}{1+e^{-z}}$ and $z = \sum_{i=1}^n w_i x_i$.}
-$\frac{df}{dz}= \frac{e^{-1}}{(1+e^{-1})^2}$ \\ 
-$\frac{df}{dw_i}=$ \\
+$\frac{df}{dz}= f(z)* \frac{e^{-z}}{1 + e^{-z}} $ \\
+$\frac{df}{dw_i}=f(z)*\frac{e^{- \sum{i=1}^n x_i }}{1+e^{- \sum{i=1}^n x_i }}$ \\
 \subsection{$E(z)=\frac{1}{2}(t - f(z))^2$, $f(z)=\frac{1}{1+e^{-z}}$ and $z = \sum_{i=1}^n w_i x_i$.}
-$\frac{dE}{dw_i}$
+$\frac{dE}{dw_i} = -(t-f(z))*f(z)*\frac{e^{- \sum{i=1}^n x_i }}{1+e^{- \sum{i=1}^n x_i }}$
+
 \section{Q4 Softmax Funciton}
 \subsection{Where in NNs is the softmax function used and why?}
 Softmax is used to normalize the outputs of NN to interval (0,1) and to make all components to add up to 1 so that they can be interpreted as regular probabilities. This tends to be implemented as the final step of a NN to get a probability distribution over all possible classes/predictions.  \\
 \subsection{x is [1, 2, 3, -1, -4, 0], what is the value of softmax(x)}
-[0.08607859048507978, 0.23398586833496002, 0.6360395340111326, 0.011649470423906664, 0.0005799929804444501, 0.03166654376447658]
+[0.08607859048507978, 0.23398586833496002, 0.6360395340111326,\\ 0.011649470423906664, 0.0005799929804444501, 0.03166654376447658]
 \section{Q5:  FNN}
 \subsection{How many connections (i.e., weights) are there in this network?}
+$ connections = \sum_{i=1}^{m-1} n_i*n_{i+1}$ since there are m-1 layers of connections.
 \subsection{Given the input $x$, what is the formula for calculating the output of the first hidden layer?}
-
+$Y_h = g(M_k*X) $ 
 \subsection{Given the input $x$, what is the formula for calculating the output of the output layer?}
-
+$Y_o = g(M_mg(M_m-1*...*g(M_k*X))) $  where m is total depth of network
 \section{Q6 MNIST NNs}
 \subsection{What's the loss function used in the digit recognition task?}
-
+The loss function is Mean squared error(MSE) or $ \frac{1}{2n} \sum{x} ||y(x)-a||^2$. 
 \subsection{Why do they choose to minimize this function instead of maximizing classification accuracy?}
-
+They choose do minimize this since the classification accuracy is not a smooth function that can be connected back to the weights and biases in the network. It is difficult to optimize small changes in weights and biases since they are unlikley to affect changes in training accuracy but will likley affect the MSE.
 \subsection{In gradient descent, what's the formula for updating the weight matrix (or vector)? Why is that a good formula?}
-
+$v \rightarrow v' = v- n*\triangledown C$ its a good formula because it is easy to calculate and the gradient vector, $\triangledown C$ and it gives us a way of repeatedly changing the position of v in order to find a minimum of the function C.
 \subsection{What are the main ideas and benefits of stochastic gradient descent?}
-
+The main idea with stochastic gradient descent(SGD) is to estimate the gradient $\triangledown C$ on a small sample of randomly chosen tarining inputs. By doing this average over this sample we can get a good estimate of the true gradient and speed up gradient descent. SGD is useful since it allows an efficient and accurate way of directing a NN to a global minimum is a measurable, stepable function without computing the gradient of the entire dataset.
 \subsection{What is a training epoch?}
-A training epoch is one pass over the dataset batch size.
+A training epoch represents all the mini-batches that needed to be run until the network has exhausted all training input. Once this happenes people usually report a current loss function and accuracy and start another epoch.
 \subsection{Let $T$ be the size of the training data, $m$ be the size of mini-batch, and your training process contains $E$ training epoches. How many times is each weight in the NN updated? }
+$updates = E*\frac{T}{m}$
 \subsection{How can one choose the learning rate?}
-
+The learning rate needs to be explored during hyperparameter tuning. There are various optimzation to choose learning rate such as ADAM but in general many selections of learning rates come from the type of task being modeled and tinkering.
 \subsection{What's the risk if the rate is too big?}
 If the learning rate is too big then the network may never learn the function properly since a high learning rate can effectively skip over maximums
 \subsection{What's the risk if the rate is too small?}
