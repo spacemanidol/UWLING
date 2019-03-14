@@ -1,0 +1,11 @@
+# Config file for training neural net
+input_shape: 2000
+output_shape: 3
+hidden_layers: 3
+# If hidden_layers > 1, hidden_neurons should be whitespace separated list
+hidden_neurons: 20 20 20
+epochs: 30
+batch_size: 10
+learning_rate: 0.5 
+# Activation: 0 for sigmoid, 1 for tanh
+activation: 0
