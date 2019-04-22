@@ -6,24 +6,57 @@ Model is mostly self contained. As long as you provide the training and test dat
 python model.py ../vectors.txt atis.train.w-intent.IOB atis.test.w-intent.IOB
 '''
 ## Implementation
-First, my implementation loads previously create glove vectors. Second, the model loads the data, tokenizes it and converts the target labels(ys) to ints for easy management. If any class has more than one correct intent then I assume the first intent is the correct one. Additionally, for all intents not present in the train dataset I assign an new class for which my model can never predict correctly. 
-Next, the model loads the data and using the loaded embeddings creates an embedding matrix and a one-hot matrix to represent all the words in the training data. After that, the model creates two neural net(one for glove represenation, one for onehot) which it trains and evaluates on.
+My model does the following
+* loads previously create glove vectors. 
+* loads the data, ignore the tags, tokenize the text it and converts the target labels(ys) to ints for easy management(If any class has more than one correct intent then I assume the first intent is the correct one). For all intents in test set not present in the train dataset I assign an new class for which my model can never predict correctly. 
+* split the data into a cross validated dev set. I do this to iterate and understand model accuracy without touching the test set.  
+* create an embedding matrix and a one-hot matrix to represent all the words in the training data. 
+* build out the Neural Networks(CNN and pooling and Bidirectional LSTMSDescribed below) with two forms of text represenation, one-hot and embedding based.
+* train the model and evaluate performance on held out data.
 
-## Network
-For my network I thought given the relative simplicit of this task a CNN would likley be the best fit so first off I made a simple CNN with 4 Convolutional layers and 128 hidden units. Seeing this was slow but accurate I kept on tweaking the size and layers until I made the model small and fast but kept high accuracy. The final model has 2 convolution laters with 8 hidden neurons. Once I had a performat and accurate model I started doing a hyperparameter sweep to make sure I couldn't improve. Of all the hyperparameters the most effective in changing model accuracy is the optimizer and the loss function. By changing the loss function from Mean Squared Error to Binary Crossentropy the model accuracy imrpoves from ~2% to 70% and from 70% to 85% for Glove based and One-HoT based methods respectively. By switching from SGD to rms prop model accuracy imrpoves from ~70% to 95% and from 85% to 96% for Glove based and OneHAT based methods respectively. Some smaller optimizations were sigmoid vs softmax(~2% accuracy gain by using sigmoid)
-## HyperParameters
-After various tunning experiments I chose the following HyperParameters
-Optimizer:rmsprop
-Epochs:3
-Batch Size:64
-Hidden Neurons: 8
-Convoltions: 2
-Loss Function:binary_crossentropy
-Dropout:0.1
+## Network/ Model Structure
+For the network I tried various NN structures and tweaked based on what I saw got better accuracy. 
+Initially, I started with a convolution layer and a pooling layer which I used to pick various of my hyper parameters. 
+Various experiments in # of layers, actiation functions, optizer, etc had me top out accuracy at ~72% for both word represeantion methods.
+Seeing this I decided to try another model type and I tried out a Bidirectional LSTM. I found that after some model tweaking I could produce similair accuracy to the Convolutional network but much slower to train.
+
+My parameters were based on training time and optimal accuracy. I mostly focused on model architecture and the # of hidden neurons.   
+## HyperParameters (BEST RESULTS)
+Optimizer:rmsprop (This optimizer tended to learn way faster)
+Epochs:5 (Seemed to be the threshold when accuracy stopped improving)
+Batch Size:128 (Any smaller seemed to make training too time consuming)
+Hidden Neurons: 32 (I experimented with 8, 32, 64, 128)
+Loss Function:categorical_crossentropy
+Dropout:0.3 
 Activation: RELU
-Final Activation: Sigmoid
+Final Activation: sigmoid (Seemd to consistently produce 2% higher accuracy scores)
 
-## One-Hot vs Glove
-During my experiment I found that in larger and more complex networks Glove performance tended to beat one-hot but as I made my network smaller model accuracy seems to equalize and one-hot seemled to learn faster.
+## Results
+CNN Model OneHot
+-8 Hidden Neurons Per layer: 0.722284434423735
+-32 Hidden Neurons Per layer: 0.7211646135950676
+-64 Hidden Neurons Per layer: 0.7178051524439958
+-128 Hidden Neurons Per layer: 0.6987681982899032
+CNN Model Embedding
+-8 Hidden Neurons Per layer: 0.722284434423735
+-32 Hidden Neurons Per layer: 0.7323628218817417
+-64 Hidden Neurons Per layer: 0.708846584479726
+-128 Hidden Neurons Per layer: 0.6875699874001148
+Bidirectional LSTMS OneHot
+-8 Hidden Neurons Per layer: 0.722284434423735
+-32 Hidden Neurons Per layer: 0.7021276581060446
+-64 Hidden Neurons Per layer: 0.6528555442477928
+-128 Hidden Neurons Per layer: 0.6328555442477928
+Bidirectional LSTMS Embedding
+-8 Hidden Neurons Per layer: 0.722284434423735
+-32 Hidden Neurons Per layer: 0.7021276581060446
+-64 Hidden Neurons Per layer: 0.7000447927664002
+-128 Hidden Neurons Per layer: 0.6987681982899032
 
-
+## Analysis 
+In general I found that after 32 hidden neurons, adding more did not make the model more accurate. I also found that in general the embedding model performs slightly better than onehat.
+Where there is a bigger difference is the learning speed. The embedding based model is able to have a high accuracy(~60) within the first epoch while the onehot model takes ~3 epochs to reach the same accuracy.
+In general, it seems that a OneHot model require more 'learning' to approximate the represenation that the embedding model can offer. Additionally, since my onehot model had
+## Other notes
+While exploring models I learned that Keras function for evaluate is a little bit finiky. If you are doing a categorical network(aka clasification like ATIS) you cannot use accuracy as a metric and must use categorical_accuracy. 
+Initially I was not doing this and all model were gettin ~96% accuracy, which when computed out of keras, the accuracy was ~40%
