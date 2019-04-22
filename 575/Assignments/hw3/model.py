@@ -14,14 +14,14 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Input, GlobalMaxPooling1D, MaxPooling1D, Embedding, Conv1D, LSTM, Bidirectional
 
 BATCH_SIZE = 128
-EPOCHS = 5
+EPOCHS = 20
 EMBEDDING_DIM = 200
-HIDDEN_DIM = 64
+HIDDEN_DIM = 32
 POOLING_DIM = 5
 MAX_SEQUENCE_LENGTH = 100
-MAX_NUM_WORDS = 200000
+MAX_NUM_WORDS = 400000
 VALIDATION_SPLIT = 0.1
-DROPOUT = 0.3
+DROPOUT = 0.5
 OPTIMIZER = 'rmsprop'
 ACTIVATION = 'sigmoid'
 LOSSFUNCTION = 'categorical_crossentropy'
@@ -126,10 +126,8 @@ def create_and_model(x_test, x_train, x_val, y_test, y_train, y_val, num_words, 
     model = Sequential()
     model.add(Embedding(num_words,  embedding_dim, embeddings_initializer=Constant(embedding_matrix), input_length=MAX_SEQUENCE_LENGTH, trainable=False))
     model.add(Bidirectional(LSTM(HIDDEN_DIM, return_sequences=True)))
-    model.add(AttentionWithContext())
     model.add(Dropout(DROPOUT))
     model.add(Bidirectional(LSTM(HIDDEN_DIM, return_sequences=True)))
-    model.add(AttentionWithContext())
     model.add(Dropout(DROPOUT))
     model.add(Bidirectional(LSTM(HIDDEN_DIM)))
     model.add(Dropout(DROPOUT))

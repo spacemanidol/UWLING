@@ -23,11 +23,12 @@ Seeing this I decided to try another model type and I tried out a Bidirectional 
 My parameters were based on training time and optimal accuracy. I mostly focused on model architecture and the # of hidden neurons.   
 ## HyperParameters (BEST RESULTS)
 Optimizer:rmsprop (This optimizer tended to learn way faster)
-Epochs:5 (Seemed to be the threshold when accuracy stopped improving)
+Epochs:20 (Seemed to be the threshold when accuracy stopped improving)
 Batch Size:128 (Any smaller seemed to make training too time consuming)
 Hidden Neurons: 32 (I experimented with 8, 32, 64, 128)
 Loss Function:categorical_crossentropy
-Dropout:0.3 
+Validation Split: 0.1
+Dropout:0.5
 Activation: RELU
 Final Activation: sigmoid (Seemd to consistently produce 2% higher accuracy scores)
 
