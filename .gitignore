@@ -1,6 +1,8 @@
-# Large Class Specific Files
+# Large Class Specific Files/Folders
 vocab.txt
 vectors.txt
+GloVe-1.2/
+word2vec/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
