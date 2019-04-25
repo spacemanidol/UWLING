@@ -1,0 +1,39 @@
+\documentclass[11pt]{article}
+\usepackage{url}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\setlength\topmargin{-0.6cm}   
+\setlength\textheight{23.4cm}
+\setlength\textwidth{17.0cm}
+\setlength\oddsidemargin{0cm} 
+\begin{document}
+\title{Sales Lead Assignment}
+\author{anonymous}
+\date{04/24/2019}
+\maketitle 
+\section{Problem Statement}
+How much more did leads spend because there was sales intervention
+\section{Background}
+Using python and pandas in jupyter I loaded the data. The provided dataset contained ~70,000 records with 10 variables per record. The first variable is simply an lead id so it can be ignored. While exploring, I found some issues that I fixed before starting my analysis such as revenue being set to NaN. To remedy this I set all Nan to 0. Next I created a time\_to\_assign and time\_to\_revenue which represent the days before either revenue or assignment. I have added notes in my python notebook and call outs in this document to the appropriate lines.
+\section{Q1}
+\subsection{How many leads are represented in this dataset}
+There are 77891 samples in the data and each sample is a lead so there are 77891 leads. This can be found by looking at the shape of our imported dataframe. This is in Line 2
+\subsection{Describe both the assigned and unassigned populations.}
+There are 40812 unassigned leads and 37079 assigned. To understand both populations we can group by the assigned value and observe the distributuion of all other variables. Oddly enough the lead with highest revenue is unassigned(and 3x the value of the max assigned!). The total revenue is the assigned pool is > 3x the unnassigned with 4.240371e+10 unassigned and  1.200932e+11 assigned. What is very interesting is that the highest revenue advertiser is not assigned and their revenue is almost 3x the highest revenue assigned revenue(6.533791e+09 vs 2.500000e+09). Its also worth noting that for both groups of leads, all the way to the 75\% of revenue distribution, is 0. This is understandable for the unassigned population but for the assigned population over 75\% of all their assignments result in no revenue. This information is line 8 and 9.
+\subsection{What is the average revenue of each group?}
+To caclulate average revenue per subset we group the data by 'assigned' and look at the mean. For unassigned its 1.039001e+06 and 3.238846e+06 for assigned. This information is in line 8.
+\section{Q2}
+\subsection{What are the most important metrics to considering when answering the problem statement? Why?}
+Revenue and assigned since they allow us to understand the effect of assigned sales leads. Ideally we would have revenue over time which would allow us to measure revenue growth pre and post lead assignement. If we had this the most important metric would be growth in revenue of the unassigned pool vs the assigned pool. Without this revenue over time its hard to determine if assigning a lead helps or leads know how to pick the assigners that are likley to spend a lot.
+\section{Q3}
+\subsection{Analyze any existing relationship between account age and revenue}
+Exploring relationship between these two is difficult because most leads(74551/77891) have 0 revenue which makes understanding relationship between age and revenue difficult. When we first look at revenue and age it appears that there is a slow decay in amount of leads that generate revenue over time To better look at age and revenue, I focus on only revenue generating leads and plot it. When we look at the revenue genrating subset there are a few things we can notice:There is a young company that generates an enourmous amount of money, After ~2000 days few revenue generating companies appear(but it does happen) and for most companies if they have revenue, their time to revenue is relatively low. This is line 11 and 12.
+\section{Q4}
+\subsection{What is the incremental value of assigning a lead to the sales team?}
+To look at incremental value, I explored a few options with linear models with a single independent variable. When I looked at all leads, we find my linear model has a coef of 3.239e+06 with a low P value. In other words the difference between Assigned and unassigned is 3.239e+06 in revenue. When we look at just those contracts with revenue,  Our coef goes up to 7.674e+07 meaning that when a lead is likley to generate revenue, assigning a lead will increase its revenue 7.674e+07 dollars. When we expand our model to consider assigned, age, assign days,  time to assign, and time to revenue this assumtion holds. Other variables can affect revenue but the biggest impact is depending on lead assignment. When we look at the revenue generating leads the story changes. The most important value is now long it took to assign a lead. We also uncover an error in the data. There are many leads where they had revenue before they were created. Given this is not possible I assume there was an issue in tracking them. This information is line 13-16.
+\subsection{Q5 Bonus}
+Given that I had explored assignment I thought the next prudent step was to explore something like age. My hypothesis is at some point there may be some kind of change in the company which drove a change in revenue. Looking at time, we find a few interesting trends, there are consistent spikes towards the middle of the year(likley spikes pre financial year change), the revenue has been growing over time, there was a huge spike in revenue over the last day. Perhaps there is an advertising campaign or a system broke producing wrong values. This information is line 17.
+\end{document}
+
+
+
