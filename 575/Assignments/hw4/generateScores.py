@@ -27,7 +27,7 @@ def readVectors(filename):
     index = 0
     with open(filename, 'r') as f:
         for l in f:
-            l = l.strip().split()
+            l = l.strip().split(' ')
             word = l[0]
             vector = [float(i) for i in l[1:]]
             idx2vector[index] = vector
@@ -46,7 +46,7 @@ def readTargetWords(filename,index):
     return words
 
 def createOutput(idx2vector, word2idx, words):
-    x, y,other_x, other_y = [],[],[], []
+    x, y, other_y = [],[],[]
     count = 0
     for pair in words:
         if pair[0] in word2idx and pair[1] in word2idx:  
@@ -56,10 +56,10 @@ def createOutput(idx2vector, word2idx, words):
             y.append(pair[2])
         else: 
             other_y.append(pair[2])
-            other_x.append(0)
-    other_x = other_x.fill(sum(x)/len(x))
-    x = x + other_x
+    average_x = sum(x)/len(x)
+    x = x + [average_x for i in range(len(other_y))]
     y = y + other_y
+    #return calc_spearmanr(x,y)
     return spearmanr(x,y)[0]
 
 if __name__ == "__main__":
