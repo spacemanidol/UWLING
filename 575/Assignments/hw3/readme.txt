@@ -16,44 +16,42 @@ My model does the following
 
 ## Network/ Model Structure
 For the network I tried various NN structures and tweaked based on what I saw got better accuracy. 
-Initially, I started with a convolution layer and a pooling layer which I used to pick various of my hyper parameters. 
-Various experiments in # of layers, actiation functions, optizer, etc had me top out accuracy at ~72% for both word represeantion methods.
-Seeing this I decided to try another model type and I tried out a Bidirectional LSTM. I found that after some model tweaking I could produce similair accuracy to the Convolutional network but much slower to train.
+After I had Finished building my initial network I found that my code had bugs in the loading of the target data which kept my NNs from learning the task as well. 
+I have since updated the networks.
+The experiment contains a CNN and a BiLSTM which run with onehot and trained word embedding.
 
-My parameters were based on training time and optimal accuracy. I mostly focused on model architecture and the # of hidden neurons.   
+My parameters were based on training time and optimal accuracy.
 ## HyperParameters (BEST RESULTS)
 Optimizer:rmsprop (This optimizer tended to learn way faster)
-Epochs:20 (Seemed to be the threshold when accuracy stopped improving)
-Batch Size:128 (Any smaller seemed to make training too time consuming)
-Hidden Neurons: 32 (I experimented with 8, 32, 64, 128)
+Epochs:10 (CNNs seem to find false minimas after 10 steps)
+Hidden Neurons: 200 (I experimented with 10, 50, 100, 200)
 Loss Function:categorical_crossentropy
-Validation Split: 0.1
-Dropout:0.5
+Validation Split: 0.01 (Just to confirm when models collapse)
+Dropout:0.4
 Activation: RELU
-Final Activation: sigmoid (Seemd to consistently produce 2% higher accuracy scores)
+Final Activation: sofrmax (Seemd to consistently produce 10% higher accuracy scores vs sigmoid)
 
 ## Results
 CNN Model OneHot
--8 Hidden Neurons Per layer: 0.722284434423735
--32 Hidden Neurons Per layer: 0.7211646135950676
--64 Hidden Neurons Per layer: 0.7178051524439958
--128 Hidden Neurons Per layer: 0.6987681982899032
+-10 Hidden Neurons Per layer: 
+-50 Hidden Neurons Per layer: 
+-100 Hidden Neurons Per layer: 
+-200 Hidden Neurons Per layer: 0.7905935053061798
 CNN Model Embedding
--8 Hidden Neurons Per layer: 0.722284434423735
--32 Hidden Neurons Per layer: 0.7323628218817417
--64 Hidden Neurons Per layer: 0.708846584479726
--128 Hidden Neurons Per layer: 0.6875699874001148
+-10 Hidden Neurons Per layer: 
+-50 Hidden Neurons Per layer: 
+-100 Hidden Neurons Per layer: 
+-200 Hidden Neurons Per layer:  0.8085106378306467
 Bidirectional LSTMS OneHot
--8 Hidden Neurons Per layer: 0.722284434423735
--32 Hidden Neurons Per layer: 0.7021276581060446
--64 Hidden Neurons Per layer: 0.6528555442477928
--128 Hidden Neurons Per layer: 0.6328555442477928
+-10 Hidden Neurons Per layer: 
+-50 Hidden Neurons Per layer: 
+-100 Hidden Neurons Per layer: 
+-200 Hidden Neurons Per layer: 0.7905935053061798
 Bidirectional LSTMS Embedding
--8 Hidden Neurons Per layer: 0.722284434423735
--32 Hidden Neurons Per layer: 0.7021276581060446
--64 Hidden Neurons Per layer: 0.7000447927664002
--128 Hidden Neurons Per layer: 0.6987681982899032
-
+-10 Hidden Neurons Per layer: 
+-50 Hidden Neurons Per layer: 
+-100 Hidden Neurons Per layer: 
+-200 Hidden Neurons Per layer: 0.8085106378306467
 ## Analysis 
 In general I found that after 32 hidden neurons, adding more did not make the model more accurate. I also found that in general the embedding model performs slightly better than onehat.
 Where there is a bigger difference is the learning speed. The embedding based model is able to have a high accuracy(~60) within the first epoch while the onehot model takes ~3 epochs to reach the same accuracy.
