@@ -21,41 +21,20 @@ I have since updated the networks.
 The experiment contains a CNN and a BiLSTM which run with onehot and trained word embedding.
 
 My parameters were based on training time and optimal accuracy.
-## HyperParameters (BEST RESULTS)
+## HyperParameters 
 Optimizer:rmsprop (This optimizer tended to learn way faster)
-Epochs:10 (CNNs seem to find false minimas after 10 steps)
-Hidden Neurons: 200 (I experimented with 10, 50, 100, 200)
+Epochs:20 
+Hidden Neurons: 32 (I experimented with 32,64,128,256)
 Loss Function:categorical_crossentropy
 Validation Split: 0.01 (Just to confirm when models collapse)
 Dropout:0.4
 Activation: RELU
-Final Activation: sofrmax (Seemd to consistently produce 10% higher accuracy scores vs sigmoid)
+Final Activation: softmax
 
 ## Results
-CNN Model OneHot
--10 Hidden Neurons Per layer: 
--50 Hidden Neurons Per layer: 
--100 Hidden Neurons Per layer: 
--200 Hidden Neurons Per layer: 0.7905935053061798
-CNN Model Embedding
--10 Hidden Neurons Per layer: 
--50 Hidden Neurons Per layer: 
--100 Hidden Neurons Per layer: 
--200 Hidden Neurons Per layer:  0.8085106378306467
-Bidirectional LSTMS OneHot
--10 Hidden Neurons Per layer: 
--50 Hidden Neurons Per layer: 
--100 Hidden Neurons Per layer: 
--200 Hidden Neurons Per layer: 0.7905935053061798
-Bidirectional LSTMS Embedding
--10 Hidden Neurons Per layer: 
--50 Hidden Neurons Per layer: 
--100 Hidden Neurons Per layer: 
--200 Hidden Neurons Per layer: 0.8085106378306467
-## Analysis 
-In general I found that after 32 hidden neurons, adding more did not make the model more accurate. I also found that in general the embedding model performs slightly better than onehat.
-Where there is a bigger difference is the learning speed. The embedding based model is able to have a high accuracy(~60) within the first epoch while the onehot model takes ~3 epochs to reach the same accuracy.
-In general, it seems that a OneHot model require more 'learning' to approximate the represenation that the embedding model can offer. Additionally, since my onehot model had
-## Other notes
-While exploring models I learned that Keras function for evaluate is a little bit finiky. If you are doing a categorical network(aka clasification like ATIS) you cannot use accuracy as a metric and must use categorical_accuracy. 
-Initially I was not doing this and all model were gettin ~96% accuracy, which when computed out of keras, the accuracy was ~40%
+CNN Model OneHot: 0.8185890264900908
+CNN Model Embedding: 0.8432250839865622
+Bidirectional LSTMS OneHot: 0.7715565510853407
+Bidirectional LSTMS Embedding: 0.7861142225922289
+
+Its worth noting that the performance on the dev set would swing +=10% run to run but the performance ratios were pretty consistent with above. Though Onehot approximates embedding based it usually takes much larger to reach the same accuracy. 
