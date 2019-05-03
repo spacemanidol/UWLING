@@ -14,14 +14,17 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Input, GlobalMaxPooling1D, MaxPooling1D, Embedding, Conv1D, LSTM, Bidirectional
 from sklearn.utils import column_or_1d
 
+from deepswarm.backends import Dataset, TFKerasBackend
+from deepswarm.deepswarm import DeepSwarm
+
 EPOCHS = 20
 EMBEDDING_DIM = 200
-HIDDEN_DIM = 256
+HIDDEN_DIM = 32
 POOLING_DIM = 5
 MAX_SEQUENCE_LENGTH = 50
 MAX_NUM_WORDS = 400000
 VALIDATION_SPLIT = 0.01
-DROPOUT = 0.2
+DROPOUT = 0.4
 OPTIMIZER = 'rmsprop'
 ACTIVATION = 'softmax'
 LOSSFUNCTION = 'categorical_crossentropy'
@@ -104,8 +107,8 @@ def create_and_model(x_test, x_train, x_val, y_test, y_train, y_val, num_words, 
     model.add(Bidirectional(LSTM(HIDDEN_DIM, return_sequences=False)))
     model.add(Dense(num_classes, activation=ACTIVATION))
     model.compile(optimizer=OPTIMIZER, loss=LOSSFUNCTION, metrics=['categorical_accuracy'])
-    #model.fit(x_train, y_train,  epochs=EPOCHS, validation_data=(x_val, y_val))
-    #print('Test accuracy:', model.evaluate(x_test, y_test)[1])
+    model.fit(x_train, y_train,  epochs=EPOCHS, validation_data=(x_val, y_val))
+    print('Test accuracy:', model.evaluate(x_test, y_test)[1])
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
@@ -117,4 +120,4 @@ if __name__ == "__main__":
     print("Glove Based model")
     create_and_model(x_test, x_train, x_val, y_test, y_train, y_val,num_words, embedding_matrix, EMBEDDING_DIM, num_classes)
     print("OneHot Based Model")
-    #create_and_model(x_test, x_train, x_val, y_test, y_train, y_val,num_words, '', num_words, num_classes)
+    create_and_model(x_test, x_train, x_val, y_test, y_train, y_val,num_words, '', num_words, num_classes)
