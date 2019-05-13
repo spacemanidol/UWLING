@@ -31,14 +31,12 @@ def make2D(source, embedding_matrix):
                 t = j*EMBEDDING_DIM + k
                 target[i][t] = vect[k] 
     return target
-
 def transform(target, y):
     y = column_or_1d(y, warn=True)
     indices = np.isin(y, target)
     y_transformed = np.searchsorted(target, y)
     y_transformed[~indices]=-1
     return y_transformed
-
 def loadVectors(filename):
     embeddings_index = {}
     with open(filename, 'r') as f:
@@ -46,14 +44,12 @@ def loadVectors(filename):
             l = l.strip().split(' ')
             embeddings_index[l[0]] = np.array([np.float32(i) for i in l[1:]])
     return embeddings_index
-
 def runCombo(train, test, y_train, y_test, num_classes):
     model = Sequential()
     model.add(Dense(num_classes,input_shape=train[0].shape, activation='softmax'))
     model.compile(optimizer=OPTIMIZER, loss=LOSSFUNCTION, metrics=['categorical_accuracy'])
     model.fit(train, y_train, epochs=EPOCHS)
     return model.evaluate(test, y_test)[1]
-
 def loadandRunData(embeddings_index, train_data_filename, test_data_filename):
     embeddings_index_len = len(embeddings_index)
     tokenizer = Tokenizer(num_words=MAX_NUM_WORDS)
@@ -67,7 +63,6 @@ def loadandRunData(embeddings_index, train_data_filename, test_data_filename):
             v_train.append(l[2])
             x_train.append(' '.join(l[1:3]))
             y_train.append(l[4])
-
     with open(test_data_filename,'r') as f:
         f.readline()# header
         for l in f:
@@ -76,7 +71,6 @@ def loadandRunData(embeddings_index, train_data_filename, test_data_filename):
             v_test.append(l[2])
             x_test.append(' '.join(l[1:3]))
             y_test.append(l[4])
-
     all_classes = list(set(y_train))
     num_classes = len(all_classes) + 1
     tokenizer.fit_on_texts(x_train)
@@ -89,7 +83,6 @@ def loadandRunData(embeddings_index, train_data_filename, test_data_filename):
         embedding_vector = embeddings_index.get(word)
         if embedding_vector is not None:
             embedding_matrix[i] = embedding_vector
-
     x_train = pad_sequences(tokenizer.texts_to_sequences(x_train), maxlen=MAX_SEQUENCE_LENGTH)
     x_test = pad_sequences(tokenizer.texts_to_sequences(x_test), maxlen=MAX_SEQUENCE_LENGTH)
     u_train = pad_sequences(tokenizer.texts_to_sequences(u_train), maxlen=MAX_SEQUENCE_LENGTH)
