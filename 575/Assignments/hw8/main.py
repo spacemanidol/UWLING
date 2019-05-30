@@ -55,7 +55,7 @@ def build_cooccur(vocab, corpus='text', window_size=5, uselm = False):
             for center_i, center_word in enumerate(l):
                 if center_word in vocab:
                     center_id = vocab[center_word]
-                    context_ids = tokens[max(0, center_i - window_size) : center_i]
+                    context_ids = l[max(0, center_i - window_size) : center_i]
                     contexts_len = len(context_ids)
                     for left_i, left_word in enumerate(context_ids):
                         if left_word in vocab:
