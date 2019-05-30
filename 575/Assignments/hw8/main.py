@@ -66,7 +66,9 @@ def build_cooccur(vocab, corpus='text', window_size=5):
 def updateweights(data,lm, id2word):
     length, width = data.shape
     probs = {}
+    print("Length of {}, width of {}".format(length,width))
     for i in range(length):
+        print("{} row done".format(i))
         for j in range(width):
             left_word = id2word[i]
             right_word = id2word[j]
@@ -137,26 +139,26 @@ def train(vocab, cooccurrences, vector_size,iterations, learning_rate):
         print("\t\tDone (loss {}".format(run_iter(vocab, data, learning_rate)))
     return W
 
-def main(corpus='text', vector_size=50, iterations=15, learning_rate=0.05, window_size=5,min_count=5):
+def main(corpus='text', vector_size=50, iterations=15, learning_rate=0.05, window_size=5):
     print("Building Vocab")
     vocab = build_vocab(corpus)
     vocab = load_vocab()
-    print("{} words in vocabulary".format(len(vocab)))
-    id2word = dict((i, word) for word, i in vocab.items())
-    word2id = dict((word,i) for word,  i in vocab.items())    
-    cooccurrences = build_cooccur(vocab,id2word, corpus, window_size, min_count)
+    print("{} words in vocabulary".format(len(vocab)))  
+    cooccurrences = build_cooccur(vocab, corpus, window_size)
     lm = LM()
+    print("updating cooccurences with LM")
     data = updateweights(cooccurrences,lm, id2word)
+    print('saving non LM cooccurences')
     save_cooccur(cooccurrences, 'cooccurrences.txt')
-    #save_cooccur(data, 'cooccurrences+lm.txt') #Cooccur update with LM probs
+    print('saving  LM cooccurences')
+    save_cooccur(data, 'cooccurrences+lm.txt') #Cooccur update with LM probs
     print("Training Embeddings")
     W = train(vocab, cooccurrences, vector_size, iterations, learning_rate)
-    WLM = W
-    #WLM = train(vocab, data, vector_size, iterations, learning_rate)
+    WLM = train(vocab, data, vector_size, iterations, learning_rate)
     with open('id2word.pkl', 'wb') as w:
-        pickle.dump(id2word, w, protocol=2)
+        pickle.dump(dict((i, word) for word, i in vocab.items()), w, protocol=2)
     with open('word2id.pkl', 'wb') as w:
-        pickle.dump(word2id, w, protocol=2)
+        pickle.dump(dict((word,i) for word,  i in vocab.items()) w, protocol=2)
     with open('glove_vectors.pkl', 'wb') as vector_f:
         pickle.dump(W, vector_f, protocol=2) 
     with open('glove_lm_vectors.pkl', 'wb') as vector_f:
