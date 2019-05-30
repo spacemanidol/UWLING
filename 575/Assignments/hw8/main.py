@@ -76,8 +76,8 @@ def updateweights(data,lm, id2word):
                 temp = math.exp(lm.generate_conditionalprobs(right_word,left_word)+lm.generate_conditionalprobs(left_word,right_word))
                 probs[(right_word,left_word)] = temp 
                 probs[(left_word,right_word)] = temp
-            data[center_id, left_id] *= probs[(right_word,left_word)]
-            data[center_id, left_id] *= probs[(left_word,right_word)]
+            data[i, j] *= probs[(right_word,left_word)]
+            data[j, i] *= probs[(left_word,right_word)]
     return data
 
 def save_cooccur(data, filename):
@@ -147,7 +147,7 @@ def main(corpus='text', vector_size=50, iterations=15, learning_rate=0.05, windo
     cooccurrences = build_cooccur(vocab, corpus, window_size)
     lm = LM()
     print("updating cooccurences with LM")
-    data = updateweights(cooccurrences,lm, id2word)
+    data = updateweights(cooccurrences,lm, dict((i, word) for word, i in vocab.items()))
     print('saving non LM cooccurences')
     save_cooccur(cooccurrences, 'cooccurrences.txt')
     print('saving  LM cooccurences')
@@ -158,7 +158,7 @@ def main(corpus='text', vector_size=50, iterations=15, learning_rate=0.05, windo
     with open('id2word.pkl', 'wb') as w:
         pickle.dump(dict((i, word) for word, i in vocab.items()), w, protocol=2)
     with open('word2id.pkl', 'wb') as w:
-        pickle.dump(dict((word,i) for word,  i in vocab.items()) w, protocol=2)
+        pickle.dump(dict((word,i) for word,  i in vocab.items()), w, protocol=2)
     with open('glove_vectors.pkl', 'wb') as vector_f:
         pickle.dump(W, vector_f, protocol=2) 
     with open('glove_lm_vectors.pkl', 'wb') as vector_f:
