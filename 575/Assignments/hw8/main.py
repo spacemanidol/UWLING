@@ -7,7 +7,7 @@ from random import shuffle
 from scipy import sparse
 from LM import LM, BERTLM
 
-def build_vocab(corpus='text', min_count=5):
+def build_vocab(corpus='text', min_count=10):
     """
     Build a vocabulary with word frequencies for an entire corpus.
     Returns a dictionary `w -> (i, f)`, mapping word strings to pairs of
@@ -36,16 +36,13 @@ def load_vocab():
             vocab[l[0]] = (int(l[2]))
     return vocab
 
-def build_cooccur(vocab, corpus='text', window_size=5, uselm = False):
+def build_cooccur(vocab, corpus='text', window_size=5):
     """
     Build a word co-occurrence list for the given corpus.
     """
-    if uselm == True:
-        lm = LM()
     vocab_size = len(vocab)
     cooccurrences = np.ndarray((vocab_size, vocab_size),dtype=np.float64)
     i = 0
-    probs = {}
     with open(corpus, 'r', encoding='utf-8') as f:
         for l in f:
             if i % 1000 == 0:
@@ -62,21 +59,28 @@ def build_cooccur(vocab, corpus='text', window_size=5, uselm = False):
                             distance = contexts_len - left_i
                             increment = 1.0 / float(distance)
                             left_id = vocab[left_word]
-                            if (center_word,left_word) not in probs:
-                                temp = math.exp(lm.generate_conditionalprobs(center_word,left_word)+lm.generate_conditionalprobs(center_word,left_word))
-                                probs[(center_word,left_word)] = temp 
-                                probs[(left_word,center_word)] = temp
-                            if uselm == True:
-                                cooccurrences[center_id, left_id] += increment * probs[(center_word,left_word)]
-                                cooccurrences[left_id, center_id] += increment * probs[(center_word,left_word)]
-                            else:
-                                cooccurrences[center_id, left_id] += increment
-                                cooccurrences[left_id, center_id] += increment 
+                            cooccurrences[center_id, left_id] += increment
+                            cooccurrences[left_id, center_id] += increment 
     return cooccurrences
 
-def save_cooccur(data):
+def updateweights(data,lm, id2word):
+    length, width = data.shape
+    probs = {}
+    for i in range(length):
+        for j in range(width):
+            left_word = id2word[i]
+            right_word = id2word[j]
+            if (left_word,right_word) not in probs:
+                temp = math.exp(lm.generate_conditionalprobs(right_word,left_word)+lm.generate_conditionalprobs(left_word,right_word))
+                probs[(right_word,left_word)] = temp 
+                probs[(left_word,right_word)] = temp
+            data[center_id, left_id] *= probs[(right_word,left_word)]
+            data[center_id, left_id] *= probs[(left_word,right_word)]
+    return data
+
+def save_cooccur(data, filename):
     length, width = data.shape 
-    with open('coocur.txt','w') as w:
+    with open(filename,'w') as w:
         for i in range(length):
             out = ''
             for j in range(width):
@@ -141,15 +145,22 @@ def main(corpus='text', vector_size=50, iterations=15, learning_rate=0.05, windo
     id2word = dict((i, word) for word, i in vocab.items())
     word2id = dict((word,i) for word,  i in vocab.items())    
     cooccurrences = build_cooccur(vocab,id2word, corpus, window_size, min_count)
-
+    lm = LM()
+    data = updateweights(cooccurrences,lm, id2word)
+    save_cooccur(cooccurrences, 'cooccurrences.txt')
+    #save_cooccur(data, 'cooccurrences+lm.txt') #Cooccur update with LM probs
     print("Training Embeddings")
     W = train(vocab, cooccurrences, vector_size, iterations, learning_rate)
-    with open('id2word.pkl', 'wb') as f:
-        id2word = pickle.load(f)
-    with open('word2id.pkl', 'wb') as f:
-        word2id = pickle.load(f) 
+    WLM = W
+    #WLM = train(vocab, data, vector_size, iterations, learning_rate)
+    with open('id2word.pkl', 'wb') as w:
+        pickle.dump(id2word, w, protocol=2)
+    with open('word2id.pkl', 'wb') as w:
+        pickle.dump(word2id, w, protocol=2)
     with open('glove_vectors.pkl', 'wb') as vector_f:
-            pickle.dump(W, vector_f, protocol=2)
+        pickle.dump(W, vector_f, protocol=2) 
+    with open('glove_lm_vectors.pkl', 'wb') as vector_f:
+        pickle.dump(WLM, vector_f, protocol=2) 
 
 if __name__ == '__main__':
     main()
