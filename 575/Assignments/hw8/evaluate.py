@@ -9,14 +9,14 @@ def dot(A,B):
 def cosine_similarity(a,b):
     return dot(a,b) / ( (dot(a,a) **.5) * (dot(b,b) ** .5) )
 
-def readVectors():
+def readVectors(vector_file):
     with open('id2word.pkl', 'rb') as f:
         id2word = pickle.load(f)
     with open('word2id.pkl', 'rb') as f:
         word2id = pickle.load(f)    
-    with open('glove_vectors.pkl', 'rb') as f:
+    with open(vector_file, 'rb') as f:
         word_vectors = pickle.load(f)
-    return id2word, word2id, word_vectors    
+    return word_vectors, word2id    
 
 def readTargetWords(filename,index):
     words = []

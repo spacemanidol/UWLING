@@ -5,9 +5,9 @@ import numpy as np
 from collections import Counter
 from random import shuffle
 from scipy import sparse
-from LM import LM, BERTLM
+from LM import LM
 
-def build_vocab(corpus='text', min_count=10):
+def build_vocab(corpus='text', min_count=5):
     """
     Build a vocabulary with word frequencies for an entire corpus.
     Returns a dictionary `w -> (i, f)`, mapping word strings to pairs of
@@ -36,12 +36,13 @@ def load_vocab():
             vocab[l[0]] = (int(l[2]))
     return vocab
 
-def build_cooccur(vocab, corpus='text', window_size=5):
+def build_cooccur(vocab, corpus='text', window_size=3):
     """
     Build a word co-occurrence list for the given corpus.
     """
     vocab_size = len(vocab)
     cooccurrences = np.ndarray((vocab_size, vocab_size),dtype=np.float64)
+    pairs = set()
     i = 0
     with open(corpus, 'r', encoding='utf-8') as f:
         for l in f:
@@ -56,28 +57,53 @@ def build_cooccur(vocab, corpus='text', window_size=5):
                     contexts_len = len(context_ids)
                     for left_i, left_word in enumerate(context_ids):
                         if left_word in vocab:
+                            pairs.add((center_word,left_word))
+                            pairs.add((left_word, center_word))
                             distance = contexts_len - left_i
                             increment = 1.0 / float(distance)
                             left_id = vocab[left_word]
                             cooccurrences[center_id, left_id] += increment
-                            cooccurrences[left_id, center_id] += increment 
+                            cooccurrences[left_id, center_id] += increment
+    with open('pairs','w') as w:
+        for p in pairs:
+            w.write('{}\t{}\n'.format(p[0],p[1]))
     return cooccurrences
+
+def load_condprob(filename='condprob'):
+    probs = {}
+    with open(filename,'r') as f:
+        for l in f:
+            l = l.strip().split('\t')
+            if len(l) > 2:
+                probs[(l[1],l[2])] = float(l[0])
+    return probs
 
 def updateweights(data,lm, id2word):
     length, width = data.shape
-    probs = {}
+    probs = load_condprob()
+    print("{} existing condprobs loaded".format(len(probs)))
     print("Length of {}, width of {}".format(length,width))
-    for i in range(length):
-        print("{} row done".format(i))
-        for j in range(width):
+    with open('condprob','w') as w:
+        for i in range(length):
+            print("{} row done".format(i))
             left_word = id2word[i]
-            right_word = id2word[j]
-            if (left_word,right_word) not in probs:
-                temp = math.exp(lm.generate_conditionalprobs(right_word,left_word)+lm.generate_conditionalprobs(left_word,right_word))
-                probs[(right_word,left_word)] = temp 
-                probs[(left_word,right_word)] = temp
-            data[i, j] *= probs[(right_word,left_word)]
-            data[j, i] *= probs[(left_word,right_word)]
+            for j in range(width):
+                if j % 1000 == 0:
+                    print("{} pairs done".format(j))
+                if data[i,j] > 0:
+                    right_word = id2word[j]
+                    if (left_word,right_word) not in probs:
+                        p1 = lm.generate_conditionalprobs(right_word,left_word)
+                        p2 = lm.generate_conditionalprobs(left_word,right_word)
+                        w.write("{}\t{}\t{}\n".format(p1,right_word,left_word))
+                        w.write("{}\t{}\t{}\n".format(p2,left_word, right_word))
+                        temp = math.exp(p1+p2)
+                        probs[(right_word,left_word)] = temp 
+                        probs[(left_word,right_word)] = temp
+                    data[i, j] *= probs[(right_word,left_word)]
+                    data[j, i] *= probs[(left_word,right_word)]
+    with open('probs','wb') as w:
+        pickle.dump(probs, w, protocol=2)
     return data
 
 def save_cooccur(data, filename):
@@ -105,7 +131,10 @@ def run_iter(vocab, data, learning_rate, x_max=100, alpha=0.75):
     shuffle(data)
     for (v_main, v_context, b_main, b_context, gradsq_W_main, gradsq_W_context, gradsq_b_main, gradsq_b_context, cooccurrence) in data:
         weight = (cooccurrence / x_max) ** alpha if cooccurrence < x_max else 1
-        cost_inner = (v_main.dot(v_context) + b_main[0] + b_context[0] - math.log(cooccurrence))
+        tmp = 0
+        if cooccurrence > 0:
+            tmp = math.log(cooccurrence)
+        cost_inner = (v_main.dot(v_context) + b_main[0] + b_context[0] - tmp)
         cost = weight * (cost_inner ** 2)
         global_cost += 0.5 * cost
         grad_main = weight * cost_inner * v_context
@@ -122,7 +151,7 @@ def run_iter(vocab, data, learning_rate, x_max=100, alpha=0.75):
         gradsq_b_context += grad_bias_context ** 2
     return global_cost
 
-def train(vocab, cooccurrences, vector_size,iterations, learning_rate):
+def train(vocab, cooccurrences, vector_size=50,iterations=1, learning_rate=0.05):
     """
     Train word embedding via word cooccurrences each element is of the form (word_i, word_j, x_ij)
     where `x_ij` is a cooccurrence value $X_{ij}$ as noted Pennington et al. (2014)
@@ -133,18 +162,24 @@ def train(vocab, cooccurrences, vector_size,iterations, learning_rate):
     biases = (np.random.rand(vocab_size * 2) - 0.5) / float(vector_size + 1)
     gradient_squared = np.ones((vocab_size * 2, vector_size),dtype=np.float64)
     gradient_squared_biases = np.ones(vocab_size * 2, dtype=np.float64)
+    temp = []
+    size = len(cooccurrences)
+    for i in range(size):
+        for j in range(size):
+            temp.append((i,j, cooccurrences[i][j]))
+    cooccurrences = temp
     data = [(W[i_main], W[i_context + vocab_size],biases[i_main : i_main + 1], biases[i_context + vocab_size : i_context + vocab_size + 1],gradient_squared[i_main], gradient_squared[i_context + vocab_size], gradient_squared_biases[i_main : i_main + 1],gradient_squared_biases[i_context + vocab_size: i_context + vocab_size + 1],cooccurrence) for i_main, i_context, cooccurrence in cooccurrences]
     for i in range(iterations):
         print("\tBeginning iteration {}..".format(i))
         print("\t\tDone (loss {}".format(run_iter(vocab, data, learning_rate)))
     return W
 
-def main(corpus='text', vector_size=50, iterations=15, learning_rate=0.05, window_size=5):
+def main():
     print("Building Vocab")
-    vocab = build_vocab(corpus)
+    vocab = build_vocab()
     vocab = load_vocab()
     print("{} words in vocabulary".format(len(vocab)))  
-    cooccurrences = build_cooccur(vocab, corpus, window_size)
+    cooccurrences = build_cooccur(vocab)
     lm = LM()
     print("updating cooccurences with LM")
     data = updateweights(cooccurrences,lm, dict((i, word) for word, i in vocab.items()))
@@ -153,12 +188,13 @@ def main(corpus='text', vector_size=50, iterations=15, learning_rate=0.05, windo
     print('saving  LM cooccurences')
     save_cooccur(data, 'cooccurrences+lm.txt') #Cooccur update with LM probs
     print("Training Embeddings")
-    W = train(vocab, cooccurrences, vector_size, iterations, learning_rate)
-    WLM = train(vocab, data, vector_size, iterations, learning_rate)
-    with open('id2word.pkl', 'wb') as w:
-        pickle.dump(dict((i, word) for word, i in vocab.items()), w, protocol=2)
+    W = train(vocab, cooccurrences)
+    print("Training LM enhanced Embeddings")
+    WLM = train(vocab, data)
+    with open('id2word.pkl', 'wb') as f:
+        pickle.dump(dict((i, word) for word, i in vocab.items()), f, protocol=2)
     with open('word2id.pkl', 'wb') as w:
-        pickle.dump(dict((word,i) for word,  i in vocab.items()), w, protocol=2)
+        pickle.dump(dict((word,i) for word,  i in vocab.items()), f, protocol=2)
     with open('glove_vectors.pkl', 'wb') as vector_f:
         pickle.dump(W, vector_f, protocol=2) 
     with open('glove_lm_vectors.pkl', 'wb') as vector_f:
