@@ -137,7 +137,7 @@ def run_iter(vocab, data, learning_rate, x_max=100, alpha=0.75):
         gradsq_b_context += grad_bias_context ** 2
     return global_cost
 
-def train(vocab, cooccurrences, vector_size, iterations=5, learning_rate=0.05):
+def train(vocab, cooccurrences, vector_size, iterations=1, learning_rate=0.05):
     """
     Train word embedding via word cooccurrences each element is of the form (word_i, word_j, x_ij)
     where `x_ij` is a cooccurrence value $X_{ij}$ as noted Pennington et al. (2014)
@@ -153,6 +153,7 @@ def train(vocab, cooccurrences, vector_size, iterations=5, learning_rate=0.05):
     for i in range(size):
         for j in range(size):
             temp.append((i,j, cooccurrences[i][j]))
+    print("creating data")
     data = [(W[i_main], W[i_context + vocab_size],biases[i_main : i_main + 1], biases[i_context + vocab_size : i_context + vocab_size + 1],gradient_squared[i_main], gradient_squared[i_context + vocab_size], gradient_squared_biases[i_main : i_main + 1],gradient_squared_biases[i_context + vocab_size: i_context + vocab_size + 1],cooccurrence) for i_main, i_context, cooccurrence in temp]
     for i in range(iterations):
         print("\tBeginning iteration {}..".format(i))
@@ -174,7 +175,7 @@ def main(corpus, min_count, window_size, probs_filename, vector_size, vector_nam
     with open('id2word.pkl', 'wb') as f:
         pickle.dump(id2word, f, protocol=2)
     with open('word2id.pkl', 'wb') as w:
-        pickle.dump(word2id), f, protocol=2)
+        pickle.dump(word2id, f, protocol=2)
     with open(vector_name, 'wb') as vector_f:
         pickle.dump(W, vector_f, protocol=2) 
     with open('LM-' + vector_name, 'wb') as vector_f:

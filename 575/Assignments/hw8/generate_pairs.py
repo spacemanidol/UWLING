@@ -57,5 +57,5 @@ if __name__ == '__main__':
         print("Usage:python generate_pairs <corpus> <min_count> <window_size>")
         exit(-1)
     else:
-        build_vocab(sys.argv[1], sys.argv[2])
-        build_cooccur(load_vocab(), sys.argv[1], sys.arv[3])
+        build_vocab(sys.argv[1], int(sys.argv[2]))
+        build_cooccur(load_vocab(), sys.argv[1], int(sys.argv[3]))
