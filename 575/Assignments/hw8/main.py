@@ -6,7 +6,7 @@ from collections import Counter
 from random import shuffle
 from scipy import sparse
 
-def build_vocab(corpus='text', min_count=5):
+def build_vocab(corpus='text', min_count=20):
     """
     Build a vocabulary with word frequencies for an entire corpus.
     Returns a dictionary `w -> (i, f)`, mapping word strings to pairs of
@@ -84,17 +84,14 @@ def updateweights(data, id2word):
     print("Length of {}, width of {}".format(length,width))
     with open('condprob','w') as w:
         for i in range(length):
-            print("{} row done".format(i))
             left_word = id2word[i]
             for j in range(width):
-                if j % 1000 == 0:
-                    print("{} pairs done".format(j))
                 if data[i,j] > 0:
                     right_word = id2word[j]
                     p1,p2 = 1,1
                     if (left_word,right_word) in probs:
                         p1 = probs[(left_word,right_word)]
-                    if (right_Word,left_word) in probs:
+                    if (right_word,left_word) in probs:
                         p2 = probs[(right_word,left_word)]
                     temp = math.exp(p1+p2)
                     data[i, j] *= temp
