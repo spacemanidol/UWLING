@@ -41,7 +41,7 @@ def build_cooccur(vocab, corpus, window_size):
     Build a word co-occurrence list for the given corpus.
     """
     vocab_size = len(vocab)
-    cooccurrences = np.ndarray((vocab_size, vocab_size),dtype=np.float64)
+    cooccurrences = {}#np.ndarray((vocab_size, vocab_size),dtype=np.float64)
     i = 0
     with open(corpus, 'r', encoding='utf-8') as f:
         for l in f:
@@ -59,8 +59,12 @@ def build_cooccur(vocab, corpus, window_size):
                             distance = contexts_len - left_i
                             increment = 1.0 / float(distance)
                             left_id = vocab[left_word]
-                            cooccurrences[center_id, left_id] += increment
-                            cooccurrences[left_id, center_id] += increment
+                            if (center_id,left_id) in cooccurrences:
+                                cooccurrences[(center_id, left_id)] += increment
+                                cooccurrences[(left_id, center_id)] += increment
+                            else:
+                                cooccurrences[(center_id, left_id)] = increment
+                                cooccurrences[(left_id, center_id)] = increment
     return cooccurrences
 
 def load_condprob(filename):
@@ -80,7 +84,7 @@ def update_weights(data, id2word, probsfilename):
     for i in range(length):
         left_word = id2word[i]
         for j in range(width):
-            if data[i,j] > 0:
+            if data[(i,j)] > 0:
                 right_word = id2word[j]
                 p1,p2 = 1,1
                 if (left_word,right_word) in probs:
@@ -88,8 +92,8 @@ def update_weights(data, id2word, probsfilename):
                 if (right_word,left_word) in probs:
                     p2 = probs[(right_word,left_word)]
                 temp = math.exp(p1+p2)
-                data[i, j] *= temp
-                data[j, i] *= temp
+                data[(i, j)] *= temp
+                data[(j, i)] *= temp
     return data
 
 def save_cooccur(data, filename):
@@ -148,13 +152,8 @@ def train(vocab, cooccurrences, vector_size, iterations=25, learning_rate=0.05):
     biases = (np.random.rand(vocab_size * 2) - 0.5) / float(vector_size + 1)
     gradient_squared = np.ones((vocab_size * 2, vector_size),dtype=np.float64)
     gradient_squared_biases = np.ones(vocab_size * 2, dtype=np.float64)
-    temp = []
-    size = len(cooccurrences)
-    for i in range(size):
-        for j in range(size):
-            temp.append((i,j, cooccurrences[i][j]))
     print("creating data")
-    data = [(W[i_main], W[i_context + vocab_size],biases[i_main : i_main + 1], biases[i_context + vocab_size : i_context + vocab_size + 1],gradient_squared[i_main], gradient_squared[i_context + vocab_size], gradient_squared_biases[i_main : i_main + 1],gradient_squared_biases[i_context + vocab_size: i_context + vocab_size + 1],cooccurrence) for i_main, i_context, cooccurrence in temp]
+    data = [(W[i_main], W[i_context + vocab_size],biases[i_main : i_main + 1], biases[i_context + vocab_size : i_context + vocab_size + 1],gradient_squared[i_main], gradient_squared[i_context + vocab_size], gradient_squared_biases[i_main : i_main + 1],gradient_squared_biases[i_context + vocab_size: i_context + vocab_size + 1],cooccurrence) for i_main, i_context, cooccurrence in cooccurrences.items()]
     for i in range(iterations):
         print("\tBeginning iteration {}..".format(i))
         print("\t\tDone (loss {}".format(run_iter(vocab, data, learning_rate)))
