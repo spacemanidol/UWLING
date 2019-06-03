@@ -41,7 +41,7 @@ def build_cooccur(vocab, corpus, window_size):
     Build a word co-occurrence list for the given corpus.
     """
     vocab_size = len(vocab)
-    cooccurrences = {}#np.ndarray((vocab_size, vocab_size),dtype=np.float64)
+    cooccurrences  = {}
     i = 0
     with open(corpus, 'r', encoding='utf-8') as f:
         for l in f:
@@ -72,19 +72,18 @@ def load_condprob(filename):
     with open(filename,'r') as f:
         for l in f:
             l = l.strip().split()
-            if len(l) > 2:
+            if len(l) == 3:
                 probs[(l[0],l[1])] = float(l[2])
     return probs
 
 def update_weights(data, id2word, probsfilename):
-    length, width = data.shape
+    length = len(data)
     probs = load_condprob(probsfilename)
     print("{} existing condprobs loaded".format(len(probs)))
-    print("Length of {}, width of {}".format(length,width))
     for i in range(length):
         left_word = id2word[i]
-        for j in range(width):
-            if data[(i,j)] > 0:
+        for j in range(length):
+            if (i,j) in data and  data[(i,j)] > 0:
                 right_word = id2word[j]
                 p1,p2 = 1,1
                 if (left_word,right_word) in probs:
@@ -141,7 +140,7 @@ def run_iter(vocab, data, learning_rate, x_max=100, alpha=0.75):
         gradsq_b_context += grad_bias_context ** 2
     return global_cost
 
-def train(vocab, cooccurrences, vector_size, iterations=25, learning_rate=0.05):
+def train(vocab, cooccurrences, vector_size, iterations=1, learning_rate=0.05):
     """
     Train word embedding via word cooccurrences each element is of the form (word_i, word_j, x_ij)
     where `x_ij` is a cooccurrence value $X_{ij}$ as noted Pennington et al. (2014)
@@ -153,7 +152,7 @@ def train(vocab, cooccurrences, vector_size, iterations=25, learning_rate=0.05):
     gradient_squared = np.ones((vocab_size * 2, vector_size),dtype=np.float64)
     gradient_squared_biases = np.ones(vocab_size * 2, dtype=np.float64)
     print("creating data")
-    data = [(W[i_main], W[i_context + vocab_size],biases[i_main : i_main + 1], biases[i_context + vocab_size : i_context + vocab_size + 1],gradient_squared[i_main], gradient_squared[i_context + vocab_size], gradient_squared_biases[i_main : i_main + 1],gradient_squared_biases[i_context + vocab_size: i_context + vocab_size + 1],cooccurrence) for i_main, i_context, cooccurrence in cooccurrences.items()]
+    data = [(W[i_main], W[i_context + vocab_size],biases[i_main : i_main + 1], biases[i_context + vocab_size : i_context + vocab_size + 1],gradient_squared[i_main], gradient_squared[i_context + vocab_size], gradient_squared_biases[i_main : i_main + 1],gradient_squared_biases[i_context + vocab_size: i_context + vocab_size + 1],cooccurrence) for (i_main, i_context), cooccurrence in cooccurrences.items()]
     for i in range(iterations):
         print("\tBeginning iteration {}..".format(i))
         print("\t\tDone (loss {}".format(run_iter(vocab, data, learning_rate)))
@@ -168,7 +167,7 @@ def main(corpus, min_count, window_size, probs_filename, vector_size, vector_nam
     print("{} words in vocabulary".format(len(vocab)))  
     cooccurrences = build_cooccur(vocab, corpus, window_size)
     print("Training Embeddings")
-    W = train(vocab, cooccurrences, vector_size)
+    W =None # train(vocab, cooccurrences, vector_size)
     print("Training LM enhanced Embeddings")
     WLM = train(vocab, update_weights(cooccurrences, id2word, probs_filename), vector_size)
     with open('id2word.pkl', 'wb') as f:
