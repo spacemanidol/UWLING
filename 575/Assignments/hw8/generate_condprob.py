@@ -75,7 +75,7 @@ if __name__ == '__main__':
      if len(sys.argv) < 4:
         print("Usage:python generate_condprobs.py <probs> <pairs> <GPU cuda:0>")
         exit(-1)
-    else:
-        probs = read_probs(sys.argv[1])
-        pairs = read_pairs(sys.argv[2], probs)
-        generate_condprob(probs,sys.argv[2],sys.argv[3])
+     else:
+         probs = read_probs(sys.argv[1])
+         pairs = read_pairs(sys.argv[2], probs)
+         generate_condprob(probs,sys.argv[2],sys.argv[3])
