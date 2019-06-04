@@ -9,14 +9,20 @@ def dot(A,B):
 def cosine_similarity(a,b):
     return dot(a,b) / ( (dot(a,a) **.5) * (dot(b,b) ** .5) )
 
-def readVectors(vector_file):
-    with open('id2word.pkl', 'rb') as f:
-        id2word = pickle.load(f)
-    with open('word2id.pkl', 'rb') as f:
-        word2id = pickle.load(f)    
-    with open(vector_file, 'rb') as f:
-        word_vectors = pickle.load(f)
-    return word_vectors, word2id    
+def readVectors(filename):
+    id2vec = []
+    word2id = {}
+    with open('word2id'+filename, 'r') as f:
+        for l in f:
+            l = l.strip().split()
+            if len(l) == 2:
+                word2id[l[0]] = int(l[1])
+    with open('vectors'+filename,'r') as f:
+        for l in f:
+            l = l.strip().split()
+            if len(l) > 1:
+                id2vec.append([float(i) for i in l])
+    return id2vec, word2id
 
 def readTargetWords(filename,index):
     words = []
@@ -45,11 +51,17 @@ def createOutput(idx2vector, word2idx, words):
     return spearmanr(x,y)[0]
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
-        print('Usage: generateCosineDistance.py <vectors_file> <human 1> <human 2> <human 3>')
+    if len(sys.argv) != 2:
+        print('Usage: evaluate.py <vector_file>')
         exit(-1)
     else:
+        print('Metrics for regular embedding')
         idx2vector, word2idx = readVectors(sys.argv[1])
-        print('{}:{}'.format(sys.argv[2],createOutput(idx2vector, word2idx, readTargetWords(sys.argv[2],2))))
-        print('{}:{}'.format(sys.argv[3],createOutput(idx2vector, word2idx, readTargetWords(sys.argv[3],3))))
-        print('{}:{}'.format(sys.argv[4],createOutput(idx2vector, word2idx, readTargetWords(sys.argv[4],2))))
+        print('{}:{}'.format('MEN3k.txt',createOutput(idx2vector, word2idx, readTargetWords('MEN3k.txt',2))))
+        print('{}:{}'.format('Simlex999.txt',createOutput(idx2vector, word2idx, readTargetWords('SimLex999.txt',3))))
+        print('{}:{}'.format('wordsim353.txt',createOutput(idx2vector, word2idx, readTargetWords('wordsim353.txt',2))))
+        print('Metrics for LM enhanced embedding')
+#        idx2vector, word2idx = readVectors('LM-'+sys.argv[1])
+        print('{}:{}'.format('MEN3k.txt',createOutput(idx2vector, word2idx, readTargetWords('MEN3k.txt',2))))
+        print('{}:{}'.format('Simlex999.txt',createOutput(idx2vector, word2idx, readTargetWords('SimLex999.txt',3))))
+        print('{}:{}'.format('wordsim353.txt',createOutput(idx2vector, word2idx, readTargetWords('wordsim353.txt',2))))

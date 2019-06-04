@@ -5,7 +5,7 @@ import numpy as np
 
 from collections import Counter
 from random import shuffle
-from scipy import sparse
+#from scipy import sparse
 
 def build_vocab(corpus, min_count):
     """
@@ -81,18 +81,20 @@ def update_weights(data, id2word, probsfilename):
     probs = load_condprob(probsfilename)
     print("{} existing condprobs loaded".format(len(probs)))
     for i in range(length):
-        left_word = id2word[i]
-        for j in range(length):
-            if (i,j) in data and  data[(i,j)] > 0:
-                right_word = id2word[j]
-                p1,p2 = 1,1
-                if (left_word,right_word) in probs:
-                    p1 = probs[(left_word,right_word)]
-                if (right_word,left_word) in probs:
-                    p2 = probs[(right_word,left_word)]
-                temp = math.exp(p1+p2)
-                data[(i, j)] *= temp
-                data[(j, i)] *= temp
+        if i in id2word:
+            left_word = id2word[i]
+            if i % 1000 ==  0:
+                print("{} rows done".format(i))
+            for j in range(length):
+                if (i,j) in data and j in id2word and  data[(i,j)] > 0:
+                    right_word = id2word[j]
+                    p1,p2 = 1,1
+                    if (left_word,right_word) in probs:
+                        p1 = probs[(left_word,right_word)]
+                    if (right_word,left_word) in probs:
+                        p2 = probs[(right_word,left_word)]
+                    temp = math.exp(p1+p2)
+                    data[(i, j)] *= temp
     return data
 
 def save_cooccur(data, filename):
@@ -140,7 +142,7 @@ def run_iter(vocab, data, learning_rate, x_max=100, alpha=0.75):
         gradsq_b_context += grad_bias_context ** 2
     return global_cost
 
-def train(vocab, cooccurrences, vector_size, iterations=1, learning_rate=0.05):
+def train(vocab, cooccurrences, vector_size, iterations=15, learning_rate=0.05):
     """
     Train word embedding via word cooccurrences each element is of the form (word_i, word_j, x_ij)
     where `x_ij` is a cooccurrence value $X_{ij}$ as noted Pennington et al. (2014)
@@ -166,18 +168,18 @@ def main(corpus, min_count, window_size, probs_filename, vector_size, vector_nam
     word2id = dict((word, i) for word, i in vocab.items())
     print("{} words in vocabulary".format(len(vocab)))  
     cooccurrences = build_cooccur(vocab, corpus, window_size)
-    print("Training Embeddings")
-    W =None # train(vocab, cooccurrences, vector_size)
     print("Training LM enhanced Embeddings")
     WLM = train(vocab, update_weights(cooccurrences, id2word, probs_filename), vector_size)
-    with open('id2word.pkl', 'wb') as f:
+    with open(vector_name + '-id2word.pkl', 'wb') as f:
         pickle.dump(id2word, f, protocol=2)
-    with open('word2id.pkl', 'wb') as w:
+    with open(vector_name + '-word2id.pkl', 'wb') as f:
         pickle.dump(word2id, f, protocol=2)
-    with open(vector_name, 'wb') as vector_f:
-        pickle.dump(W, vector_f, protocol=2) 
     with open('LM-' + vector_name, 'wb') as vector_f:
         pickle.dump(WLM, vector_f, protocol=2) 
+    print("Training Embeddings")
+    W = train(vocab, cooccurrences, vector_size)
+    with open(vector_name, 'wb') as vector_f:
+        pickle.dump(W, vector_f, protocol=2) 
 
 if __name__ == '__main__':
     if len(sys.argv) < 7:
