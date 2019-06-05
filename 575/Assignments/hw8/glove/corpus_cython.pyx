@@ -116,7 +116,7 @@ cdef void increment_matrix(SparseRowMatrix* mat, int row, int col, float increme
 
     if col_at_idx == col:
         # Element to be incremented
-        deref(row_data)[idx] = deref(row_data)[idx] + increment
+        deref(row_data)[idx] = increment + deref(row_data)[idx]
     else:
         # Element to be inserted
         row_indices.insert(row_indices.begin() + idx, col)
@@ -234,7 +234,7 @@ def construct_cooccurrence_matrix(corpus, dictionary, probs, int supplied,
     # Pre-allocate some reasonable size
     # for the word ids vector.
     word_ids.reserve(1000)
-
+    psize = len(probs)
     # Iterate over the corpus.
     for words in corpus:
 
@@ -265,22 +265,22 @@ def construct_cooccurrence_matrix(corpus, dictionary, probs, int supplied,
                 # Do nothing if the words are the same.
                 if inner_word == outer_word:
                     continue
-                p1, p2 = 1, 1
+                p1, p2 = 0,0
                 if (inner_word, outer_word) in probs:
                     p1 = probs[(inner_word, outer_word)]
                 if (outer_word, inner_word) in probs:
                     p2 = probs[(outer_word, inner_word)]
-                increment = math.exp(p1+p2)
+                
                 if inner_word < outer_word:
                     increment_matrix(matrix,
                                      inner_word,
                                      outer_word,
-                                     increment / (j - i))
+                                     math.exp(p1+p2) / (j - i))
                 else:
                     increment_matrix(matrix,
                                      outer_word,
                                      inner_word,
-                                     increment / (j - i))
+                                     math.exp(p1+p2) / (j - i))
 
     # Create the matrix.
     mat = matrix_to_coo(matrix, len(dictionary))

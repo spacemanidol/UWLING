@@ -13,7 +13,7 @@ class Corpus(object):
         self.matrix = None
         self.probs = {}
     def load_probs(self, filename):
-        with open('probs','r') as f:
+        with open(filename,'r') as f:
             for l in f:
                 l = l.strip().split()
                 if len(l) == 3:

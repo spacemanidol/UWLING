@@ -13,6 +13,7 @@ sudo reboot
 conda create -n hw8 python=3
 conda activate hw8
 pip install numpy theano nose scipy pytorch-pretrained-bert torch
+wget http://www.daviddlewis.com/resources/testcollections/reuters21578/reuters21578.tar.gz
 #wget condprobs will go here
 '''
 

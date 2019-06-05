@@ -34,7 +34,7 @@ class Glove(object):
     corpus coocurrence matrix.
     """
 
-    def __init__(self, no_components=30, learning_rate=0.05,
+    def __init__(self, no_components=100, learning_rate=0.05,
                  alpha=0.75, max_count=100, max_loss=10.0,
                  random_state=None):
         """
