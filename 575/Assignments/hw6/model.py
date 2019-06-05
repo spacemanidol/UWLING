@@ -11,7 +11,7 @@ from keras.preprocessing import sequence
 from keras.utils import to_categorical
 from keras.models import Model
 from keras.models import Sequential
-from keras.layers import Dense, Activation, Input, Embedding, Lambda
+from keras.layers import Dense, Activation, Input, Embedding, Lambda, GlobalAveragePooling1D
 from sklearn.utils import column_or_1d
 
 EPOCHS = 20
@@ -97,7 +97,8 @@ def loadandRunData(embeddings_index, train_data_filename, test_data_filename):
     u_train = make2D(u_train, embedding_matrix)
     model = Sequential()
     model.add(Embedding(num_words,  EMBEDDING_DIM, weights=[embedding_matrix], trainable=True))
-    model.add(Lambda(function=lambda x: (K.sum(x, axis=1))/math.sqrt(MAX_SEQUENCE_LENGTH), output_shape=lambda shape: (shape[0],) + shape[2:]))
+    model.add(GlobalAveragePooling1D())
+    #model.add(Lambda(function=lambda x: (K.sum(x, axis=1))/math.sqrt(MAX_SEQUENCE_LENGTH), output_shape=lambda shape: (shape[0],) + shape[2:]))
     model.add(Dense(num_classes, activation=ACTIVATION))
     model.compile(optimizer=OPTIMIZER, loss=LOSSFUNCTION, metrics=['categorical_accuracy'])
     model.fit(x_train, y_train, epochs=EPOCHS)
