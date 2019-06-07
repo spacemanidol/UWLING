@@ -14,9 +14,6 @@ from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Input, GlobalMaxPooling1D, MaxPooling1D, Embedding, Conv1D, LSTM, Bidirectional
 from sklearn.utils import column_or_1d
 
-from deepswarm.backends import Dataset, TFKerasBackend
-from deepswarm.deepswarm import DeepSwarm
-
 EPOCHS = 20
 EMBEDDING_DIM = 200
 HIDDEN_DIM = 32
