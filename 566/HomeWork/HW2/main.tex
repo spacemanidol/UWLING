@@ -1,0 +1,220 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots,multicol}
+\usepackage{tikz-qtree}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{avm}
+\usepackage{rtrees}
+\usepackage{forest}
+\useforestlibrary{linguistics}
+\forestapplylibrarydefaults{linguistics}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = red, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
+\pgfplotsset{compat=newest} 
+\newcommand{\textarray}[1]{\ensuremath{\left[ \mbox{\ttfamily\begin{tabular}{l} #1 \end{tabular}}\right]}}
+\begin{document}
+\title{550 HW2}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{10/11/2019}
+\maketitle 
+\section{Chapter 4 Problem 1}
+\subsection{Lexical entries for the words here and there}
+Kim put the book here/there \\
+\begin{avm}
+\< here , \[ {\it word}\\
+	    HEAD & \ {\it prep} \\\
+	    VAL & \[ SPR & \< \avml\hfil \avmr \>\\
+	             COMPS &  \< \avml\hfil    \avmr \> \el \]\] \>
+\end{avm} \\
+\begin{avm}
+\< there , \[ {\it word}\\
+	    HEAD & \ {\it prep} \\\
+	    VAL & \[ SPR & \< \avml\hfil  \avmr \>\\
+	             COMPS &  \< \avml\hfil    \avmr \> \el \]\] \>
+\end{avm}
+\subsection{Lexical entry for the adjective fond}
+e.*The children are fond. \\
+f.*The children are fond with the ice cream. \\
+g.*The children are fond that they have ice cream. \\
+h. The children are fond of ice cream. \\
+\begin{avm}
+\< fond , \[ {\it word}\\
+	    HEAD & \ {\it adj}\\
+	    VAL & \[ SPR & \< \avml\hfil  \avmr \>\\
+	             COMPS &  \< \avml\hfil PP  \avmr \> \el \]\] \>
+\end{avm}
+\subsection{Lexical entries for the prepositions out, from and of}
+(i) Kim jumped out of the bushes. \\
+(ii) Bo jumped out from the bushes. \\
+(iii) Lee moved from under the bushes. \\
+(iv) Leslie jumped out from under the bushes. \\
+(v) Dana jumped from the bushes. \\
+(vi) Chris ran out the door. \\
+(vii)*Kim jumped out of from the bushes. \\
+(viii) Kim jumped out. \\
+(ix)*Kim jumped from \\
+\begin{avm}
+\< out , \[ {\it word}\\
+	    HEAD & \ {\it prep} \\\
+	    VAL & \[ SPR & \< \avml\hfil \avmr \>\\
+	             COMPS &  \< \avml\hfil (PP) \| (NP)   \avmr \> \el \]\] \>
+\end{avm}  \\
+\begin{avm}
+\< from , \[ {\it word}\\
+	    HEAD & \ {\it prep} \\\
+	    VAL & \[ SPR & \< \avml\hfil  \avmr \>\\
+	             COMPS &  \< \avml\hfil NP \| PP  \avmr \> \el \]\] \>
+\end{avm} \\
+\begin{avm}
+\< of , \[ {\it word}\\
+	    HEAD & \ {\it prep} \\\
+	    VAL & \[ SPR & \< \avml\hfil  \avmr \>\\
+	             COMPS &  \< \avml\hfil  NP \avmr \> \el \]\] \>
+\end{avm}
+\subsection{Lexical entries for the words grew, seemed, happy, and close}
+(i) They seemed happy (to me). \\
+(ii) Lee seemed an excellent choice (to me). \\
+(iii)*They seemed (to me). \\
+(iv) They grew happy. \\
+(v)*They grew a monster (to me). \\
+(vi)*They grew happy to me. \\
+(vii) They grew close to me. \\
+(viii) They seemed close to me to Sandy. \\
+\begin{avm}
+\< grew , \[ {\it word}\\
+	    HEAD &  {\it verb}\\
+		       \\
+	    VAL & \[ SPR & \< \avml\hfil NP\avmr \>\\
+	             COMPS & \el \q< {AP}\q> \]\] \>
+\end{avm} \\
+\begin{avm}
+\< seemed , \[ {\it word}\\
+	    HEAD &  \[ {\it verb}\\ \[AUX & - \]\]
+		       \\
+	    VAL & \[ SPR & \< \avml\hfil NP\avmr \>\\
+	             COMPS & \el \q< {AP \| NP, (PP)}\q> \]\] \>
+\end{avm} \\
+\begin{avm}
+\< happy, \[ {\it word}\\
+	    HEAD &  {\it adj}\\
+	    VAL & \[ SPR & \< \avml\hfil  \avmr \>\\
+	             COMPS & \< \avml\hfil \avmr \> \]\] \>
+\end{avm}  \\
+\begin{avm}
+\<close, \[ {\it word}\\
+	    HEAD &  {\it adj}\\
+	    VAL & \[ SPR & \< \avml\hfil  \avmr \>\\
+	             COMPS & \< \avml\hfil PP \avmr \> \]\] \>
+\end{avm}  \\
+\subsection{Draw A tree for: They seemed close to me to Sandy}
+Based on my lexicon seemed can license a AP and a PP and close can license a PP which makes the tree below. As a basic structure I am assuming (S (NP (They)) (VP (V (Seemed)) (AP (A (Close)) (PP (prep (to)) (N (me)))) (PP (prep (to)) (N (me))))). \\
+\scalebox{0.45}{
+\begin{forest}
+[ \begin{avm}\[ {\it phrase}\\ HEAD &  {\@0} \\ VAL & \[ SPR & \<\avml\hfil \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \end{avm} 
+   [\begin{avm} \[ {\@1} \[ {\it word}\\ HEAD &  \[ {\it noun} \\ AGR  & \[ PER & 3rd \\ NUM & pl \]\] \\ VAL & \[ SPR & \< \avml\hfil  \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\]\]\end{avm} 
+        [They]]
+    [\begin{avm} \[ {\it phrase}\\ HEAD & {\@0} \\ VAL & \[ SPR & \< \avml\hfil  \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \end{avm} 
+        [\begin{avm} \[ {\it word}\\ HEAD &  {\@0}\[ {\it verb} \\ AGR  \] \\ VAL & \[ SPR & \< \avml\hfil {\@1} \avmr \>\\ COMPS & \< \avml\hfil {\@3} {\@4} \avmr \> \]\] \end{avm} 
+            [ seemed]]
+        [\begin{avm} \[ {\@3} \[ {\it phrase}\\ HEAD &  {\@5} \\ VAL & \[ SPR & \< \avml\hfil  \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \] \end{avm}
+            [\begin{avm} \[ {\@7} \[  {\it word}\\ HEAD & {\it adj} \\ VAL & \[ SPR & \< \avml\hfil \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \] \] \] \end{avm} 
+                [close ]] 
+            [\begin{avm}  \[ {\it phrase}\\ HEAD {\@5}&  \\ VAL & \[ SPR & \< \avml\hfil {\@7} \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\]\end{avm}
+                    [\begin{avm}\[ {\@8} \[ {\it word}\\ HEAD &  {\it prep} \\ VAL & \[ SPR & \< \avml\hfil   \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \]\end{avm} [to] ] 
+                   [\begin{avm} \[ {\it phrase}\\ HEAD & {\@5}  \[ {\it noun} \\ AGR & \[ PER & 1st \\ NUM & sg \] \] \\ VAL & \[ SPR & \< \avml\hfil {\@8} \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \end{avm}
+                        [me] ] ] ]
+        [\begin{avm} \[ {\@4} \[ {\it phrase}\\ HEAD &  {\@6} \\ VAL & \[ SPR & \< \avml\hfil  \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \] \end{avm}
+            [\begin{avm} \[ {\@9}\[ {\it phrase}\\ HEAD &  {\it prep} \\ VAL & \[ SPR & \< \avml\hfil  \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \]\end{avm} [to] ] 
+            [\begin{avm} \[ {\it phrase}\\ HEAD &  {\@6} \[ {\it noun} \\ AGR & \[ PER & 1st \\ NUM & sg  \] \] \\ VAL & \[ SPR & \< \avml\hfil {\@9} \avmr \>\\ COMPS & \< \avml\hfil \avmr \> \]\] \end{avm}
+                [sandy] ] ] ] ]
+\end{forest}}
+\section{Chapter 4 Problem 2}
+\subsection{Do the Spanish nouns shown obey the SHAC?}
+Yes, as long as the gender requirements are specified in the lexicon, the SHAC continues to hold. Moreover, by following the SHAC and moving all agreement information into the lexicon, the grammar becomes more robust to changes across languages.
+\subsection{For English the feature GEND(ER) is only appropriate for 3sing, is this true for Spanish?}
+No since 3rd person plurals like las and los also require gender.
+\subsection{Lexical entries for la, los, and pinguino}
+I am not including count in the entries because I do not know if it is a property of the language. \\
+\begin{avm}
+\< la , \[ {\it word}\\
+	    HEAD &  \[ {\it det}\\
+		      AGR &  \[ PER & 3rd \\ NUM & pl \\ GEND & fem \] \] \\
+	    VAL & \[ SPR & \< \avml\hfil \avmr \>\\
+	             COMPS & \< \avml\hfil \avmr \> \]\] \>
+\end{avm} \\
+\begin{avm}
+\< los ,\[ {\it word}\\
+	    HEAD &  \[ {\it det}\\
+		      AGR &  \[ PER & 3rd \\ NUM & pl \\ GEND & masc \] \] \\\\
+	    VAL & \[ SPR & \< \avml\hfil \avmr \>\\
+	             COMPS & \< \avml\hfil \avmr \> \]\] \>
+\end{avm} \\
+\begin{avm}
+\< pinguino , \[ {\it word}\\
+	    HEAD & \[ {\it noun}\\
+		     AGR &  \[ PER & 3rd \\ NUM & sg \\ GEND & masc \]  \]\\
+	    VAL & \[ SPR & \< \avml\hfil D\avmr \>\\
+	             COMPS & \el \]\] \>
+\end{avm}
+\section{Chapter 4 Problem 8}
+\subsection{Where should we put the feature CASE?}
+In the lexicon so we don't have to modify the grammar but still account for the richness and subtlety of the language.
+\subsection{Would our analysis of determiner-noun agreement
+in English work for Wambaya determiner-noun agreement?}
+As long as the lexicon is updated to contain all contextual information of the language then yes it would work. As long as additional constraints such as sex verbs are at a logical level similar constraints like person(1st, 3rd) and number(singular, plural).
+\subsection{Lexical entries for bungmanyani, ngankiyaga, bungmaji, and iniyaga.}
+\begin{avm}
+\< bungmanyani , \[ {\it word}\\
+	    HEAD & \[ {\it noun} \\
+		      AGR & \[ PER & 3rd \\ NUM & sg \\ INFLE & ergative \\ GEND & fem \] \] \\
+	    VAL & \[ SPR & \< \avml\hfil D\\[-1ex]
+                               [INFLE ~ egrative] \avmr \>\\
+	             COMPS & \< \avml\hfil \avmr \>\]\] \>
+\end{avm} \\
+\begin{avm}
+\< ngankiyaga,  \[ {\it word}\\
+	    HEAD & \[ {\it det}\\
+		      AGR & \[ PER & 3rd \\ NUM & sg \\ INFLE & ergative \\ GEND & fem \] \] \\
+	    VAL & \[ SPR & \< \avml\hfil \avmr \>\\
+	             COMPS & \< \avml\hfil \avmr \>\]\] \>
+\end{avm}  \\
+\begin{avm}
+\< bungmaji , \[ {\it word}\\
+	    HEAD & \[ {\it noun}\\
+		       AGR & \[ PER & 3rd \\ NUM & sg \\ INFLE & accusative \\ GEND & masc \] \] \\
+	    VAL & \[ SPR & \< \avml\hfil D\\[-1ex]
+                               [INFLE ~ accusative] \avmr \>\\
+	             COMPS & \< \avml\hfil \avmr \>\]\] \>
+\end{avm} \\
+\begin{avm}
+\< iniyaga , \[ {\it word}\\
+	    HEAD & \[ {\it det}\\
+            AGR & \[ PER & 3rd \\ NUM & sg \\ INFLE & accusative \\ GEND & masc \] \] \\
+	    VAL & \[ SPR & \< \avml\hfil \avmr \>\\
+	             COMPS & \< \avml\hfil \avmr \>\]\] \>
+\end{avm}
+\section{Chapter 5 problem 3}
+\subsection{A.Lexical Values of hundred}
+Times relation, const relation, plus relation since the hundred is the head and must have those elements.
+\subsection{B.i-Which feature of which predication is the index of the specifier identified with?}
+The FACTOR1 feature of the times predication is what the specifier is identified with. 
+\subsection{B.ii-What about the index of the complement?} 
+The index of the compliment is found as TERM1 of the plus predication.
+\subsection{C.Which feature of which predication must this be}
+In FACTOR2 of times predication.
+\subsection{D. Lexical entry for hundred}
+\begin{avm}
+\< hundred , \[SYN \[ {\it word}\\
+	    HEAD & \[ {\it noun}\\ \] \\
+	    VAL \[ SPR \< \avml\hfil \avmr \> \\ COMPS \< \avml\hfil \avmr \> \\ MOD \< \avml\hfil \avmr \> \] \]\\
+        SEM \[ MODE & none \\ INDEX  &  m\\ RESTR \< \avml\hfil \[RELN & times \\ RESULT & k \\ FACTOR1 & m  \\ FACTOR2 & m  \] \[RELN & const \\ INST & M \\ VALUE & 100 \] \[RELN & plus \\ RESULT & i \\ TERM1 & j  \\ TERM2 & k  \] \avmr \> \]> \] \>
+\end{avm}
+\subsection{Why is this mismatch not a problem for the grammar?}
+The compositionality principle allows us not to have an issue because all of our RESTR values get summed up in the mother regardless of how the tree splits we still will retain the correct relations and values. Additionally the concept of bounding indexes to all variables and predication to eachother means that the operational order is still preserved.
+\end{document}

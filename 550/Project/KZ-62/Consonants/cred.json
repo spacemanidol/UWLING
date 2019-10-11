@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "influence-analyzer",
+  "private_key_id": "08ec9f5a51b5151287109c22590017e5ae0b653f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDKM43WjsLze2hS\nQAjn48tbrBEExSNleH35Qz8d+uLVlB1vQHOSNvVps3eUgXWNqai+oBfgaBDT7TnL\nRiEMOYPpU2jANsm+sMrXaCWDq4NrH2j2Tfr4cxshRZVUvpKx58RoTUBMkCUd9g2M\nfA5hOXEGIsJFurvlguZbCngwa5FlFMY3gzcImCs6GrSvZJhgL/JXFrjOcBW1a2ZE\nbh1q+blkDG6QQ36lHv+0gpSw3d8iHeOM/rkMOG71UF6rl8ylsGwLksU2Kulv6WD1\nEEYJvgmZfaw4WjIw6mUNJhkogTKPR/ZsGcnlfRSVcDy/K/hWhF3UOvQ5iXW/o/nZ\nmswdra4bAgMBAAECggEARAWJ3rcSEFTgqGLQXCo+vC0rYH5tRPJ+9n7P2ecPrifw\nqv90oaiJcLCmNrhCcpCzqsUyoxR/LLwuaBrEfVdP8AtWPutvfQ3+fu6TSDNHt57O\ncaWUG0alxtCgxuyBbwX4BdqPGfKX+fdPYYZOVBi91AGXd1u1YCVkFxZzjl5xgB4e\nw5a4Bua8sNK0DcOEPBc4F/Bz+89WsKrUSy5zJR4zRcGZ+vw2+SDv61fGfZkQsuJ5\ngquPkGJmsOEDoFqtd4NYF/5eq2owVZQxL5UjMW3ulDa4fmjAX8xFUGLgSn3fXoIo\ne8KPOzdfqZGOM/bOVK3v5PQwz22xXXgoeo4Fb3r0EQKBgQDtoY7vvDiDpfoveKen\nbCHrHlqFh+jTa8acCktcndxOwwOjRQoNaLDxZMg4V+gg2UNvUgwU+Ekik00B1XmB\n9fnT90NKRrH7PGqqXLeQD6+eNBswPOARHUdfBPyByx97kxWJWfgDi73lD03kV6zp\nVq2GzVGN1kg1yR21klvP6SUYuQKBgQDZ1OIcYu0QnDox6DbN9e47zvt78v222Ctn\nNxi0kVKvkT59MA0TNpoZFW4NL+sRnw42uN/T1js5uEdglSjlKhEBlvJcBDBlX44C\nJ3SI5OYLyOdkwflKNcdmua2AlxnRUNPWoefeOf5pd1+TYoy40wnpm1RkPnawSpMQ\nMTOVLoCrcwKBgACXTUa1XiKdsBCcKTaWY0M1cR4x51dXRkgvEl7pmZmsjH7EdjDw\nWLhQ+tqBBXfHco59UsBembf3S9K8WDAFj5iCXe16XYj1boJ79ozqLRKkqIinLht8\nyienWIVuHubsx7nuulov58oBDr2JpklySL40FobWyJkxpdxEv+u1db0pAoGBAMqu\nhPDqry/8XT2glpXPFar6rQ6oip/9xWzVXBxu92O6nk03T4MoE/vw76Q/iNatizkp\njcH6nMLZDzjzsMiB+q7i94DcuPcqEOU6NvlFGjOu7HbY8Y62OWIAtEpozbHwJhuY\nLDme9nTFiN2HHe6/FoMRb1WStTbVPL8dOKS/TyO3AoGAPyfId3TgAg6ZeQIydZr1\nquEpPQUhVepDWZBGAoppnj4Dn9EUNUTL3DhSqN130cgprcBG0th899ffudPusyal\nOBSsL+uoA/BDfJLCt0wVfEjFGQLbZ2nTVsnbgfE/2lfkVh5uscgQPBe+f3UTaIfn\nlp+eRY0N7UR2qblusZZyrdI=\n-----END PRIVATE KEY-----\n",
+  "client_email": "spacemanidol@influence-analyzer.iam.gserviceaccount.com",
+  "client_id": "103635534978037649389",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/spacemanidol%40influence-analyzer.iam.gserviceaccount.com"
+}
