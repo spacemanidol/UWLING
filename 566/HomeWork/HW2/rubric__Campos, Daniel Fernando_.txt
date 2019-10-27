@@ -1,0 +1,207 @@
+"Campos, Daniel Fernando"	
+max	descr
+79/100	Summary:
+	
+41/46	4.1
+19/20	4.2
+10/20	4.8
+9/14	5.1
+	
+	
+
+
+41/46	"Chapter 4, Problem 1"
+	
+	
+
+
+4/4	Part A: 4
+1/1	word
+1/1	HEAD prep
+1/1	SPR < >
+1/1	COMPS < >
+	
+
+
+4/4	Part B: 4
+1/1	word
+1/1	HEAD adj
+1/1	SPR < >
+1/1	COMPS < PP >
+	
+
+
+11/11	Part C: 11
+	out:
+1/1	HEAD prep
+1/1	COMPS is compatible with < >
+1/1	COMPS is compatible with < NP >
+1/1	COMPS is compatible with < PP >
+1/1	"COMPS is not compatible with anything else (e.g., < NP, PP >)"
+	
+	from:
+1/1	HEAD prep
+1/1	COMPS is compatible with < NP >
+1/1	COMPS is compatible with < PP >
+1/1	"COMPS is not compatible with anyting else (e.g., < NP, PP > or < > )"
+	
+	of 
+1/1	HEAD prep
+1/1	COMPS < NP >
+	
+
+
+15/15	Part D: 15
+	
+	grew
+1/1	HEAD verb
+1/1	SPR < NP >
+1/1	COMPS < AP >
+	
+	seemed
+1/1	HEAD verb
+1/1	SPR < NP >
+1/1	"COMPS is compatible with < AP , PP >"
+1/1	"COMPS is compatible with < NP , PP >"
+1/1	COMPS is compatible with < AP >
+1/1	COMPS is compatible with < NP >
+1/1	"COMPS is not compatible with anything else (e.g., < NP, AP > or < PP > )"
+	
+	happy
+1/1	HEAD adj
+1/1	COMPS < >
+	
+	close
+1/1	HEAD adj
+1/1	COMPS is compatible with < PP >
+1/1	"COMPS is not compatible with anything else other than < > (e.g., < NP > )"
+	
+
+
+7/12	Part E: 12
+1/1	no extra nodes
+2/2	word/phrase on nodes -.5 for each one wrong
+2/2	HEAD on nodes -.5 for each one wrong
+0/1	tag [1] (in three places)
+1/1	tag [2] (in two places)
+1/1	tag [3] (in two places)
+0/1	tag [4] (in two places)
+0/1	tag [5] (in two places)
+0/1	tag [6] (in two places)
+0/1	no extra non-empty SPR/COMPS
+	
+	"[Note: What matters with the tags is the identities, not the"
+exact numbers used.]	
+	
+
+
+19/20	"Chapter 4, Problem 2"
+	
+
+
+4/4	Part A: 4
+2/2	Yes
+2/2	Explanation
+	
+
+
+4/4	Part B: 4
+2/2	No
+2/2	Explanation
+	
+
+
+11/12	Part C: 12
+	Lex entry for la
+1/1	HEAD det
+0/1	NUM sg
+1/1	GEND fem
+1/1	SPR & COMPS both empty
+	
+	Lex entry for los
+1/1	HEAD det
+1/1	NUM pl
+1/1	GEND masc
+1/1	SPR & COMPS both empty
+	
+	Lex entry for pinguino
+1/1	HEAD noun
+1/1	NUM sg
+1/1	GEND masc
+1/1	SPR < [ HEAD det ] >
+	... it's okay with me if they put the AGR info either on HEAD or
+on SPR.HEAD.  The SHAC doesn't have to be directly reflected.	
+	
+
+
+10/20	"Chapter 4, Problem 8"
+	
+
+
+1/4	Part A: 4
+1/4	Inside HEAD (inside AGR is okay here)
+ 	 	 COMMENT: for attempt
+	
+
+
+9/16	Part B: 16
+1/4	Yes: Would work if we put CASE inside AGR. OR No: Didn't put it in AGR so SHAC isn't enough.
+ 	 	 COMMENT: for attempt
+	
+	bungmanyani
+1/1	HEAD.AGR.GEN fem
+0.5/1	HEAD(.AGR).CASE erg
+0/1	"SPR's GEN fem <- if they invoke the SHAC, this can be implicit"
+1/1	"SPR's CASE erg <- if they invoke the SHAC, and put CASE in AGR, this can be implicit"
+	
+	ngankiyaga
+1/1	GEN fem
+0.5/1	CASE erg
+	
+	bungmaji
+1/1	HEAD.AGR.GEN masc
+0.5/1	HEAD(.AGR).CASE acc
+0/1	"SPR's GEN masc <- if they invoke the SHAC, this can be implicit"
+1/1	"SPR's CASE acc <- if they invoke the SHAC, and put CASE in AGR, this can be implicit"
+	
+	iniyaga
+1/1	GEN masc
+0.5/1	CASE acc
+	
+	
+
+
+9/14	"Chapter 5, Problem 3"
+	
+
+
+3/3	Part A: 3
+1/1	"[RELN constant, VALUE 100]"
+1/1	[RELN times]
+1/1	[RELN plus]
+	
+
+
+2/2	Part B: 2
+1/1	SPR.INDEX = times.FACTOR1
+1/1	COMPS.INDEX = plus.TERM1
+	
+
+
+0/1	Part C: 1
+0/1	SEM.INDEX = plus.RESULT
+	
+
+
+2/6	Part D: 6
+1/1	SYN value copied over correctly
+0/1	MODE ref
+0/1	INDEX = plus.RESULT
+0/1	SPR.INDEX = times.FACTOR1
+0/1	COMPS.INDEX = plus.TERM1
+1/1	Exactly three relations
+	
+
+
+2/2	Part E: 2
+2/2	"Key idea: the syntactic order of combination doesn't have to match the semantic order, because the lexical entry mediates both independently."

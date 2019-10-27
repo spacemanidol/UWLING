@@ -43,15 +43,15 @@ LM Enhanced Glove(LME)
 
 ##### Modifying the cooccurrence matrix
 For this next experiment we ste away from the concept of updating the cooccurrence model with just setting the cooccurrence matrix to the probability. We only update occurences that happen in the text. All others are set to 0
-|Benchmark |Regular Glove |e^1            |e^e^(P(Y\|X)+P(X\|Y)|1              |P(Y\|X)+P(X\|Y)|
+|Benchmark |Regular Glove |e^1            |e^(P(Y\|X)+P(X\|Y)  |1              |P(Y\|X)+P(X\|Y)|
 |----------|--------------|---------------|--------------------|---------------|---------------|
 |MEN3K     |0.3144        |0.1761(-43.98%)|0.1758(-44.08%)     |0.0532(-83.08%)|0.0499(-84.13%)|
-|Simlex999 |0.1465        |0.1243(-15.13%)    |0.1243(-15.13%)     |0.0368(-74.89%)|0.0335(-77.14%)|
+|Simlex999 |0.1465        |0.1761(20.24%) |0.1243(-15.13%)     |0.0368(-74.89%)|0.0335(-77.14%)|
 |wordsim353|0.3840        |0.1322(-65.57%)|0.1898(-50.57%)     |0.0330(-91.42%)|0.0404(-89.48%)|
 |Average   |0.2816        |0.1615(-42.66%)|0.1633(-42.01%)     |0.0401(-85.45%)|0.0413(-85.35%)|
 
 #### Reuters Document Classification Training set size
 To explore the effects of these LME embeddings we created a logistic regression classifier for the document
-|WordVector|15 Samples|147 Samples|221 Samples|265 Samples|294 Samples|441 Samples|
+|WordVector|15 Samples|147 Samples|221 Samples|265 Samples|394 Samples|441 Samples|
 |Glove     |0.0006    |0.0585     |0.2745     |0.3093     |0.9463     |1.000      |
 |LME       |0.0074    |0.1823     |0.9940     |0.8809     |1.0000     |1.000      |

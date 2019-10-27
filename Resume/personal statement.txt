@@ -1,2 +1,15 @@
 describe your personal background personal challenges and opportunities that have impacted your decision to pursue a graduate degree.
-I was born in Mexico City mexico to a Mexican Father and American Mother which meant I grew up speaking english, spanish, and a dirty mix of the two. 
+
+I was born Mexico city to a Mexican father and an American mother. I grew up speaking English, spanish and a dirty mix of the two. 
+Early on I noticed that in both languages the way I talked and thought seemed off in some way.
+My spanish was too stiff for the native spanish speakers and my english was far too loose for the native english speakers. 
+This keyed me in to how important language was and how it seeps its way into everything. 
+In trying to understand language better I tried studying literature. It was soon obvious I wasn't good at it nor did it satisfy my curiosity around the uniqueness of language.
+Before my senior year in high school I managed sweet talk my way into an internship with Microsoft. It was there where I worked on a project exploring public sentiment on twitter for the mexican government.
+This project showed I could use computers to study how humans used language as a proxy for some unknown latent variable. I was hooked. I needed to study computer science.
+When I got to college I soon learned that my highschool had not prepared me for a Engineering school. Having no computer classes or high level math classes I found myself behind most other students and worked feverishly to catch up.
+My junior year I took a machine learning course with <ML at RPI professors name>. This class was the most difficult class I took all college but as I struggled through it I was mentally thriving.
+Inspired in learning how system can learn from large streams of data I took a semester off to work as a researcher at a Natural Language Processing firm(Basis Technology). It was here that I got my first real taste of research. I dove in head first into the world of NLP and began to learn about the broader community.
+After I graduated I came to Microsoft with a goal of finding a team I could work on language problems with. When I joined the translation services team in 2016 I became introduced to Neural Machine Translation via some presentations at Microsoft Research. Seeing how useful this could be I dove into understanding the subject matter and I used it as a spring board build up an adhoc foundation on 
+Seeking to formalize my knowledge in the world of NLP I enrolled in a masters at the University of Washington where I have built up a background in Linguistics and Computaional methods for NLP. 
+In all of my path through the academic and research world I have always been surprised by how few LatinX researchers and academics are. Intiaially I viewed this as a part of the system which I could not do much to change. After being involved with 

@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots,multicol}
+\usepackage{tikz-qtree}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{avm}
+\usepackage{rtrees}
+\usepackage{forest}
+\useforestlibrary{linguistics}
+\newcommand{\comment}[1]{}
+\forestapplylibrarydefaults{linguistics}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = red, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
+\pgfplotsset{compat=newest} 
+\mathchardef\period=\mathcode`.
+\DeclareMathSymbol{.}{\mathord}{letters}{"3B}
+\newcommand{\textarray}[1]{\ensuremath{\left[ \mbox{\ttfamily\begin{tabular}{l} #1 \end{tabular}}\right]}}
+\begin{document}
+\title{566 HW4}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{10/25/2019}
+\maketitle 
+\section{Chapter 6, Problem 6}
+\subsection{A}
+If we believe this proposed analysis to be correct then these example will not be licensed by the grammar since they would fail to uphold the SHAC since the two nouns do not have agreement on either their person or plurality.\\
+This means that this proposed analysis will fail because possessive pronouns do not have to have agreement with the noun they posses given the English grammar. In the first example phrase: my books, the my is singular but the books is plural. In the second example phrase: your cousin, the your is 2nd person while the cousin is not. In thinking about this more, it appears that possessive pronouns do not always have to agree with the NP.
+\subsection{B}
+\begin{avm}
+\< my , SEM \[ MODE & {\it none} \\ INDEX & {\it j}  \\ RESTR \< \avml\hfil \[ RELN  & {\it speaker} \\ INST & {\it j} \] \[ RELN  & {\it poss} \\ POSSESSOR & {\it j} \\ POSSESSED & {\it i} \]  \[ RELN  & {\it the} \\ BV & {\it i} \]\avmr \> \] \>
+\end{avm}
+\section{Chapter 7, Problem 1}
+\comment{
+As discussed in class yesterday, the sole test is the acceptability of reflexive v. non-reflexive pronouns in the complement of the preposition, coindexed with a suitable antecedent. Be sure not to modify the examples otherwise, lest you be testing a different verb + preposition pair. (In your example, by adding the passive verb built, you've changed the pair from have + around to build + around.)
+Predicative:introduce their own predication they have their own mode and index
+Argument-marking: case markers indicating the roles of NP referents in the situation denoted by the verb
+In these they do not have a mode or index values. 
+For prepositions that function as argument markers, however, we need to provide
+some way by which they can transmit information about their object NP up to the PP
+that they project. In particular, in order for the binding principles to make the right
+predictions with respect to objects of argument-marking prepositions, we need to be able
+(b) justify your classification by showing (with acceptable and/or unacceptable sentences) what reflexive and nonreflexive coreferential pronouns can or cannot appear as the preposition’s object.
+\\ We know its argument marking because its borrowing the mode and index from its compliment
+}
+\subsection{The dealer dealt an ace {\it to} Bo}
+Argument Making.\\
+Acceptable:The dealer dealt an ace {\it to} himsef. \\
+Unacceptable(where him and the dealer refer to the same entity):The dealer dealt an ace {\it to} him.
+\subsection{The chemist held the sample away {\it from} the flame.}
+argument making.\\
+Acceptable: The chemist held the sample away {\it from} themselves. \\
+Unacceptable: The chemist held the sample away {\it from} him.
+\subsection{Alex kept a loaded gun {\it beside} the bed.}
+Ambiguous\\
+Acceptable: Alex kept a loaded gun {\it beside} him.\\
+Acceptable: Alex kept a loaded gun {\it beside} himself. \\
+\subsection{We bought flowers {\it for} you}
+Argument Making.\\
+Acceptable: We bought flowers {\it for} ourselves.\\
+Unacceptable: We bought flowers {\it for} {\it for} us.\\
+\subsection{The car has a scratch {\it on} the fender.}
+Predicative. \\
+Acceptable: The car had a scratch {\it on} it. \\
+Unacceptable:  The car had a scratch {\it on} itself.
+\section{Chapter 8, Problem 1}
+These examples are not counter examples due to the 's being the head of the the PP that propagates up to the DP. The 's AGR list is empty which makes the PP specifier list empty. Since the SHAC requires specified entities to have agreement, by having the DP have no specified values for the DP, it can agree with the NP it is possessing. In other words, since only the 's passes up its empty specifier up to the head of the PP, all possessive DPs can agree with any type of noun. This makes phrases like Pat's parents and the children's game licensed by the grammar.
+\section{Chapter 8, Problem 2}
+\subsection{A}
+Examples would be dogs(for plural) and wine(for mass). \\ For dogs grammar can license: dogs, fourteen dogs, the dogs. Example sentences can be: Dogs run fast. Fourteen dogs live in the woods. In that home the dogs are friendly. \\ 
+For wine the grammar can license:wine, the wine.
+Example sentences can be: Lets drink some wine! Can you pass the wine?
+\subsection{B}
+To achieve the licensing of the examples i-iii but not for iv I updated the Imperative Rule in p216. I have added that the SPR can have optional values of either a D that is plural or a D that is a mass noun. Keep note that I have a parentesis around the two options for D s just my latex code makes them the same size as the <> .
+\begin{avm}
+\[ {\it phrase} \\ HEAD & {\it noun} \\ VAL & \[SPR \< \avml\hfil \avmr  \> \] \] \rightarrow  \[HEAD & \[{\it noun} \\ FORM & {\it base}\] \\ VAL & \[ SPR &  \< \avml \( \[ \hfil D \\\[NUM & {\it pl} \] \]  \| \[\hfil D \\  \[COUNT & {\it -} \] \]\)\avmr \> \\ COMPS & \< \avml \hfil \avmr \> \] \]  \>
+\end{avm}
+\end{document}

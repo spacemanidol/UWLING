@@ -3,8 +3,13 @@ In doing so, please cite relevant academic, professional, and personal experienc
 Your statement should not exceed 1,000 words and must be written in English. Please be sure to review your document before uploading and submitting your application.
 Beyond what is apparent from your transcripts, describe your preparation for your proposed program of study, including research projects you have undertaken or in which you have participated, as well as language preparation and other academic training where appropriate.
 
--Research at RPI
-    -TWC mobile app Freshman 2011
+In the next few years I will be focusing my efforts to research the relationships of complex systems using unlabeled data with a focus on data and learning efficiency. 
+I believe that my undergraduate and graduate schooling, my past research projects, and my current job have uniquely prepared to take on this problem starting with a shallow focus in language systems and expanding beyond.
+When I was pursuing my undergraduate degree my main goal was to ensure I built up a strong computer science base which I could build a specialization on. 
+Initially I was so focused on finishing this that I didn't realize I would could graduate in 3 years until my advisor told me 2.5 years in. Caught off guard and deeply motivated after my first machine learning course(Fall 2013) I took the spring semester off to work on a Research team.
+My time at Basis Technology(January-May 2014) was unlike anything I had experienced previously. I joined as a research intern where my focus was to explore multilingual Named Entity Resolution. In this role I great boss(Dr. James Clarke) who helped feed my voracious appetite to learn. Along with teaching me how to formulate ideas as testable hypohtesis, he exposed me to  
+RPI
+    -
     -Basis Tech NRR
     -Neural Network based task recognition
     -Networks of Influence and Diffusion
