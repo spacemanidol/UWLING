@@ -1,0 +1,26 @@
+\documentclass[11pt]{article}
+\usepackage{url}
+\usepackage{pgfplots} 
+\pgfplotsset{compat=newest} 
+\setlength\topmargin{-0.6cm}   
+\setlength\textheight{23.4cm}
+\setlength\textwidth{17.0cm}
+\setlength\oddsidemargin{0cm} 
+\begin{document}
+
+\title{Ling 572 Reading 3}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{02/28/2019}
+\maketitle 
+\section{ Q1: What does training data look like? That is, a classifier is trained with (x, y) pairs. For this reranking problem,what is x and what is y?   }
+The traning data for parsing x is the input sentence and y is the target parse. In the reranking problem, the goal is to rank all possible parse trees by how likley they are to occour for the given sentence.
+\section{ Q2: What happens at the test time? That is, what formula(s) one needs to calculate in order to determine the correct ranking of the candidate parse trees?}
+At test time a list of all possible parse tree with their plausability scores are produced. Then, to produce the predicted parse you select the parse that has the highest plasability which is produced by w $\cdot$ h(x) where w is learned weight vector and h(x) is the feature vector represenation.
+\section{ Q3:Conceptually, a parse tree is representedas a feature vector. What are the features?What are the feature values? How many features are there?}
+Each feature is a possible tree fragment. The feature values are the amount of times it appears in the full parse tree or the given example. The total features is all of possible tree fragments that occour in the entire training data.
+\section{Q4: In practice, is it necessary to represent a parse tree as a feature vector? Why or why not?}
+No since we can use the kernel to approximate the vector. 
+\end{document}
+
+
+

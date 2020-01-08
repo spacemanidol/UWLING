@@ -1,0 +1,28 @@
+Training vectors loaded from train1.vectors
+Testing vectors loaded from test1.vectors
+Splitting feature "israel" infogain=0.1655702580880536
+child0=2366 child1=334
+Splitting feature "fortress" infogain=0.044840944277430406
+child0=331 child1=3
+Splitting feature "i" infogain=0.2516291673878229
+child0=2 child1=1
+Splitting feature "aludra" infogain=0.04102344128567592
+child0=326 child1=5
+Splitting feature "com" infogain=0.3219280948873623
+child0=2 child1=3
+Splitting feature "repeated" infogain=0.03526998427326877
+child0=318 child1=8
+Splitting feature "turkish" infogain=0.17056799486610474
+child0=2159 child1=207
+Splitting feature "ken" infogain=0.06776873007471262
+child0=194 child1=13
+Splitting feature "c" infogain=0.1920058354921067
+child0=10 child1=3
+Splitting feature "canada" infogain=0.03541806217042335
+child0=186 child1=8
+Splitting feature "gun" infogain=0.10227847440609983
+child0=1813 child1=346
+Splitting feature "homeland" infogain=0.07184469497938906
+child0=343 child1=3
+Splitting feature "clayton" infogain=0.07665196151742815
+child0=1700 child1=113

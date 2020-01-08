@@ -1,0 +1,101 @@
+"Campos, Daniel Fernando"	
+max	descr
+78/100	Summary:
+	
+7/15	8.5
+51/55	8.6
+20/30	8.7
+	
+	
+7/15	8.5
+1/5	A
+1/5	answer (Yes)
+	
+6/10	B
+6/10	tree/explanation
+ 	 	 COMMENT: The logic is unclear (and does not lead to the right answer)
+	
+51/55	8.6
+
+
+5/5	Part A:
+1/1	HSR - same as English (in prose or in feature structures):
+2/2	HCR - complements before head (order of comps doesn't matter):
+2/2	nothing else wrong
+	
+
+
+28/30	Part B:
+	For each lexical entry:
+3/3	"Reasonable stem form (e.g., yonda or yom- or yon-) 1 each"
+1/3	Type of feature structure (lexeme or appropriate type that they defined) 1 each
+3/3	HEAD verb 1 each
+3/3	SPR non-empty 1 each
+3/3	Appropriate RELN value (Japanese word or English translation) 1 each
+3/3	INDEX = SIT 1 each
+	
+12/12	ARG-ST (or SPR + COMPS): 
+6/6	Arguments linked to correct roles 1 each role
+6/6	CASE values
+	
+
+
+12/14	Part C:
+2/2	Forms 1 each = 2
+0/2	Type of feature structure (lexeme or appropriate type that they defined) 1 each
+2/2	HEAD noun 1 each
+2/2	Optional SPR on hon
+2/2	DP doesn't end up on COMPS on hon
+2/2	no CASE specified 1 each
+2/2	appropriate RELN values  1 each
+2/2	appropriate INDEX values 1 each
+	
+
+
+6/6	Part D
+1/1	Type is i-rule
+1/1	OUTPUT form is some function of INPUT form
+2/2	OUTPUT (or INPUT) says [CASE acc]
+1/1	INPUT is constrained to be a noun (through defined lexeme type or HEAD value)
+1/1	no constraints that would give unification failure in rule or give rise to bad word structures
+	
+	
+
+
+20/30	Chapter 8.7:
+
+
+1/1	Part A: NOM 
+	
+
+
+1/1	Part B: DAT
+
+
+11/11	Part C:
+	
+1/1	Type  word
+1/1	HEAD verb
+1/1	ARG-ST has 3 elements
+3/3	CASE values aligned with semantic roles
+3/3	Each NP's index is matched to a semantic role
+2/2	SEM value copied over correctly
+	
+
+
+7/17	Part D:
+	
+1/1	d-rule
+2/1	INPUT restricted to verbs
+1/2	RESTR on OUTPUT = INPUT's RESTR + cause RLEN
+0/2	OUTPUT.INDEX = cause.SIT
+0/1	INPUT.INDEX = cause.CAUSED-EVENT
+1/1	output form is a function of input form
+0/1	OUTPUT's first ARG-ST has [CASE nom]
+0/2	OUTPUT's first ARG-ST.INDEX = cause.CAUSER
+0/1	OUTPUT's second ARG-ST has [CASE dat]
+0/2	OUTPUT's second ARG-ST.INDEX = INPUT.ARG-ST.FIRST.INDEX
+0/1	Does not identify INPUT.ARG-ST.FIRST (whole feature structure) with OUTPUT.ARG-ST.REST.FIRST
+1/1	Allows additional arguments (copied from INPUT to OUTPUT)
+	Ñ- okay if this requires one additional argument (as in data given).
+1/1	no other constraints that would give unification failure in rule or give rise to bad word structures

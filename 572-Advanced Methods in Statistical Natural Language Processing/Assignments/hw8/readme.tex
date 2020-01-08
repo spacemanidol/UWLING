@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{pgfplots}
+\usepackage{url}
+\pgfplotsset{compat=newest} 
+\setlength\topmargin{-0.6cm}   
+\setlength\textheight{23.4cm}
+\setlength\textwidth{17.0cm}
+\setlength\oddsidemargin{0cm} 
+\begin{document}
+\title{Ling 572 HW8}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{03/06/2019}
+\maketitle 
+
+\begin{table}[h]
+\centering
+\caption{Results on the binary task}
+\label{table1}
+\begin{tabular}{|c|r|l|l|l|r|l|l|l|} \hline
+
+Expt id & Kernel  & gamma  &  coef0  & degree & total\_sv & Training & Test & Test Acc\\ 
+        &         &        &         &        &           & Acc      & Acc  &  from Q2 \\ \hline
+1 & linear      & -   & -    & -  & 535 & 99.7222 & 95  & 95. \\ \hline
+2 & polynomial  & 1   & 0    & 2  & 792 & 99.7222 & 92  & 92.0\\ \hline
+3 & polynomial  & 0.1 & 0.5  & 2  &  775 & 99.7222 & 96.5 & 96.5\\ \hline
+4 & RBF         & 0.5 & -    & -  & 1798 & 99.7222  & 50  &  50\\ \hline
+5 & sigmoid     & 0.5 & -0.2 & -  & 1214 & 53.667  & 40.5 & 40.5 \\ \hline
+
+\end{tabular}
+\end{table}
+
+\end{document}
+
+
+

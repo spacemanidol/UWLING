@@ -1,0 +1,300 @@
+0 talk.politics.guns talk.politics.guns 
+1 talk.politics.guns talk.politics.guns 
+2 talk.politics.guns talk.politics.guns 
+3 talk.politics.guns talk.politics.guns 
+4 talk.politics.guns talk.politics.guns 
+5 talk.politics.guns talk.politics.misc ['employer', 'talk.politics.guns']
+6 talk.politics.guns talk.politics.misc ['president', 'talk.politics.guns']
+7 talk.politics.guns talk.politics.guns 
+8 talk.politics.guns talk.politics.mideast ['pose', 'talk.politics.guns']
+9 talk.politics.guns talk.politics.misc ['submit', 'talk.politics.guns']
+10 talk.politics.guns talk.politics.guns 
+11 talk.politics.guns talk.politics.misc ['president', 'talk.politics.guns']
+12 talk.politics.guns talk.politics.guns 
+13 talk.politics.guns talk.politics.guns 
+14 talk.politics.guns talk.politics.guns 
+15 talk.politics.guns talk.politics.misc ['health', 'talk.politics.guns']
+16 talk.politics.guns talk.politics.guns 
+17 talk.politics.guns talk.politics.guns 
+18 talk.politics.guns talk.politics.guns 
+19 talk.politics.guns talk.politics.guns 
+20 talk.politics.guns talk.politics.guns 
+21 talk.politics.guns talk.politics.guns 
+22 talk.politics.guns talk.politics.guns 
+23 talk.politics.guns talk.politics.misc ['health', 'talk.politics.guns']
+24 talk.politics.guns talk.politics.guns 
+25 talk.politics.guns talk.politics.guns 
+26 talk.politics.guns talk.politics.guns 
+27 talk.politics.guns talk.politics.guns 
+28 talk.politics.guns talk.politics.guns 
+29 talk.politics.guns talk.politics.misc ['territory', 'talk.politics.guns']
+30 talk.politics.guns talk.politics.guns 
+31 talk.politics.guns talk.politics.guns 
+32 talk.politics.guns talk.politics.guns ['president', 'talk.politics.guns'] ['icd', 'talk.politics.misc']
+33 talk.politics.guns talk.politics.guns 
+34 talk.politics.guns talk.politics.guns 
+35 talk.politics.guns talk.politics.guns 
+36 talk.politics.guns talk.politics.guns 
+37 talk.politics.guns talk.politics.guns 
+38 talk.politics.guns talk.politics.guns 
+39 talk.politics.guns talk.politics.guns 
+40 talk.politics.guns talk.politics.guns 
+41 talk.politics.guns talk.politics.guns 
+42 talk.politics.guns talk.politics.guns 
+43 talk.politics.guns talk.politics.guns ['threw', 'talk.politics.guns'] ['nra', 'talk.politics.misc']
+44 talk.politics.guns talk.politics.guns 
+45 talk.politics.guns talk.politics.guns 
+46 talk.politics.guns talk.politics.guns ['president', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+47 talk.politics.guns talk.politics.guns ['money', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+48 talk.politics.guns talk.politics.guns 
+49 talk.politics.guns talk.politics.guns 
+50 talk.politics.guns talk.politics.guns 
+51 talk.politics.guns talk.politics.guns 
+52 talk.politics.guns talk.politics.guns 
+53 talk.politics.guns talk.politics.guns 
+54 talk.politics.guns talk.politics.guns 
+55 talk.politics.guns talk.politics.guns 
+56 talk.politics.guns talk.politics.guns 
+57 talk.politics.guns talk.politics.guns 
+58 talk.politics.guns talk.politics.guns 
+59 talk.politics.guns talk.politics.guns 
+60 talk.politics.guns talk.politics.guns 
+61 talk.politics.guns talk.politics.guns 
+62 talk.politics.guns talk.politics.guns 
+63 talk.politics.guns talk.politics.guns 
+64 talk.politics.guns talk.politics.guns 
+65 talk.politics.guns talk.politics.guns 
+66 talk.politics.guns talk.politics.guns 
+67 talk.politics.guns talk.politics.misc ['conservatives', 'talk.politics.guns']
+68 talk.politics.guns talk.politics.guns 
+69 talk.politics.guns talk.politics.guns 
+70 talk.politics.guns talk.politics.guns 
+71 talk.politics.guns talk.politics.guns 
+72 talk.politics.guns talk.politics.guns 
+73 talk.politics.guns talk.politics.guns 
+74 talk.politics.guns talk.politics.guns 
+75 talk.politics.guns talk.politics.misc ['president', 'talk.politics.guns']
+76 talk.politics.guns talk.politics.guns 
+77 talk.politics.guns talk.politics.misc ['health', 'talk.politics.guns']
+78 talk.politics.guns talk.politics.misc ['submit', 'talk.politics.guns']
+79 talk.politics.guns talk.politics.guns ['money', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+80 talk.politics.guns talk.politics.guns 
+81 talk.politics.guns talk.politics.misc ['ecn', 'talk.politics.guns']
+82 talk.politics.guns talk.politics.guns 
+83 talk.politics.guns talk.politics.misc ['president', 'talk.politics.guns']
+84 talk.politics.guns talk.politics.guns 
+85 talk.politics.guns talk.politics.guns 
+86 talk.politics.guns talk.politics.misc ['money', 'talk.politics.guns']
+87 talk.politics.guns talk.politics.guns 
+88 talk.politics.guns talk.politics.misc ['gay', 'talk.politics.guns']
+89 talk.politics.guns talk.politics.guns 
+90 talk.politics.guns talk.politics.guns 
+91 talk.politics.guns talk.politics.guns 
+92 talk.politics.guns talk.politics.misc ['president', 'talk.politics.guns']
+93 talk.politics.guns talk.politics.guns ['health', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+94 talk.politics.guns talk.politics.guns ['ecn', 'talk.politics.guns'] ['jupiter', 'talk.politics.misc']
+95 talk.politics.guns talk.politics.guns 
+96 talk.politics.guns talk.politics.guns 
+97 talk.politics.guns talk.politics.guns 
+98 talk.politics.guns talk.politics.guns 
+99 talk.politics.guns talk.politics.guns ['ecn', 'talk.politics.guns'] ['jupiter', 'talk.politics.misc']
+100 talk.politics.mideast talk.politics.guns 
+101 talk.politics.mideast talk.politics.mideast ['eggertj', 'talk.politics.guns']
+102 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+103 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+104 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+105 talk.politics.mideast talk.politics.misc ['president', 'talk.politics.guns']
+106 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+107 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+108 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+109 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+110 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+111 talk.politics.mideast talk.politics.mideast ['money', 'talk.politics.guns'] ['mohammad', 'talk.politics.misc']
+112 talk.politics.mideast talk.politics.mideast ['eggertj', 'talk.politics.guns']
+113 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+114 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+115 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+116 talk.politics.mideast talk.politics.mideast ['muslim', 'talk.politics.guns']
+117 talk.politics.mideast talk.politics.guns 
+118 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+119 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+120 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+121 talk.politics.mideast talk.politics.guns 
+122 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+123 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+124 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+125 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+126 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+127 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+128 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+129 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+130 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+131 talk.politics.mideast talk.politics.misc ['money', 'talk.politics.guns']
+132 talk.politics.mideast talk.politics.guns 
+133 talk.politics.mideast talk.politics.misc ['party', 'talk.politics.guns']
+134 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+135 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+136 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+137 talk.politics.mideast talk.politics.mideast ['elias', 'talk.politics.guns']
+138 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+139 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+140 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+141 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+142 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+143 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+144 talk.politics.mideast talk.politics.misc ['president', 'talk.politics.guns']
+145 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+146 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+147 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+148 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+149 talk.politics.mideast talk.politics.misc ['party', 'talk.politics.guns']
+150 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+151 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+152 talk.politics.mideast talk.politics.guns 
+153 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+154 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+155 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+156 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+157 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+158 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+159 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+160 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+161 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+162 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+163 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+164 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+165 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+166 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+167 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+168 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+169 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+170 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+171 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+172 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+173 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+174 talk.politics.mideast talk.politics.mideast ['muslim', 'talk.politics.guns']
+175 talk.politics.mideast talk.politics.mideast ['muslims', 'talk.politics.guns']
+176 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+177 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+178 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+179 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+180 talk.politics.mideast talk.politics.mideast ['arab', 'talk.politics.guns']
+181 talk.politics.mideast talk.politics.misc ['employer', 'talk.politics.guns']
+182 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+183 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+184 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns'] ['scott', 'talk.politics.mideast'] ['turkey', 'talk.politics.misc']
+185 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+186 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+187 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+188 talk.politics.mideast talk.politics.guns 
+189 talk.politics.mideast talk.politics.guns 
+190 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+191 talk.politics.mideast talk.politics.mideast ['eggertj', 'talk.politics.guns']
+192 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+193 talk.politics.mideast talk.politics.guns 
+194 talk.politics.mideast talk.politics.guns 
+195 talk.politics.mideast talk.politics.mideast ['israel', 'talk.politics.guns']
+196 talk.politics.mideast talk.politics.guns 
+197 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+198 talk.politics.mideast talk.politics.guns 
+199 talk.politics.mideast talk.politics.mideast ['turkish', 'talk.politics.guns']
+200 talk.politics.misc talk.politics.guns ['israeli', 'talk.politics.guns'] ['sporting', 'talk.politics.mideast']
+201 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+202 talk.politics.misc talk.politics.misc ['health', 'talk.politics.guns']
+203 talk.politics.misc talk.politics.misc ['gay', 'talk.politics.guns']
+204 talk.politics.misc talk.politics.misc ['kaldis', 'talk.politics.guns']
+205 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+206 talk.politics.misc talk.politics.guns 
+207 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+208 talk.politics.misc talk.politics.guns 
+209 talk.politics.misc talk.politics.misc ['ncr', 'talk.politics.guns']
+210 talk.politics.misc talk.politics.misc ['phil', 'talk.politics.guns']
+211 talk.politics.misc talk.politics.misc ['phil', 'talk.politics.guns']
+212 talk.politics.misc talk.politics.misc ['hallam', 'talk.politics.guns']
+213 talk.politics.misc talk.politics.misc ['submit', 'talk.politics.guns']
+214 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+215 talk.politics.misc talk.politics.mideast ['israel', 'talk.politics.guns']
+216 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+217 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+218 talk.politics.misc talk.politics.guns 
+219 talk.politics.misc talk.politics.misc ['employer', 'talk.politics.guns']
+220 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+221 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+222 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns'] ['gun', 'talk.politics.misc'] ['ncr', 'talk.politics.guns']
+223 talk.politics.misc talk.politics.mideast ['turkish', 'talk.politics.guns']
+224 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+225 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+226 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+227 talk.politics.misc talk.politics.misc ['ncr', 'talk.politics.guns']
+228 talk.politics.misc talk.politics.guns 
+229 talk.politics.misc talk.politics.guns 
+230 talk.politics.misc talk.politics.misc ['health', 'talk.politics.guns']
+231 talk.politics.misc talk.politics.guns 
+232 talk.politics.misc talk.politics.misc ['kaldis', 'talk.politics.guns']
+233 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+234 talk.politics.misc talk.politics.misc ['kaldis', 'talk.politics.guns']
+235 talk.politics.misc talk.politics.guns ['clayton', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+236 talk.politics.misc talk.politics.misc ['threw', 'talk.politics.guns']
+237 talk.politics.misc talk.politics.mideast ['muslims', 'talk.politics.guns']
+238 talk.politics.misc talk.politics.guns 
+239 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+240 talk.politics.misc talk.politics.mideast ['turkish', 'talk.politics.guns']
+241 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+242 talk.politics.misc talk.politics.misc ['kaldis', 'talk.politics.guns']
+243 talk.politics.misc talk.politics.misc ['gay', 'talk.politics.guns']
+244 talk.politics.misc talk.politics.mideast ['israel', 'talk.politics.guns']
+245 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+246 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+247 talk.politics.misc talk.politics.guns 
+248 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+249 talk.politics.misc talk.politics.guns 
+250 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+251 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+252 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+253 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+254 talk.politics.misc talk.politics.misc ['health', 'talk.politics.guns']
+255 talk.politics.misc talk.politics.guns 
+256 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+257 talk.politics.misc talk.politics.misc ['money', 'talk.politics.guns']
+258 talk.politics.misc talk.politics.misc ['employer', 'talk.politics.guns'] ['gun', 'talk.politics.misc'] ['visser', 'talk.politics.guns']
+259 talk.politics.misc talk.politics.misc ['health', 'talk.politics.guns']
+260 talk.politics.misc talk.politics.misc ['demon', 'talk.politics.guns']
+261 talk.politics.misc talk.politics.guns 
+262 talk.politics.misc talk.politics.misc ['employer', 'talk.politics.guns']
+263 talk.politics.misc talk.politics.guns 
+264 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+265 talk.politics.misc talk.politics.misc ['health', 'talk.politics.guns']
+266 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+267 talk.politics.misc talk.politics.guns 
+268 talk.politics.misc talk.politics.guns 
+269 talk.politics.misc talk.politics.misc ['ecn', 'talk.politics.guns']
+270 talk.politics.misc talk.politics.guns ['ecn', 'talk.politics.guns'] ['censoring', 'talk.politics.misc']
+271 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns'] ['gun', 'talk.politics.misc'] ['party', 'talk.politics.guns']
+272 talk.politics.misc talk.politics.misc ['president', 'talk.politics.guns']
+273 talk.politics.misc talk.politics.guns 
+274 talk.politics.misc talk.politics.guns ['party', 'talk.politics.guns'] ['sw', 'talk.politics.misc']
+275 talk.politics.misc talk.politics.guns ['hallam', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+276 talk.politics.misc talk.politics.misc ['visser', 'talk.politics.guns']
+277 talk.politics.misc talk.politics.misc ['intellectual', 'talk.politics.guns']
+278 talk.politics.misc talk.politics.guns 
+279 talk.politics.misc talk.politics.misc ['visser', 'talk.politics.guns']
+280 talk.politics.misc talk.politics.guns 
+281 talk.politics.misc talk.politics.guns 
+282 talk.politics.misc talk.politics.misc ['employer', 'talk.politics.guns']
+283 talk.politics.misc talk.politics.misc ['employer', 'talk.politics.guns']
+284 talk.politics.misc talk.politics.misc ['employer', 'talk.politics.guns']
+285 talk.politics.misc talk.politics.misc ['hallam', 'talk.politics.guns']
+286 talk.politics.misc talk.politics.guns ['hallam', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+287 talk.politics.misc talk.politics.misc ['hallam', 'talk.politics.guns']
+288 talk.politics.misc talk.politics.misc ['spector', 'talk.politics.guns']
+289 talk.politics.misc talk.politics.guns ['clayton', 'talk.politics.guns'] ['gun', 'talk.politics.misc']
+290 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+291 talk.politics.misc talk.politics.misc ['employer', 'talk.politics.guns']
+292 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+293 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+294 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+295 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+296 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+297 talk.politics.misc talk.politics.misc ['clayton', 'talk.politics.guns']
+298 talk.politics.misc talk.politics.guns 
+299 talk.politics.misc talk.politics.misc ['threw', 'talk.politics.guns']

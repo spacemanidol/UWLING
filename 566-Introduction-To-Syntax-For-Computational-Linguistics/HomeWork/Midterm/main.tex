@@ -1,0 +1,189 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{pgfplots,multicol}
+\usepackage{tikz-qtree}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{avm}
+\usepackage{rtrees}
+\usepackage{forest}
+\usepackage{rotating, graphicx}
+\useforestlibrary{linguistics}
+\newcommand{\comment}[1]{}
+\forestapplylibrarydefaults{linguistics}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = red, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = blue %Colour of citations
+}
+\pgfplotsset{compat=newest} 
+\mathchardef\period=\mathcode`.
+\newcommand{\textarray}[1]{\ensuremath{\left[ \mbox{\ttfamily\begin{tabular}{l} #1 \end{tabular}}\right]}}
+\begin{document}
+\title{566 Midterm}
+\author{Daniel Campos  \tt {dacampos@uw.edu}}
+\date{11/08/2019}
+\maketitle 
+\section{Chapter 10, Problem 1}
+For the examples (i) - (viii) the treatment of passives sketched in the text does not always correctly predict the grammar. Our grammar will improperly predict example (v) since it will incorrectly fail the Anaphoric Agreement Principle (AAP). For the examples that include the active subject of the passive verb(e.g. by the doctor) I have included it in the ARG-ST usually with the index j.
+\subsection{She was introduced to herself (by the doctor).}
+Based on our text, this example is properly predicted as a grammatical sentence. As we can see below in the ARG-ST, in this sentence, the anaphora(herself) NP is outranked by its co-indexed element(She) which satisfies Principle A of the AAP. Moreover, in using the Passive Lexical Rule, the PP is resolved, and the Case Constraint and the Binding Theory comes into play. \\
+\begin{avm}
+\< introduced , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[PP \\ \[INDEX & i \\CASE & {\it acc} \\MODE & {\it ana} \]\] , \[ PP \\ \[FORM & {\it by} \\ INDEX & j \\ MODE & {\it ref} \] \] \avmr \> \] \>
+\end{avm}
+\subsection{*She was introduced to her (by the doctor).}
+Based on our text, this example is properly predicted as an ungrammatical sentence. As we can see below in the ARG-ST, in this sentence, the co-indexed element(her) it is a [MODE ref] element that is co indexed with another element that outranks it(the first NP on the list, she). Consequently, the co-indexing indicated is not permitted because its a violation of Principle B of the AAP.\\
+\begin{avm}
+\< introduced , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[PP \\ \[INDEX & i \\CASE & {\it acc} \\MODE & {\it ref} \]\] , \[ PP \\ \[FORM & {\it by} \\ INDEX & j \\ MODE & {\it ref} \] \] \avmr \> \] \>
+\end{avm}
+\subsection{The barber was shaved (only) by himself}
+Based on our text, this example is properly predicted as a grammatical sentence. As we can see below in the ARG-ST, in this sentence, the anaphora(himself) NP is outranked by its co-indexed element(barber) which satisfies Principle A of the Anaphoric Agreement Principle (AAP).\\
+\begin{avm}
+\< shaved , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[ PP \\ \[FORM & {\it by} \\ INDEX & i \\ MODE & {\it ana} \] \] \avmr \> \] \>
+\end{avm}
+\subsection{*The barber was shaved (only) by him}
+Based on our text, this example is properly predicted as an ungrammatical sentence. As we can see below in the ARG-ST, in this sentence, the co-indexed element(him) it is a [MODE ref] element that is co indexed with another element that outranks it(the first NP on the list, barber). Consequently, the co-indexing indicated is not permitted based on Principle B of the AAP. \\
+\begin{avm}
+\< shaved , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[ PP \\ \[FORM & {\it by} \\ INDEX & i \\ MODE & {\it ref} \] \] \avmr \> \] \>
+\end{avm}
+\subsection{The students were introduced to other (by Leslie)}
+Based on our text this, example is improperly predicted as an ungrammatical sentence. As we can see below in the ARG-ST, in this sentence, the co-indexed element(other) it is a [MODE ref] element that is co indexed with another element that outranks it(the first NP on the list, students). Consequently, the co-indexing indicated is not permitted based on Principle B of the AAP which will rule this sentence as ungrammatical despite it being grammatical in real English. \\
+\begin{avm}
+\< introduced , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[PP \[INDEX & i \\ CASE & {\it acc} \\MODE & {\it ref} \]\] , \[ PP \\ \[FORM & {\it by} \\ INDEX & j \\ MODE & {\it ref} \] \] \avmr \> \] \>
+\end{avm}
+\subsection{*The students were introduced to them (by Leslie)}
+Based on our text this example is properly predicted as an ungrammatical sentence. As we can see below in the ARG-ST, in this sentence, the co-indexed element(them) it is a [MODE ref] element that is co indexed with another element that outranks it(the first NP on the list, students). Consequently, the co-indexing indicated is a violation of Principle B of the AAP. \\
+\begin{avm}
+\< introduced , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[PP \[INDEX & i \\CASE & {\it acc} \\MODE & {\it ref} \]\] , \[ PP \\ \[FORM & {\it by} \\ INDEX & j \\ MODE & {\it ref} \] \] \avmr \> \] \>
+\end{avm}
+\subsection{Kim was introduced to Larry by himself}
+Based on our text, this example is properly predicted as a grammatical sentence. As we can see below in the ARG-ST, in this sentence, the anaphora(himself) NP is outranked by its co-indexed element(Larry) which satisfies Principle A of the Anaphoric Agreement Principle (AAP).  \\
+\begin{avm}
+\< introduced , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[NP_j \[CASE & {\it acc} \\MODE & {\it ref} \]\] , \[ PP \\ \[FORM & {\it by} \\ INDEX & j \\ MODE & {\it ana} \] \] \avmr \> \] \>
+\end{avm}
+\subsection{*Kim was introduced to himself by Larry.}
+Based on our text this example is properly predicted as an ungrammatical sentence. As we can see below in the ARG-ST, in this sentence, the co-indexed element(himself) it is a [MODE ana] element that is co indexed with another element that it outranks(the last NP on the list, Larry). Consequently, the co-indexing indicated is not permitted based on Principle B and Principle Aof the AAP.
+\begin{avm}
+\< introduced , \[ ARG-ST & \< \avml \[NP_i \\ \[MODE & {\it ref} \] \] , \[NP_j \[CASE & {\it acc} \\MODE & {\it ana} \]\] , \[ PP \\ \[FORM & {\it by} \\ INDEX & ij\\ MODE & {\it ref} \] \] \avmr \> \] \>
+\end{avm}
+\section{Chapter 10, Problem 3}
+These underline once again the need for a theory of lexical irregularity and exceptions
+to lexical rules
+\subsection{Is this alternation productive?}
+I do not believe this alternation is productive because it opens the flood gates for the grammar to license sentences as grammatical that are not. As mentioned in the text, there are only certain verbs particularly in the idiomatic form that break this alteration this alteration still introduces a non zero amount of exceptions that need to be dealt with elsewhere in the grammar. If instead of having these alterations we maintain two separate types of datives(and two forms of most verbs in our lexicon) we do see a likely large growth in our lexicon size(since most verbs would work under this alteration) but we do not have to add secondary and terciary measure to deal with the exceptions and ensure they do not license wrong sentences. Some examples of the incorrectly licensed alterations would be: \\ 1. The IRS audited a return to Trump. \\ 2. * The IRS audited Trump a return. \\ Example below refers to cat the linux command. \\ 3. Susan catted the file to bash \\ 4. * Susan catted bash the file.
+\subsection{Formulate a lexical rule for the dative alternation.}
+For this rule I will use a D-Rule because our rule is going to specify a different ARG-ST value, change the order of our COMPS values, and changing one of our comps' NP to a PP. Each one of these changes would be inconsistent with the constraints on i-rule which means we need a d-rule. I have a helper function $F_{DAR}$ which modifies our verb to become a causative verb.\\
+Dative Alteration Lexical Rule \\
+\begin{avm}
+\[{\it d-rule} \\  INPUT & \< \avml{\@1}, \[{\it verb-lxm} \\ SYN & \[VAL & \[SPR & \< \avml {\@2} \avmr \> \\ COMPS & \< \avml {\@3}NP , {\@4}NP\avmr \> \] \\  ARG-ST & \< \avml {\@2},{\@3},{\@4} \avmr \> \] \]  \avmr \> \\ OUTPUT & \< \avml F_{DAR}({\@1}) , \[{\it verb-lxm} \\ SYN & \[VAL & \[SPR & \< \avml {\@2} \avmr \> \\ COMPS & \< \avml {\@4}NP ,{\@3}PP \avmr \> \] \\ ARG-ST & \< \avml {\@2} {\@4},{\@3} \avmr \> \] \]  \avmr \> \]
+\end{avm}
+\subsection{Dative Alteration Lexical Rule interacts with the Passive Lexical Rule}
+Given the way these rules are structured, we first want to apply the Dative Alteration Lexical Rule(DALR) followed by the Passive Lexical Rule(PLR). We choose this order because the DALR changes the COMPS values and the PLR can function independent of them. If we were to apply the PLR before the DALR we would need a second DALR that can modify passive verbs. When these rules are chained together we can think of the effects as below. \\
+\begin{avm}
+\[{\it d-rule} \\  INPUT & \< \avml{\@1}, \[{\it verb-lxm} \\ SYN & \[VAL & \[SPR & \< \avml {\@2} \avmr \> \\ COMPS & \< \avml {\@3}NP , {\@4}NP \avmr \> \] \\  ARG-ST & \< \avml \[INDEX & i\] \oplus {\@2},{\@3},{\@4} \avmr \> \] \]  \avmr \> \\ DALR-OUTPUT & \< \avml F_{DAR}({\@1}) , \[{\it verb-lxm} \\ SYN & \[VAL & \[SPR & \< \avml {\@2} \avmr \> \\ COMPS & \< \avml {\@4}NP ,{\@3}PP \avmr \> \] \\ ARG-ST & \< \avml  \[INDEX & i\] \oplus {\@2}, {\@4},{\@3} \avmr \> \] \]  \avmr \>  \\ PLR-OUTPUT & \< \avml F_{PSP}({\@1}) , \[{\it verb-lxm} \\ SYN & \[HEAD &\[FORM & {\it pass} \] \\ VAL & \[SPR & \< \avml {\@2} \avmr \> \\ COMPS & \< \avml {\@4}NP ,{\@3}PP \avmr \> \] \\ ARG-ST & \< \avml  {\@4},{\@3} \oplus {\@2}(\[PP \\FORM & by \\ INDEX & i\) \avmr \> \] \]  \avmr \> \]
+\end{avm} \\ 
+In context of sentence iii:(Merle was handed a book by Dale) we apply the DALR and shift the AGR-ST values from (1) to (2) and then we apply the PLR to shift the ARG-ST values from (2) to (3) where \begin{avm}{\@2}\end{avm} refers to Merle, \begin{avm}{\@3}\end{avm} refers to book and \begin{avm}{\@3}\end{avm} refers to Dale \\
+\begin{equation}
+\begin{avm}
+\[ARG-ST & \< \avml \[INDEX & i\] \oplus {\@2},{\@3},{\@4} \avmr \> \]
+\end{avm}
+\end{equation}
+\begin{equation}
+\begin{avm}
+\[ARG-ST & \< \avml \[INDEX & i\] \oplus {\@2},{\@4},{\@3} \avmr \> \]
+\end{avm}
+\end{equation}
+\begin{equation}
+\begin{avm}
+\[ARG-ST & \< \avml {\@4} {\@3} \oplus {\@2}(\[PP \\FORM & by \\ INDEX & i\) \avmr \> \]
+\end{avm}
+\end{equation}
+In context of sentence iv:(A book was handed to Merle by Dale) we apply the DALR (taking (4) to (5) followed by the PLR which takes the AGR-ST to (6) where \begin{avm}{\@2}\end{avm} refers to Merle, \begin{avm}{\@3}\end{avm} refers to book and \begin{avm}{\@3}\end{avm} refers to Dale \\
+\begin{equation}
+\begin{avm}
+\[ARG-ST & \< \avml \[INDEX & i\] \oplus {\@2},{\@3},{\@4} \avmr \> \]
+\end{avm}
+\end{equation}
+\begin{equation}
+\begin{avm}
+\[ARG-ST & \< \avml \[INDEX & i\] \oplus {\@2},{\@4},{\@3} \avmr \> \]
+\end{avm}
+\end{equation}
+\begin{equation}
+\begin{avm}
+\[ARG-ST & \< \avml  {\@4},{\@3} \oplus {\@2}(\[PP \\FORM & by \\ INDEX & i\) \avmr \> \]
+\end{avm}
+\end{equation} \\
+\subsection{Fail to license A book was handed Merle by Dale.}
+The grammar fails to license v(correctly for a simple reason, Merle is a NP instead of a PP which a dative altered passive verb needs. If a to/by was added before Merle then the sentence would be licensed by our grammar.
+\section{Send the postcard or flyer to Sandy's address!}
+\subsection{Lexical Types of lexical entries}
+1. send is a dtv-lm. \\ 2. the is a det-lxm. \\ 3. postcard is a cntn-lxm. \\ 4.or is a conj-lxm. \\ 5. flyer is a cntn-lxm. \\ 6. to is a argmkp-lxm. \\ 7. Sandy is a cntn-lxm. \\ 8. 's is a det-lxm \\ 9. Address is a cntn-lxm. \\ 
+\comment{\begin{avm}
+\< \avml send , \[{\it dtv-lm} \\ SYN & \[HEAD & \[{\it verb} \\CASE & NOM \\ ARG & {\@1} \] \\ VAL & \[SPR & \< \avml \[AGR {\@1} \] \avmr \> \] \] \\ ARG-ST & \< \avml NP_i, NP_j , NP_k \avmr \> \\ SEM & \[MODE & {\it prop} \\ INDEX & s \\ RESTR & \<\[RELN & send \\ SIT & {\it s} \\ SENDER & {\it i} \\ RECIPIENT & {\it j} \\ SENT & {\it k}  \] \avmr \> \] \] \avmr \>
+\end{avm} \\
+\begin{avm}
+\< \avml the, \[{\it det-lxm} \\ SYN & \[HEAD & \[{\it det} \\ ARG & {\it 3sing} \\ COUNT & + \] \\ VAL & \[SPR & \< \avml  \avmr \> \] \] \\ ARG-ST & \< \avml  \avmr \> \\ SEM & \[MODE & {\it none} \\ INDEX & i \\ RESTR & \<\[RELN & exists \\ BV & {\it i} \] \avmr \> \] \]
+\avmr \>
+\end{avm} \\
+\begin{avm}
+\< \avml postcard , \[{\it cntn-lxm} \\ SYN & \[ HEAD & \[{\it noun} \\ AGR & {\@1}\[PER & {\it 3rd} \\NUM & {\it sg} \] \] \\ VAL & \[SPR & \< \avml {\@2}\[AGR & {\@1} \] \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \\ SEM & \[MODE & {\it ref} \\ INDEX & {\it i} \\ RESTR & \< \avml \[RELN & postcard \\ INST & {\it i} \] \avmr \> \] \\ AGR-ST  & \< \avml {\@2}\[DP \\ COUNT & + \] \avmr \> \]  \avmr \>
+\end{avm} \\
+\begin{avm}
+\< \avml or , \[{\it conj-lxm} \\ SYN & \[ HEAD & \[{\it conj}  \] \\ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \\ SEM & \[MODE & {\it none} \\ INDEX & {\it s} \\ RESTR & \< \avml \[RELN & or \\ SIT & {\it s} \] \avmr \> \] \\ AGR-ST & \< \avml \avmr \> \]  \avmr \>
+\end{avm} \\
+\begin{avm}
+\< \avml flyer , \[{\it cntn-lxm} \\ SYN & \[ HEAD & \[{\it noun} \\ AGR & {\@1}\[PER & {\it 3rd} \\NUM & {\it sg} \] \] \\ VAL & \[SPR & \< \avml {\@2}\[AGR & {\@1} \] \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \\ SEM & \[MODE & {\it ref} \\ INDEX & {\it i} \\ RESTR & \< \avml \[RELN & flyer \\ INST & {\it i} \] \avmr \> \] \\ AGR-ST & \< \avml {\@2}\[DP \\ COUNT & + \] \avmr \> \]  \avmr \>
+\end{avm} \\
+\begin{avm}
+\< \avml to , \[{\it predp-lxm} \\ SYN & \[ HEAD & \[{\it prep}  \] \\ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \\ SEM & \[ INDEX & {\it s} \\ RESTR & \< \avml \[RELN & to \\ ITEM & i \\ RECIPIENT & j \\ SIT & {\it s} \] \avmr \> \] \\ AGR-ST & \< \avml NP_i , NP_j \avmr \> \]  \avmr \>
+\end{avm} \\
+\begin{avm}
+\< \avml Sandy, \[{\it cntn-lxm} \\ SYN & \[ HEAD & \[{\it noun} \\ AGR & {\@1}\[PER & {\it 3rd} \\NUM & {\it sg} \] \] \\ VAL & \[SPR & \< \avml {\@2}\[AGR & {\@1} \] \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \\ SEM & \[MODE & {\it ref} \\ INDEX & {\it i} \\ RESTR & \< \avml \[RELN & name \\ NAMED & {\it i} \\ NAME & Sandy\] \avmr \> \] \\ AGR-ST \< \avml {\@2}\[DP \\ COUNT & + \] \avmr \> \]  \avmr \>
+\end{avm}
+\begin{avm}
+\< \avml 's, \[{\it det-lxm} \\ SYN & \[HEAD & \[{\it det} \\ COUNT & + \] \\ VAL & \[SPR & \< \avml NP  \avmr \> \] \] \\ ARG-ST & \< \avml  \avmr \> \\ SEM & \[MODE & {\it none} \\ INDEX & i \\ RESTR & \<\[RELN & poss \\ POSSESOR & i \\ POSSESED & J \] \[RELN & the \\ BV & {\it i} \] \] \avmr \> \] \]
+\avmr \>
+\end{avm} \\
+\begin{avm}
+\< \avml Address , \[{\it cntn-lxm} \\ SYN & \[ HEAD & \[{\it noun} \\ AGR & {\@1}\[PER & {\it 3rd} \\NUM & {\it sg} \] \] \\ VAL & \[SPR & \< \avml {\@2}\[AGR & {\@1} \] \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \\ SEM & \[MODE & {\it ref} \\ INDEX & {\it i} \\ RESTR & \< \avml \[RELN & address \\ INST & {\it i} \] \avmr \> \] \\ AGR-ST  & \< \avml {\@2}\[DP \\ COUNT & + \] \avmr \> \]  \avmr \>}
+
+\end{avm}
+For each word in the sentence, identify the lexical type of the lexical entry that licenses it.
+\subsection{Lexical Rules}
+1. Send is licensed by Non-3rd-Singular Verb Lexical Rule and Passive Lexical Rule. \\
+2. the is licensed by a Constant Lexeme Lexical Rule.\\
+3. Postcard is licensed by Singular Noun Lexical Rule.\\
+4. or is licensed by a Constant Lexeme Lexical Rule.\\
+5. flyer is licensed by Singular Noun Lexical Rule.\\
+6. to is licensed by a Constant Lexeme Lexical Rule.\\
+7. Sandy is licences by Singular Noun Lexical Rule.\\
+8. 's is licensed by a Constant Lexeme Lexical Rule.\\ 
+9. address is licensed by Singular Noun Lexical Rule. 
+\subsection{Simple Tree}
+Send the postcard or flyer to Sandy's address!\\
+\begin{forest}
+[S [VP [V [Send]] [DP [D [the ] ] [NP [NP [NOM [postcard] ] ] [CONJ [or] ] [NP [NOM [flyer] ] ] ] ] [PP [P [ to] ] [NP [DP [NOM [Sandy]] [D ['s] ] ] [NP [NOM [address] ] ] ] ] ] ]
+\end{forest}
+\subsection{Tree with feature structure}
+Tree rotated for ease of reading. \\ \\
+\scalebox{0.47}{
+\begin{turn}{90}
+\begin{forest}
+[S [VP \\ [ \begin{avm}\[V \\\[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml {\@1} {\@2} \avmr \>  \] \] \\ AGR-ST  & \< \avml {\@A} \oplus{\@B} \oplus{\@C} \avmr \> \] \] \end{avm} [Send]] [ \begin{avm}\[ DP \\ {\@1} \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \] \] \end{avm} [\begin{avm} \[D \\ {\@3} \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \]  \] \] \] \end{avm} [the ] ] [\begin{avm}\[ NP \\ {\@A} \[SYN & \[ VAL & \[SPR & \< \avml {\@3} \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \] \] \end{avm} [\begin{avm} \[NP \\ \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \]  \] \] \end{avm}[postcard] ] [\begin{avm}  \[CONJ \\ \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \] \] \end{avm} [or] ] [\begin{avm}\[NP \\ \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \]\] \] \end{avm} [flyer] ] ] ] [\begin{avm}\[PP \\ {\@2} \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \] \] \end{avm} [\begin{avm}\[prep \\ \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \] \] \end{avm} [ to] ] [\begin{avm}\[NP \\\[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \]  \] \] \end{avm} [\begin{avm}\[DP \\ {\@4} \[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \]  \] \] \end{avm} [\begin{avm}\[NP \\ {\@B}\[SYN & \[ VAL & \[SPR & \< \avml \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \] \]\end{avm} [Sandy]] [\begin{avm}\[DET \\ \[SYN & \[ VAL & \[SPR & \< \avml {\@B} \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \]  \] \end{avm} ['s] ] ] [\begin{avm}\[NP \\ {\@C} \[SYN & \[ VAL & \[SPR & \< \avml {\@4} \avmr \> \\ COMPS \< \avml \avmr \>  \] \] \] \] \end{avm} [address] ] ] ] ] ]
+\end{forest} \end{turn} }
+\subsection{Chain of Identities that link DESTINATION role to INST role}
+1. The Noun Address identifies the INST role of Address from the lexical entry via Head-Specifier Rule. \\
+2. The Verb Send identifies the Destination role of the send predication from the lexical entry via Head-Specifier Rule.  \\
+3. The NP 'Sandy's address' identifies the INST role of address from the lexical entry via Head-Specifier Rule. \\
+4. The SPR values for Sandy's cause its ARG-ST include the index of INST from address due to the Argument Realization Principle. \\
+5. The NP 'Sandy's address' assumes the INST role of Sandy via semantic inheritance principle. \\
+6. The PP 'to Sandy's address' assumes the joint INSTS of address and sandy via valence principle. \\
+7. The Argument Realization Principle joins the ARG-ST values in the VP and the NP. \\
+8. Global representation of ARG-ST created via Semantic Compositionality Principle. \\
+9. Information about the INST of destination is updated in the verb Send via Semantic Inheritance Principle.
+\subsection{PER value of node above SEND}
+In the fully resolved tree, the PER value of the node is Verb because of the Head-Specifier Rule, The Head Feature Principle and The Valence Principle.  
+\end{document}

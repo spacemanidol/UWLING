@@ -1,0 +1,18 @@
+
+-------------------- Trial 0  --------------------
+
+Trial 0 Training MaxEntTrainer,gaussianPriorVariance=1.0 with 2700 instances
+Trial 0 Training MaxEntTrainer,gaussianPriorVariance=1.0 finished
+Trial 0 Trainer MaxEntTrainer,gaussianPriorVariance=1.0 training data accuracy= 0.9677777777777777
+Trial 0 Trainer MaxEntTrainer,gaussianPriorVariance=1.0 Test Data Confusion Matrix
+Confusion Matrix, row=true, column=predicted  accuracy=0.86
+      label   0   1   2  |total
+  0    guns  82   1  10  |93
+  1 mideast   2  92   7  |101
+  2    misc  12  10  84  |106
+
+Trial 0 Trainer MaxEntTrainer,gaussianPriorVariance=1.0 test data accuracy= 0.86
+
+MaxEntTrainer,gaussianPriorVariance=1.0
+Summary. train accuracy mean = 0.9677777777777777 stddev = 0.0 stderr = 0.0
+Summary. test accuracy mean = 0.86 stddev = 0.0 stderr = 0.0

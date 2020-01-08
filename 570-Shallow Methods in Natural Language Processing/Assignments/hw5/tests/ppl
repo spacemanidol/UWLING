@@ -1,0 +1,47 @@
+
+Sent #1: <s> <s> Influential members of the House Ways and Means Committee introduced legislation that would restrict how the new savings-and-loan bailout agency can raise capital , creating another potential obstacle to the government 's sale of sick thrifts . </s> </s>
+1: lg P(Influential | <s>) = -inf (unknown word)
+2: lg P(members | <s> Influential) = -3.5623098305 (unseen ngrams)
+3: lg P(of | Influential members) = -0.3439083428 (unseen ngrams)
+4: lg P(the | members of) = 0.0963980969
+5: lg P(House | of the) = -2.9038996756 (unseen ngrams)
+6: lg P(Ways | House the) = -inf (unknown word)
+7: lg P(and | House Ways) = -1.8163432940 (unseen ngrams)
+8: lg P(Means | and Ways) = -inf (unknown word)
+9: lg P(Committee | and Means) = -4.1063780334 (unseen ngrams)
+10: lg P(introduced | Means Committee) = -3.9302867743 (unseen ngrams)
+11: lg P(legislation | Committee introduced) = -3.7084378028 (unseen ngrams)
+12: lg P(that | introduced legislation) = -0.6826242868 (unseen ngrams)
+13: lg P(would | legislation that) = 0.0093898045
+14: lg P(restrict | would that) = -inf (unknown word)
+15: lg P(how | would restrict) = -3.7084378028 (unseen ngrams)
+16: lg P(the | restrict how) = -1.3958374579 (unseen ngrams)
+17: lg P(new | how the) = -1.9040641868 (unseen ngrams)
+18: lg P(savings-and-loan | new the) = -inf (unknown word)
+19: lg P(bailout | savings-and-loan new) = -inf (unknown word)
+20: lg P(agency | savings-and-loan bailout) = -3.9302867743 (unseen ngrams)
+21: lg P(can | bailout agency) = -3.1286543113 (unseen ngrams)
+22: lg P(raise | agency can) = -3.8053480377 (unseen ngrams)
+23: lg P(capital | can raise) = -3.6292565937 (unseen ngrams)
+24: lg P(, | raise capital) = -1.3429499126 (unseen ngrams)
+25: lg P(creating | capital ,) = -4.4074080290 (unseen ngrams)
+26: lg P(another | , creating) = -3.1769589771 (unseen ngrams)
+27: lg P(potential | creating another) = -3.8053480377 (unseen ngrams)
+28: lg P(obstacle | potential another) = -inf (unknown word)
+29: lg P(to | potential obstacle) = -1.6964447827 (unseen ngrams)
+30: lg P(the | obstacle to) = -0.9139742635 (unseen ngrams)
+31: lg P(government | to the) = -1.4870804095
+32: lg P('s | the government) = -0.5304379167
+33: lg P(sale | government 's) = -3.7084378028 (unseen ngrams)
+34: lg P(of | 's sale) = -0.0838505619 (unseen ngrams)
+35: lg P(sick | of sale) = -inf (unknown word)
+36: lg P(thrifts | sick of) = -inf (unknown word)
+37: lg P(. | sick thrifts) = -1.4135309869 (unseen ngrams)
+38: lg P(</s> | thrifts .) = -0.0108872080 (unseen ngrams)
+1 sentence, 37 words, 9 OOVs
+lgprob=-65.0275941918 ppl=174.7152581347
+
+
+%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%\%
+sent_num=1 word_num=37 oov_num=9
+lgprob=-65.0275941918 ave_lgprob=-65.0275941918 ppl=147.0911261715

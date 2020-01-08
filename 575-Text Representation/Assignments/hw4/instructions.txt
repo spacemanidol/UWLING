@@ -1,0 +1,10 @@
+Train your word2vec embedding using the enwiki8 corpus with
+1. Hierarchical softmax (CBOW, SG);
+2. Negative sampling (CBOW, SG);
+3. The GloVe embedding you had in Hw2.
+
+Evaluate on MEN3k.txtPreview the document, SimLex999.txtPreview the document and wordsim353.txtPreview the document using spearman's correlation
+
+Submit a result.txt to me with the content covering
+1. The results from five embeddings (4 word2vec and 1 GloVe);
+2. Your observations on HS v.s. NS on CBOW and SG, as well as the comparison to GloVe.

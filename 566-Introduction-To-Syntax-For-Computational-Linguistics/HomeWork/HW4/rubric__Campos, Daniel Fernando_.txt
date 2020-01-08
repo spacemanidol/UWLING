@@ -1,0 +1,57 @@
+"Campos, Daniel Fernando"	
+max	descr
+87/100	Summary:
+	
+17/20	6.6
+35/35	7.1
+5/10	8.1
+30/35	8.2
+	
+17/20	6.6
+	
+6/7	A
+2/2	Reference to SHAC
+3/3	AGR values are inconsistent
+1/2	Clarity of explanation
+ 	 	 COMMENT: AGR not explicitly mentioned
+	
+11/13	B
+1/1	Some value for MODE
+0/2	INDEX i (or whichever index is POSSESSED)
+3/3	three predications on the RESTR list
+3/3	RELN values
+2/2	speaker.INST = poss.POSSESSOR
+2/2	poss.POSSESSED = the.BV
+	
+	
+35/35	7.1
+	
+20/20	"Two appropriate examples for each item, one with reflexive or reciprocal, one with non reflexive (and non-reciprocal). 10 ex * 2 point each = 20"
+	
+15/15	Classification
+	
+	
+5/10	8.1
+	
+2/5	Key point: 's is not subject to the SHAC
+3/5	Overall clarity of answer
+	
+	
+30/35	8.2
+	
+	"Four examples with/without specifier, plural and mass"
+6/8	Four examples * 2 points each 
+	
+2/2	Mother is phrase 
+4/4	Mother is SPR < > 
+2/2	Nothing incorrect on mother 
+	(redundant is okay)
+3/3	Only one daughter
+0/3	Daughter is marked with H 
+	"(or effects of SIP, HFP, ValP are all shown on mother)"
+2/2	HEAD noun 
+	(mother or daughter)
+2/2	COMPS <> (daughter) 
+3/3	SPR allows [COUNT -] (note: NUM must be underspecified)
+3/3	SPR allows [NUM pl] 
+3/3	"SPR does not allow [NUM sg, COUNT +] "

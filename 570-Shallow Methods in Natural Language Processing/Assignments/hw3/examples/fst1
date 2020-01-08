@@ -1,0 +1,5 @@
+S
+(S (S "they" "PRO" 1.0))
+(S (S "can" "AUX" 1.0))
+(S (S "fish" "NOUN" 1.0))
+(S (S "table" "VERB" 1.0))
