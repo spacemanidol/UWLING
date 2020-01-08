@@ -1,5 +1,0 @@
-"a" "a" "b" => *none* 0
-"a" "a" => "b" "b" 1
-"b" => *none* 0
-"a" "b" "a" => *none* 0
-"a" "c" => *none* 0

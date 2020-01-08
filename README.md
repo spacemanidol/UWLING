@@ -1,2 +1,0 @@
-# UWLING
-UW Computational Linguistics
